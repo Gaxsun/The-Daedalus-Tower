@@ -86,7 +86,7 @@ public class CameraFollow : MonoBehaviour {
         Vector3 zPoint;
         float newX;
         float newZ;
-        print(springOffset.z * springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z);
+        print(springOffset.z * springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z); // KILL MEEEEEEE
         xPoint = new Vector3(Mathf.Sqrt(springOffset.z*springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z), 0, springOffset.z);
         zPoint = new Vector3(springOffset.x, 0, Mathf.Sqrt(springOffset.x*springOffset.x - springOffset.x * springOffset.x + springOffset.z * springOffset.z));
 
