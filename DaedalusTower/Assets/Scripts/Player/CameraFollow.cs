@@ -36,18 +36,31 @@ public class CameraFollow : MonoBehaviour {
         transform.RotateAround(player.transform.position, player.transform.up, rotateSpeed * Time.deltaTime * mouseValueX);
         rotateOffset.x = transform.position.x - player.transform.position.x;
         rotateOffset.z = transform.position.z - player.transform.position.z;
-        if (rotateOffset.x > 6) {
-            rotateOffset.x = 6;
-        } else if (rotateOffset.x < -6) {
-            rotateOffset.x = -6;
+        if (rotateOffset.x > cameraDistance) {
+            rotateOffset.x = cameraDistance;
+        } else if (rotateOffset.x < -cameraDistance) {
+            rotateOffset.x = -cameraDistance;
         }
 
-        if (rotateOffset.z > 6) {
-            rotateOffset.z = 6;
-        } else if (rotateOffset.z < -6) {
-            rotateOffset.z = -6;
+        if (rotateOffset.z > cameraDistance) {
+            rotateOffset.z = cameraDistance;
+        } else if (rotateOffset.z < -cameraDistance) {
+            rotateOffset.z = -cameraDistance;
         }
+
         springArm();
+
+        if (springOffset.x > cameraDistance) {
+            springOffset.x = cameraDistance;
+        } else if (springOffset.x < -cameraDistance) {
+            springOffset.x = -cameraDistance;
+        }
+
+        if (springOffset.z > cameraDistance) {
+            springOffset.z = cameraDistance;
+        } else if (springOffset.z < -cameraDistance) {
+            springOffset.z = -cameraDistance;
+        }
     }
 
 
@@ -59,17 +72,7 @@ public class CameraFollow : MonoBehaviour {
             if (hit.collider.tag == "terrain") {
                 springOffset.x = hit.point.x - player.transform.position.x;
                 springOffset.z = hit.point.z - player.transform.position.z;
-                if (springOffset.x > cameraDistance) {
-                    springOffset.x = cameraDistance;
-                } else if (springOffset.x < -cameraDistance) {
-                    springOffset.x = -cameraDistance;
-                }
-
-                if (springOffset.z > cameraDistance) {
-                    springOffset.z = cameraDistance;
-                } else if (springOffset.z < -cameraDistance) {
-                    springOffset.z = -cameraDistance;
-                }
+                
             } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
@@ -86,15 +89,34 @@ public class CameraFollow : MonoBehaviour {
         Vector3 zPoint;
         float newX;
         float newZ;
-        print(springOffset.z * springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z); // KILL MEEEEEEE
-        xPoint = new Vector3(Mathf.Sqrt(springOffset.z*springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z), 0, springOffset.z);
-        zPoint = new Vector3(springOffset.x, 0, Mathf.Sqrt(springOffset.x*springOffset.x - springOffset.x * springOffset.x + springOffset.z * springOffset.z));
+        
+        xPoint = new Vector3(Mathf.Sqrt(cameraDistance*cameraDistance - rotateOffset.z*rotateOffset.z), 0, rotateOffset.z);
+        zPoint = new Vector3(rotateOffset.x, 0, Mathf.Sqrt(cameraDistance * cameraDistance - rotateOffset.x * rotateOffset.x));
+
+        if(rotateOffset.x < 0) {
+            xPoint.x *= -1;
+        }
+        if(rotateOffset.z < 0) {
+            zPoint.z *= -1;
+        }
 
         //Find Midpoint on circle at cameraDistance
         newX = cameraDistance * (xPoint.x + zPoint.x) / (Mathf.Sqrt((xPoint.x + zPoint.x) * (xPoint.x + zPoint.x) + (xPoint.z + zPoint.z) * (xPoint.z + zPoint.z)));
         newZ = (xPoint.z + zPoint.z) / (xPoint.x + zPoint.x) * newX;
-
+        
         initOffset = new Vector3(newX, initOffset.y, newZ);
+
+        if (initOffset.x > cameraDistance) {
+            initOffset.x = cameraDistance;
+        } else if (initOffset.x < -cameraDistance) {
+           initOffset.x = -cameraDistance;
+        }
+
+        if (springOffset.z > cameraDistance) {
+            initOffset.z = cameraDistance;
+        } else if (springOffset.z < -cameraDistance) {
+            initOffset.z = -cameraDistance;
+        }
     }
 
 
