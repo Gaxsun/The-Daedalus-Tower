@@ -27,6 +27,21 @@ public class PlayerMovement : MonoBehaviour {
 
     public void sidewaysAxisMovement(float direction) {
         transform.RotateAround(playerCam.transform.position, transform.up, rotateSpeed * direction * Time.deltaTime);
+
+        playerCam.GetComponent<CameraFollow>().rotateOffset.x = playerCam.transform.position.x - transform.position.x;
+        playerCam.GetComponent<CameraFollow>().rotateOffset.z = playerCam.transform.position.z - transform.position.z;
+        if (playerCam.GetComponent<CameraFollow>().rotateOffset.x > 6) {
+            playerCam.GetComponent<CameraFollow>().rotateOffset.x = 6;
+        } else if (playerCam.GetComponent<CameraFollow>().rotateOffset.x < -6) {
+            playerCam.GetComponent<CameraFollow>().rotateOffset.x = -6;
+        }
+
+        if (playerCam.GetComponent<CameraFollow>().rotateOffset.z > 6) {
+            playerCam.GetComponent<CameraFollow>().rotateOffset.z = playerCam.GetComponent<CameraFollow>().rotateOffset.z = 6;
+        } else if (playerCam.GetComponent<CameraFollow>().rotateOffset.z < -6) {
+            playerCam.GetComponent<CameraFollow>().rotateOffset.z = playerCam.GetComponent<CameraFollow>().rotateOffset.z = -6;
+        }
+
         transform.LookAt(transform.position + playerCam.transform.right * direction);
     }
 }

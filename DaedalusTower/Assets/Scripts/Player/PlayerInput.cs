@@ -28,9 +28,9 @@ public class PlayerInput : MonoBehaviour {
          * 
          */ 
         
-        if (Input.GetAxis("Vertical") != 0) {
+        //if (Input.GetAxis("Vertical") != 0) {
             GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("Vertical") * -1);
-        }
+        //}
         if (Input.GetAxis("Horizontal") != 0) {
             GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("Horizontal"));
         }

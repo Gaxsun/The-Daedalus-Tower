@@ -17,10 +17,6 @@ public class CameraFollow : MonoBehaviour {
 
     public float rotateSpeed;
 
-    private bool resetCamCheck;
-    private float resetTimer;
-    public float resetDelay;
-
 	// Use this for initialization
 	void Start () {
         transform.position = player.transform.position + initOffset;
@@ -33,13 +29,7 @@ public class CameraFollow : MonoBehaviour {
         springArm();
         transform.position = player.transform.position + springOffset;
         transform.LookAt(player.transform);
-
-        if (resetCamCheck) {
-            resetCamCheck = false;
-            resetTimer = Time.time;
-        }else if(resetTimer + resetDelay < Time.time) {
-
-        }
+        
     }
 
     public void cameraRotate(float mouseValueX) {
@@ -63,44 +53,53 @@ public class CameraFollow : MonoBehaviour {
 
     private void springArm() {
         RaycastHit hit;
-        print(transform.position - player.transform.position);
         Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.blue);
         if (Physics.Raycast(player.transform.position, transform.position - player.transform.position, out hit, defaultCameraDistance)) {
             Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.red);
             if (hit.collider.tag == "terrain") {
                 springOffset.x = hit.point.x - player.transform.position.x;
                 springOffset.z = hit.point.z - player.transform.position.z;
-                if (springOffset.x > 6) {
-                    springOffset.x = 6;
-                }else if(springOffset.x < -6) {
-                    springOffset.x = -6;
+                if (springOffset.x > cameraDistance) {
+                    springOffset.x = cameraDistance;
+                } else if (springOffset.x < -cameraDistance) {
+                    springOffset.x = -cameraDistance;
                 }
 
-                if(springOffset.z > 6) {
-                    springOffset.z = 6;
-                }else if(springOffset.z < -6) {
-                    springOffset.z = -6;
+                if (springOffset.z > cameraDistance) {
+                    springOffset.z = cameraDistance;
+                } else if (springOffset.z < -cameraDistance) {
+                    springOffset.z = -cameraDistance;
                 }
-                    rotateOffset = springOffset;
             } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
             }
         } else {
-            springOffset.x = rotateOffset.x;
-            springOffset.z = rotateOffset.z;
+            cameraDistanceReset();
+            springOffset.x = initOffset.x;
+            springOffset.z = initOffset.z;
         }
     }
 
+    private void cameraDistanceReset() {
+        Vector3 xPoint;
+        Vector3 zPoint;
+        float newX;
+        float newZ;
+        print(springOffset.z * springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z);
+        xPoint = new Vector3(Mathf.Sqrt(springOffset.z*springOffset.z - springOffset.x * springOffset.x + springOffset.z * springOffset.z), 0, springOffset.z);
+        zPoint = new Vector3(springOffset.x, 0, Mathf.Sqrt(springOffset.x*springOffset.x - springOffset.x * springOffset.x + springOffset.z * springOffset.z));
 
-    private void cameraReset() {
+        //Find Midpoint on circle at cameraDistance
+        newX = cameraDistance * (xPoint.x + zPoint.x) / (Mathf.Sqrt((xPoint.x + zPoint.x) * (xPoint.x + zPoint.x) + (xPoint.z + zPoint.z) * (xPoint.z + zPoint.z)));
+        newZ = (xPoint.z + zPoint.z) / (xPoint.x + zPoint.x) * newX;
 
+        initOffset = new Vector3(newX, initOffset.y, newZ);
     }
 
 
 
-
-    public void cameraSet() {
+    /*public void cameraSet() {
         if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(player.transform.position.x, 0, player.transform.position.z)) > cameraDistance) {
             transform.position = transform.position + new Vector3(transform.forward.x, 0, transform.forward.z).normalized * player.GetComponent<PlayerMovement>().forwardMoveSpeed * 2 * Time.deltaTime;
         } else if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(player.transform.position.x, 0, player.transform.position.z)) < cameraDistance - cameraPadding) {
@@ -111,4 +110,5 @@ public class CameraFollow : MonoBehaviour {
         transform.position = player.transform.position + springOffset;
         transform.LookAt(player.transform);
     }
+    */
 }
