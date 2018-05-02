@@ -120,9 +120,10 @@ public class CameraFollow : MonoBehaviour {
                 cameraDistanceReset();
                 springOffset.x = initOffset.x;
                 springOffset.z = initOffset.z;
-                print(springOffset.z);
+                rotateOffset.x = initOffset.x;
+                rotateOffset.z = initOffset.z;
                 cameraCheck = false;
-            }else {
+            } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
             }
@@ -161,9 +162,9 @@ public class CameraFollow : MonoBehaviour {
             initOffset.x = -cameraDistance;
         }
 
-        if (springOffset.z > cameraDistance + cameraPadding) {
+        if (initOffset.z > cameraDistance + cameraPadding) {
             initOffset.z = cameraDistance;
-        } else if (springOffset.z < -cameraDistance - cameraPadding) {
+        } else if (initOffset.z < -cameraDistance - cameraPadding) {
             initOffset.z = -cameraDistance;
         }
     }
