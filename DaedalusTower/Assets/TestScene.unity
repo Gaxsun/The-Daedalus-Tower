@@ -1490,7 +1490,7 @@ MonoBehaviour:
   initOffset: {x: 0, y: 3, z: -7}
   springOffset: {x: 0, y: 3, z: -7}
   rotateOffset: {x: 0, y: 3, z: -7}
-  rotateSpeed: 600
+  rotateSpeed: 300
 --- !u!1 &997463097
 GameObject:
   m_ObjectHideFlags: 0
