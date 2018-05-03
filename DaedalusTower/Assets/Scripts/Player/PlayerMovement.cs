@@ -11,36 +11,35 @@ public class PlayerMovement : MonoBehaviour {
 
     public float rotateSpeed;
 
-    public Vector3 playerDirection;
-    private Vector3 playerLocalDirection;
-
 	// Use this for initialization
 	void Start () {
-        playerDirection = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        setRotation();
     }
 
     public void forwardAxisMovement(float direction) {
         transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * forwardMoveSpeed * -direction * Time.deltaTime;
         playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * forwardMoveSpeed * -direction * Time.deltaTime;
-        setRotation();
     }
 
     public void sidewaysAxisMovement(float direction) {
         transform.RotateAround(playerCam.transform.position, transform.up, rotateSpeed * direction * Time.deltaTime);
         playerCam.GetComponent<CameraFollow>().playerCounterRotate();
-        setRotation();
     }
 
     private void setRotation() {
-        playerDirection = new Vector3((transform.forward.x - transform.position.x) * Input.GetAxis("Horizontal"),0,0));
-            
-            
-            
-            //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
-        transform.rotation = Quaternion.LookRotation(playerDirection, transform.up);
+        Vector2 joystick = new Vector2(Input.GetAxis("LeftStickX"), Input.GetAxis("LeftStickY"));
+        if (joystick.x != 0 || joystick.y != 0) {
+            float angle = Mathf.Atan2(joystick.x, -joystick.y) * Mathf.Rad2Deg + playerCam.transform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0,angle,0);
+        }
+
+
+
+
+        //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
     }
 }
