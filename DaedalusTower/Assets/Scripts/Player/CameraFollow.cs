@@ -17,6 +17,8 @@ public class CameraFollow : MonoBehaviour {
     public float rotateSpeed;
     private bool cameraCheck;
 
+    public float cameraDirection;
+
 	// Use this for initialization
 	void Start () {
         initOffset.z = -cameraDistance;
