@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour {
 	}
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "enemy") {
+        if (other.tag == "enemy" && attackActive == true) {
             Destroy(other.gameObject);
         }
     }
