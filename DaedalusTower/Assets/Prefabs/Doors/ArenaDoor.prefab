@@ -109,7 +109,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 8, z: 6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: -3}
 --- !u!114 &114618198722002838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,10 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openHeight: 7.1
   liftSpeed: 3
-  arenaEnemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  arenaSpawners: []
 --- !u!208 &208701100806087940
 NavMeshObstacle:
   m_ObjectHideFlags: 1

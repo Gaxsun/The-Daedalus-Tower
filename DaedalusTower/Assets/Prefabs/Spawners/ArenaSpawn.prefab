@@ -136,3 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e44a16e3a6c7e845a5d7ec447eeba2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42, type: 2}
+  arenaBegin: 0

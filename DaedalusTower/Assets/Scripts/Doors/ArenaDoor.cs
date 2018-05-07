@@ -9,7 +9,7 @@ public class ArenaDoor : MonoBehaviour {
     public float openHeight;
     public float liftSpeed;
 
-    public GameObject[] arenaEnemies;
+    public GameObject[] arenaSpawners;
 
     // Use this for initialization
     void Start() {
@@ -27,4 +27,9 @@ public class ArenaDoor : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
         }
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.tag == "Player") {
+            openSesame = true;
+        }
 }
