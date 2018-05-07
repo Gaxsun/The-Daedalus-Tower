@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     public float slopeCheckHeight;
 
     // how far to extrude from player
-    public float slopeCheckRadius;
+    public float slopeCheckDistance;
 
     // Use this for initialization
     void Start () {
@@ -42,7 +42,8 @@ public class PlayerMovement : MonoBehaviour {
     // true if too steep
     public bool slopeTooSteep() {
         RaycastHit hit;
-        if (Physics.CapsuleCast(new Vector3(transform.position.x, transform.position.y - (capsule.height/2) + (capsule.height * slopeCheckHeight), transform.position.z), new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), capsule.radius + slopeCheckRadius, new Vector3(0,1,0), out hit)) {
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), transform.forward);
+        if (Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), new Vector3(capsule.radius * 2, 0.1f, capsule.radius), transform.forward, out hit, transform.rotation, capsule.radius * 2 * slopeCheckDistance)) {
             if (hit.collider.tag == "terrain") {
                 print("Too Steep");
             }
@@ -56,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
             float angle = Mathf.Atan2(joystick.x, -joystick.y) * Mathf.Rad2Deg + playerCam.transform.rotation.eulerAngles.y;
             transform.rotation = Quaternion.Euler(0,angle,0);
         }
-
+        
         //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
     }
 

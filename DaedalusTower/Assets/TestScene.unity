@@ -1743,7 +1743,7 @@ MonoBehaviour:
   sidewaysMoveSpeed: 3
   rotateSpeed: 30
   slopeCheckHeight: 0.2
-  slopeCheckRadius: 0.3
+  slopeCheckDistance: 0.3
 --- !u!54 &1011557365
 Rigidbody:
   m_ObjectHideFlags: 0

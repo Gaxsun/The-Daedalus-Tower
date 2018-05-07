@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour {
         }
 	}
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerStay(Collider other) {
         if (other.tag == "enemy" && attackActive == true) {
             Destroy(other.gameObject);
         }
