@@ -42,8 +42,7 @@ public class PlayerMovement : MonoBehaviour {
     // true if too steep
     public bool slopeTooSteep() {
         RaycastHit hit;
-        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), transform.forward);
-        if (Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), new Vector3(capsule.radius * 2, 0.1f, capsule.radius), transform.forward, out hit, transform.rotation, capsule.radius * 2 * slopeCheckDistance)) {
+        if (Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), new Vector3(capsule.radius * 2, 0.1f, 1f), transform.forward, out hit, transform.rotation, capsule.radius * 2 * slopeCheckDistance)) {
             if (hit.collider.tag == "terrain") {
                 print("Too Steep");
             }
