@@ -13,7 +13,6 @@ public class EnemyNavigation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //destinationPoint = player.transform;
 	}
 	
 	// Update is called once per frame
