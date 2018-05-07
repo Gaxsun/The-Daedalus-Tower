@@ -28,9 +28,9 @@ public class PlayerInput : MonoBehaviour {
          * 
          */ 
         
-        //if (Input.GetAxis("Vertical") != 0) {
+        if (Input.GetAxis("Vertical") != 0) {
             GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("Vertical") * -1);
-        //}
+        }
         if (Input.GetAxis("Horizontal") != 0) {
             GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("Horizontal"));
         }
@@ -57,6 +57,9 @@ public class PlayerInput : MonoBehaviour {
          GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
          GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
         
+        if(Input.GetAxis("X") != 0) {
+            //GetComponent<>().
+        }
 
         if(Input.GetAxis("RightStickX") != 0) {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("RightStickX"));
