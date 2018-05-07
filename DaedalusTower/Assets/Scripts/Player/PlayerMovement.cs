@@ -59,4 +59,8 @@ public class PlayerMovement : MonoBehaviour {
 
         //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
     }
+
+    public void playerAttack() {
+        gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
+    }
 }
