@@ -54,6 +54,12 @@ public class PlayerInput : MonoBehaviour {
          * 
          * 
          */
+        if (Input.GetAxis("LeftStickY") != 0 || Input.GetAxis("LeftStickX") != 0) {
+            GetComponent<PlayerMovement>().playRun();
+        } else {
+            GetComponent<PlayerMovement>().playIdle();
+        }
+
          GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
          GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
         

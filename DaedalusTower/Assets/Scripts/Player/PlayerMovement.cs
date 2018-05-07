@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public Camera playerCam;
 
+    public Animator anim;
+
     public CapsuleCollider capsule;
 
     public float forwardMoveSpeed;
@@ -21,12 +23,16 @@ public class PlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	}
+        anim = GetComponentInChildren<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
         setRotation();
         slopeTooSteep();
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
+            gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+        }
     }
 
     public void forwardAxisMovement(float direction) {
@@ -60,7 +66,22 @@ public class PlayerMovement : MonoBehaviour {
         //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
     }
 
+    public void playRun() {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandRun") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
+            anim.Play("oneHandRun", 0, 0f);
+        }
+        print("running");
+    }
+
+    public void playIdle() {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandIdle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
+            anim.Play("oneHandIdle", 0, 0f);
+        }
+        print("idle");
+    }
+
     public void playerAttack() {
         gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
+        anim.Play("oneHandAttack", 0, 0f);
     }
 }

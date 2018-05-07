@@ -6,11 +6,12 @@ public class playerManager : MonoBehaviour {
 
     //Holds current player config
     public GameObject currentWeapon;
+    public GameObject weaponPosition;
 
 	// Use this for initialization
 	void Start () {
         // Place selected weapon in player's hand
-        Instantiate(currentWeapon, transform.GetChild(0));        
+        Instantiate(currentWeapon, weaponPosition.transform);        
 	}
 	
 	// Update is called once per frame
