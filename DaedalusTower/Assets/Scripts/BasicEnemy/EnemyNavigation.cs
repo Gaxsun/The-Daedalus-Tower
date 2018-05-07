@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyNavigation : MonoBehaviour {
     
-    public GameObject player;
+    private GameObject player;
 
 
     public Transform destinationPoint;
@@ -13,6 +13,7 @@ public class EnemyNavigation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
