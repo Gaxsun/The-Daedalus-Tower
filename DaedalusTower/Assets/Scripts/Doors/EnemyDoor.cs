@@ -27,19 +27,19 @@ public class EnemyDoor : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.transform.tag == "Enemy") {
+        if (other.tag == "enemy") {
             openSesame = true;
         }
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.transform.tag == "Enemy") {
+        if (other.tag == "enemy") {
             openSesame = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.transform.tag == "Enemy") {
+        if (other.tag == "enemy") {
             openSesame = false;
         }
     }

@@ -10,10 +10,13 @@ public class ArenaDoor : MonoBehaviour {
     public float liftSpeed;
 
     public GameObject[] arenaSpawners;
+    public bool arenaBegin;
+    private bool arenaEnd;
 
     // Use this for initialization
     void Start() {
         openSesame = false;
+        arenaEnd = false;
         closedHeight = transform.position.y;
     }
 
@@ -26,10 +29,28 @@ public class ArenaDoor : MonoBehaviour {
         } else if (openSesame == false) {
             transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
         }
+        if (arenaBegin && arenaEnd == false) {
+            openSesame = false;
+            bool corpsePile = true;
+            foreach (GameObject spawner in arenaSpawners) {
+                spawner.GetComponent<ArenaSpawner>().arenaBegin = arenaBegin;
+                if (spawner.GetComponent<ArenaSpawner>().arenaClear == false) {
+                    corpsePile = false;
+                }
+            }
+            if (corpsePile) {
+                arenaEnd = true;
+            }
+            transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
+        }
+        if (arenaEnd && transform.position.y < openHeight) {
+            openSesame = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.transform.tag == "Player") {
+        if (other.tag == "Player") {
             openSesame = true;
         }
+    }
 }

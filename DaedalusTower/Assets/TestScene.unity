@@ -122,6 +122,11 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 71c984d8e823403428e87ce0d0664a9a, type: 3}
   m_PrefabInternal: {fileID: 185525429}
+--- !u!1 &47846675 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1019586167470052, guid: 857909b728acd3246a5895002f27f9a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 522142663}
 --- !u!4 &92262026 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 71c984d8e823403428e87ce0d0664a9a, type: 3}
@@ -482,6 +487,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1469758320}
     m_Modifications:
+    - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
+        type: 2}
+      propertyPath: arenaSpawners.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4687031997992634, guid: 87ab42a688ae1b04a943e5fca9dcba4d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -516,40 +526,29 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
         type: 2}
-      propertyPath: arenaEnemies.Array.data[0]
-      value: 
+      propertyPath: openHeight
+      value: 7.1
       objectReference: {fileID: 0}
     - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
         type: 2}
-      propertyPath: arenaEnemies.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
-        type: 2}
-      propertyPath: arenaEnemies.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 65328842356874368, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
-        type: 2}
-      propertyPath: m_Center.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Center.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Size.x
+      propertyPath: liftSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
+        type: 2}
+      propertyPath: arenaSpawners.Array.data[0]
+      value: 
+      objectReference: {fileID: 1991488125}
+    - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
+        type: 2}
+      propertyPath: arenaSpawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 1417594895}
+    - target: {fileID: 114618198722002838, guid: 87ab42a688ae1b04a943e5fca9dcba4d,
+        type: 2}
+      propertyPath: arenaSpawners.Array.data[2]
+      value: 
+      objectReference: {fileID: 47846675}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87ab42a688ae1b04a943e5fca9dcba4d, type: 2}
   m_IsPrefabParent: 0
@@ -694,11 +693,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114769145044833066, guid: 95a3939ea5170c94cbf0aca252294c42,
+    - target: {fileID: 54871935175696004, guid: 95a3939ea5170c94cbf0aca252294c42,
         type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1011557359}
+      propertyPath: m_Constraints
+      value: 94
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95a3939ea5170c94cbf0aca252294c42, type: 2}
   m_IsPrefabParent: 0
@@ -833,6 +832,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1469758320}
     m_Modifications:
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4074270776785708, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -869,6 +873,18 @@ Prefab:
       propertyPath: m_Name
       value: ArenaSpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
   m_IsPrefabParent: 0
@@ -1664,6 +1680,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1469758320}
     m_Modifications:
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4074270776785708, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 27.5
@@ -1700,10 +1721,18 @@ Prefab:
       propertyPath: m_Name
       value: ArenaSpawn (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4074270776785708, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
   m_IsPrefabParent: 0
@@ -2875,6 +2904,11 @@ Transform:
   m_Father: {fileID: 1469758320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1417594895 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1019586167470052, guid: 857909b728acd3246a5895002f27f9a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 886069561}
 --- !u!1 &1423564430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3150,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1469758320}
     m_Modifications:
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4074270776785708, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3148,6 +3187,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
+    - target: {fileID: 114634846066826604, guid: 857909b728acd3246a5895002f27f9a6,
+        type: 2}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
   m_IsPrefabParent: 0
@@ -3474,6 +3525,11 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 71c984d8e823403428e87ce0d0664a9a, type: 3}
+--- !u!1 &1991488125 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1019586167470052, guid: 857909b728acd3246a5895002f27f9a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1667879815}
 --- !u!4 &2032708064 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 71c984d8e823403428e87ce0d0664a9a, type: 3}
