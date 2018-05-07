@@ -133,30 +133,11 @@ public class CameraFollow : MonoBehaviour {
     }
 
     private void cameraDistanceReset() {
-        Vector3 xPoint;
-        Vector3 zPoint;
-        float newX;
-        float newZ;
+        Vector2 distancePoint;
         
-        xPoint = new Vector3(Mathf.Sqrt(cameraDistance*cameraDistance - rotateOffset.z*rotateOffset.z), 0, rotateOffset.z);
-        zPoint = new Vector3(rotateOffset.x, 0, Mathf.Sqrt(cameraDistance * cameraDistance - rotateOffset.x * rotateOffset.x));
+        distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
 
-        if(rotateOffset.x < 0) {
-            xPoint.x *= -1;
-        }
-        if(rotateOffset.z < 0) {
-            zPoint.z *= -1;
-        }
-
-        //Find Midpoint on circle at cameraDistance
-        newX = cameraDistance * (xPoint.x + zPoint.x) / (Mathf.Sqrt((xPoint.x + zPoint.x) * (xPoint.x + zPoint.x) + (xPoint.z + zPoint.z) * (xPoint.z + zPoint.z)));
-        if (newX == 0) {
-            newZ = zPoint.z;
-        } else {
-            newZ = (xPoint.z + zPoint.z) / (xPoint.x + zPoint.x) * newX;
-        }
-        
-        initOffset = new Vector3(newX, initOffset.y, newZ);
+        initOffset = new Vector3(distancePoint.x, initOffset.y, distancePoint.y);
 
         if (initOffset.x > cameraDistance + cameraPadding) {
             initOffset.x = cameraDistance;
