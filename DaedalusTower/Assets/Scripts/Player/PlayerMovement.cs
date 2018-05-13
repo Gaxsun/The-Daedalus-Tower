@@ -13,15 +13,19 @@ public class PlayerMovement : MonoBehaviour {
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
 
+    public float dashSpeed;
+    public float dashTime;
+    private float dashTimeStart;
+    public float dashCooldown;
+    float dashDirectionX;
+    float dashDirectionY;
+    public bool dashEnabled = true;
+
     public float rotateSpeed;
 
-    // 0-1 scaled to player height based off capsule
-    public float slopeCheckHeight;
+    bool dashing = false;
 
-    // how far to extrude from player
-    public float slopeCheckDistance;
-
-    // Use this for initialization
+    // Game Time Started
     void Start () {
         anim = GetComponentInChildren<Animator>();
     }
@@ -29,10 +33,25 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         setRotation();
-        slopeTooSteep();
+        
+        print(Time.time >= Time.time + dashTime);
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+        } else {
+            gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
         }
+
+        if (dashing) {
+            Dash();
+            dashEnabled = false;
+        }
+
+        if (Time.time >= dashCooldown + dashTimeStart) {
+            dashEnabled = true;
+        }
+
+        print(Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2))))));
+        
     }
 
     public void forwardAxisMovement(float direction) {
@@ -45,17 +64,6 @@ public class PlayerMovement : MonoBehaviour {
         playerCam.GetComponent<CameraFollow>().playerCounterRotate();
     }
 
-    // true if too steep
-    public bool slopeTooSteep() {
-        RaycastHit hit;
-        if (Physics.BoxCast(new Vector3(transform.position.x, transform.position.y - (capsule.height / 2) + (capsule.height * slopeCheckHeight), transform.position.z), new Vector3(capsule.radius * 2, 0.1f, 1f), transform.forward, out hit, transform.rotation, capsule.radius * 2 * slopeCheckDistance)) {
-            if (hit.collider.tag == "terrain") {
-                print("Too Steep");
-            }
-        }        
-        return false;
-    }
-
     private void setRotation() {
         Vector2 joystick = new Vector2(Input.GetAxis("LeftStickX"), Input.GetAxis("LeftStickY"));
         if (joystick.x != 0 || joystick.y != 0) {
@@ -63,8 +71,50 @@ public class PlayerMovement : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0,angle,0);
         }
         
-        //(transform.forward - transform.position) * new Vector3(Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));
     }
+
+    public void Dash() {
+        forwardAxisMovement(dashDirectionY * dashSpeed);
+        sidewaysAxisMovement(dashDirectionX * dashSpeed);
+        print(Input.GetAxis("LeftStickY"));
+
+        if (Time.time >= dashTime + dashTimeStart) {
+            dashing = false;
+            GetComponent<PlayerInput>().controlsEnabled = true;
+            playIdle();
+            print("b");
+            dashTimeStart = Time.time;
+        }
+    }
+
+    public void DashStart() {
+
+        dashDirectionX = Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)));
+
+        dashDirectionY = Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)))));
+
+        if (Input.GetAxis("LeftStickY") < 0) {
+            dashDirectionY = dashDirectionY * -1;
+        }
+
+        if (double.IsNaN(dashDirectionX)) {
+            dashDirectionX = 0;
+        }
+        if (double.IsNaN(dashDirectionY)) {
+            dashDirectionY = 0;
+        }
+        if (Input.GetAxis("LeftStickX") == 0 && Input.GetAxis("LeftStickY") == 0) {
+            dashDirectionY = -1;
+        }
+
+        dashing = true;
+        GetComponent<PlayerInput>().controlsEnabled = false;
+        anim.Play("oneHandRun", 0, 0f);
+        gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+        print("running");
+        dashTimeStart = Time.time;
+    }
+
 
     public void playRun() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandRun") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
@@ -77,11 +127,13 @@ public class PlayerMovement : MonoBehaviour {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandIdle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
             anim.Play("oneHandIdle", 0, 0f);
         }
-        print("idle");
+        print("Idle");
     }
 
     public void playerAttack() {
-        gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
-        anim.Play("oneHandAttack", 0, 0f);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
+            anim.Play("oneHandAttack", 0, 0f);
+        }
+        print("Attacking");
     }
 }

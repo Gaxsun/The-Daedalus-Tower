@@ -798,6 +798,21 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114342081669978658, guid: b105bcf8aab4f674196be5623ff5168f,
+        type: 2}
+      propertyPath: dashSpeed
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342081669978658, guid: b105bcf8aab4f674196be5623ff5168f,
+        type: 2}
+      propertyPath: dashTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342081669978658, guid: b105bcf8aab4f674196be5623ff5168f,
+        type: 2}
+      propertyPath: dashCooldown
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b105bcf8aab4f674196be5623ff5168f, type: 2}
   m_IsPrefabParent: 0

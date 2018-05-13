@@ -1443,9 +1443,11 @@ MonoBehaviour:
   capsule: {fileID: 136746666424597250}
   forwardMoveSpeed: 7
   sidewaysMoveSpeed: 3
+  dashSpeed: 12.5
+  dashTime: 0.1
+  dashCooldown: 3
+  dashEnabled: 1
   rotateSpeed: 30
-  slopeCheckHeight: 0.2
-  slopeCheckDistance: 0.3
 --- !u!114 &114424882596929414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1457,6 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06c7294112d98d428b7000af2aa40d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsEnabled: 1
 --- !u!114 &114688671700299438
 MonoBehaviour:
   m_ObjectHideFlags: 1

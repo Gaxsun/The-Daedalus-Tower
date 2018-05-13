@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour {
 
     CursorLockMode wantedMode;
 
+    public bool controlsEnabled = true;
+
 	// Use this for initialization
 	void Start () {
         //Lock Cursor
@@ -17,6 +19,13 @@ public class PlayerInput : MonoBehaviour {
 
         Cursor.lockState = wantedMode;
 
+        if (controlsEnabled) {
+            inputs();
+        }  
+         
+	}
+
+    private void inputs() {
         /*
          * 
          * 
@@ -26,16 +35,16 @@ public class PlayerInput : MonoBehaviour {
          * 
          * 
          * 
-         */ 
-        
+         */
+
         if (Input.GetAxis("Vertical") != 0) {
             GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("Vertical") * -1);
         }
         if (Input.GetAxis("Horizontal") != 0) {
             GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("Horizontal"));
         }
-        
-        if(Input.GetAxis("Mouse X") != 0) {
+
+        if (Input.GetAxis("Mouse X") != 0) {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("Mouse X"));
         }
 
@@ -60,15 +69,21 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().playIdle();
         }
 
-         GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
-         GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
-        
-        if(Input.GetAxis("X") != 0) {
+        GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
+        GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
+
+        if (Input.GetAxis("X") != 0) {
             GetComponent<PlayerMovement>().playerAttack();
         }
 
-        if(Input.GetAxis("RightStickX") != 0) {
+        if (Input.GetAxis("RightBumper") != 0) {
+            if (GetComponent<PlayerMovement>().dashEnabled) {
+                GetComponent<PlayerMovement>().DashStart();
+            }           
+        }
+
+        if (Input.GetAxis("RightStickX") != 0) {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("RightStickX"));
-        } 
-	}
+        }
+    }
 }
