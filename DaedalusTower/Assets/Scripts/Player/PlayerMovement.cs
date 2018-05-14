@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public CapsuleCollider capsule;
 
+    Rigidbody rb;
+
     public float forwardMoveSpeed;
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
@@ -21,20 +23,24 @@ public class PlayerMovement : MonoBehaviour {
     float dashDirectionY;
     public bool dashEnabled = true;
 
+    bool isAirBorne = false;
+    public float jumpForce;
+    float jumpCoolDown;
+
     public float rotateSpeed;
 
     bool dashing = false;
+    
 
     // Game Time Started
     void Start () {
         anim = GetComponentInChildren<Animator>();
+        rb = this.GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         setRotation();
-        
-        print(Time.time >= Time.time + dashTime);
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
         } else {
@@ -50,8 +56,8 @@ public class PlayerMovement : MonoBehaviour {
             dashEnabled = true;
         }
 
-        print(Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2))))));
-        
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y -this.GetComponent<CapsuleCollider>().height/1.1f, transform.position.z), Color.cyan);
+
     }
 
     public void forwardAxisMovement(float direction) {
@@ -115,6 +121,22 @@ public class PlayerMovement : MonoBehaviour {
         dashTimeStart = Time.time;
     }
 
+    public void Jump() {
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0,-1,0), out hit, this.GetComponent<CapsuleCollider>().height / 1.1f)) {
+            isAirBorne = false;
+            print(false);
+        } else {
+            isAirBorne = true;
+            print(true);
+        }
+
+        if (!isAirBorne && Time.time > jumpCoolDown + 0.1) {
+            rb.AddForce(new Vector3(0,jumpForce,0));
+            jumpCoolDown = Time.time;
+        }
+    }
 
     public void playRun() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandRun") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {

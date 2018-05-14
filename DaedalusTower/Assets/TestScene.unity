@@ -813,6 +813,16 @@ Prefab:
       propertyPath: dashCooldown
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 54091330655898028, guid: b105bcf8aab4f674196be5623ff5168f,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 114342081669978658, guid: b105bcf8aab4f674196be5623ff5168f,
+        type: 2}
+      propertyPath: jumpForce
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b105bcf8aab4f674196be5623ff5168f, type: 2}
   m_IsPrefabParent: 0

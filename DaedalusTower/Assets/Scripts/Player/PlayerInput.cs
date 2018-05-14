@@ -76,6 +76,10 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().playerAttack();
         }
 
+        if (Input.GetAxis("A") != 0) {
+            GetComponent<PlayerMovement>().Jump();
+        }
+
         if (Input.GetAxis("RightBumper") != 0) {
             if (GetComponent<PlayerMovement>().dashEnabled) {
                 GetComponent<PlayerMovement>().DashStart();
