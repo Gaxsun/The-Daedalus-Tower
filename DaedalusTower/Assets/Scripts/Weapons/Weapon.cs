@@ -15,13 +15,13 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (attackActive == true) {
+        if (attackActive) {
             print("Q");
         }
 	}
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "enemy" && attackActive == true) {
+        if (other.tag == "enemy" && attackActive|| other.tag == "destTerrain" && attackActive) {
             Destroy(other.gameObject);
         }
     }
