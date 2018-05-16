@@ -9,6 +9,10 @@ public class PuzzleDoor : MonoBehaviour {
     public float openHeight;
     public float liftSpeed;
 
+    public string password;
+    public string input;
+    public GameObject[] displayNumbers;
+
     // Use this for initialization
     void Start() {
         openSesame = false;
@@ -23,6 +27,22 @@ public class PuzzleDoor : MonoBehaviour {
             transform.position -= transform.up * liftSpeed * Time.deltaTime;
         } else if (openSesame == false) {
             transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
+        }
+        input = "";
+        foreach (GameObject number in displayNumbers) {
+            input = input + number.GetComponent<TextMesh>().text;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.tag == "Player" && input == password) {
+            openSesame = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if(other.tag == "Player") {
+            openSesame = false;
         }
     }
 }
