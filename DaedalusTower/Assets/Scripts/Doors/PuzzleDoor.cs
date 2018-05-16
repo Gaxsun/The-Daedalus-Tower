@@ -34,7 +34,7 @@ public class PuzzleDoor : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
         if(other.tag == "Player" && input == password) {
             openSesame = true;
             BoxCollider[] buttonRegister = GetComponentsInChildren<BoxCollider>();
