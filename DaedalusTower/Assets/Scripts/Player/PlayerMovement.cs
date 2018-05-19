@@ -46,18 +46,23 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
         }
-
+        /*
         if (dashing) {
             Dash();
             dashEnabled = false;
-        }
+        }*/
 
         if (Time.time >= dashCooldown + dashTimeStart) {
             dashEnabled = true;
         }
 
-        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y -this.GetComponent<CapsuleCollider>().height/1.1f, transform.position.z), Color.cyan);
+    }
 
+    void FixedUpdate() {
+        if (dashing) {
+            Dash();
+            dashEnabled = false;
+        }
     }
 
     public void forwardAxisMovement(float direction) {
@@ -80,45 +85,56 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Dash() {
-        forwardAxisMovement(dashDirectionY * dashSpeed);
-        sidewaysAxisMovement(dashDirectionX * dashSpeed);
-        print(Input.GetAxis("LeftStickY"));
 
-        if (Time.time >= dashTime + dashTimeStart) {
+        if (Time.time >= dashTime + dashTimeStart || dashCheck()) {
             dashing = false;
             GetComponent<PlayerInput>().controlsEnabled = true;
             playIdle();
-            print("b");
             dashTimeStart = Time.time;
         }
+
+        forwardAxisMovement(dashDirectionY * dashSpeed);
+        sidewaysAxisMovement(dashDirectionX * dashSpeed);
+
+    }
+
+    private bool dashCheck() {
+        RaycastHit hit;
+        
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1)) {
+            return true;
+        }
+        return false;
     }
 
     public void DashStart() {
+        if (!dashCheck()) {
+            dashDirectionX = Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)));
 
-        dashDirectionX = Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)));
+            dashDirectionY = Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)))));
 
-        dashDirectionY = Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)))));
+            if (Input.GetAxis("LeftStickY") < 0) {
+                dashDirectionY = dashDirectionY * -1;
+            }
 
-        if (Input.GetAxis("LeftStickY") < 0) {
-            dashDirectionY = dashDirectionY * -1;
+            if (double.IsNaN(dashDirectionX)) {
+                dashDirectionX = 0;
+            }
+            if (double.IsNaN(dashDirectionY)) {
+                dashDirectionY = 0;
+            }
+            if (Input.GetAxis("LeftStickX") == 0 && Input.GetAxis("LeftStickY") == 0) {
+                dashDirectionY = -1;
+            }
+
+            dashing = true;
+            GetComponent<PlayerInput>().controlsEnabled = false;
+            anim.Play("oneHandRun", 0, 0f);
+            gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+            print("running");
+            dashTimeStart = Time.time;
         }
-
-        if (double.IsNaN(dashDirectionX)) {
-            dashDirectionX = 0;
-        }
-        if (double.IsNaN(dashDirectionY)) {
-            dashDirectionY = 0;
-        }
-        if (Input.GetAxis("LeftStickX") == 0 && Input.GetAxis("LeftStickY") == 0) {
-            dashDirectionY = -1;
-        }
-
-        dashing = true;
-        GetComponent<PlayerInput>().controlsEnabled = false;
-        anim.Play("oneHandRun", 0, 0f);
-        gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
-        print("running");
-        dashTimeStart = Time.time;
+        
     }
 
     public void Jump() {
