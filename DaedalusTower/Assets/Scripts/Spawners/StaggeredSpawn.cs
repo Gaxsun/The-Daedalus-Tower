@@ -13,8 +13,12 @@ public class StaggeredSpawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        triggered = true;
 		foreach(GameObject spawner in preSpawners) {
-            spawner.GetComponent<BasicSpawner>().corpsePile;
+            if (spawner.GetComponent<BasicSpawner>().corpsePile == false) {
+                triggered = false;
+            }
+            
         }
 	}
 }
