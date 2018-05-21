@@ -947,8 +947,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: 1HandSword
-  baseDamage: 18
-  speed: 1
-  knockback: 0
-  twoHanded: 0
+  baseDamage: 1
   attackActive: 0
