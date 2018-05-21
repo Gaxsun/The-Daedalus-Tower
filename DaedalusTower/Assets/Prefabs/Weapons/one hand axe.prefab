@@ -2531,5 +2531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: 1HandAxe
-  baseDamage: 3
+  baseDamage: 21
+  speed: 0.8
+  knockback: 0
+  twoHanded: 0
   attackActive: 0

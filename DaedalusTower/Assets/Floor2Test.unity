@@ -2074,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ada66f7e06d4459f3ce2588355bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 1678590568087962, guid: 1691298943206aa47bf538a7e83bea6b,
+  currentWeapon: {fileID: 1807261244714576, guid: dc398d7db07576f418a227f2e88f8725,
     type: 2}
   weaponPosition: {fileID: 197759112}
 --- !u!114 &414387110
@@ -2111,7 +2111,7 @@ MonoBehaviour:
   dashTime: 0.1
   dashCooldown: 3
   dashEnabled: 1
-  jumpForce: 500
+  jumpForce: 2000
   rotateSpeed: 30
 --- !u!54 &414387112
 Rigidbody:
