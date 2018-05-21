@@ -6,7 +6,7 @@ public class BasicSpawner : MonoBehaviour {
     public GameObject[] enemies;
     private GameObject[] fighters;
 
-    public GameObject triggerDoor;
+    public GameObject spawnTrigger;
 
     private bool spawn;
     public bool corpsePile;
@@ -15,12 +15,12 @@ public class BasicSpawner : MonoBehaviour {
     void Start() {
         fighters = enemies;
         spawn = true;
-        corpsePile = true;
+        corpsePile = false;
     }
 
     // Update is called once per frame
     void Update() {
-        if (spawn && triggerDoor.GetComponent<SpawnTrigger>().triggered) {
+        if (spawn && spawnTrigger.GetComponent<SpawnTrigger>().triggered) {
             for (int i = 0; i < enemies.Length; i++) {
                 fighters[i] = Instantiate(enemies[i], transform);
             }
