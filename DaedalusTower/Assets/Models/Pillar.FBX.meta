@@ -47,6 +47,7 @@ ModelImporter:
     100078: Torus006
     100080: Tube001
     100082: Tube002
+    100084: Cylinder001
     400000: Box001
     400002: Box002
     400004: Capsule001
@@ -89,6 +90,7 @@ ModelImporter:
     400078: Torus006
     400080: Tube001
     400082: Tube002
+    400084: Cylinder001
     2100000: 'Material #4'
     2100002: 'Material #5'
     2300000: Box001
@@ -132,6 +134,7 @@ ModelImporter:
     2300076: Torus006
     2300078: Tube001
     2300080: Tube002
+    2300082: Cylinder001
     3300000: Box001
     3300002: Box002
     3300004: Capsule001
@@ -173,6 +176,7 @@ ModelImporter:
     3300076: Torus006
     3300078: Tube001
     3300080: Tube002
+    3300082: Cylinder001
     4300000: Box001
     4300002: Tube001
     4300004: Capsule001
@@ -214,6 +218,7 @@ ModelImporter:
     4300076: Torus005
     4300078: Torus006
     4300080: Tube002
+    4300082: Cylinder001
     9500000: //RootNode
   externalObjects: {}
   materials:
