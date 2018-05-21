@@ -1447,6 +1447,7 @@ MonoBehaviour:
   dashTime: 0.1
   dashCooldown: 3
   dashEnabled: 1
+  jumpForce: 2000
   rotateSpeed: 30
 --- !u!114 &114424882596929414
 MonoBehaviour:
@@ -1471,8 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ada66f7e06d4459f3ce2588355bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 1678590568087962, guid: 1691298943206aa47bf538a7e83bea6b,
-    type: 2}
+  currentWeapon: {fileID: 100000, guid: 7c92969c4f4eac74694844480def5396, type: 3}
   weaponPosition: {fileID: 1748954396501560}
 --- !u!136 &136746666424597250
 CapsuleCollider:

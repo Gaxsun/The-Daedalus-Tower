@@ -46,11 +46,6 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
         }
-        /*
-        if (dashing) {
-            Dash();
-            dashEnabled = false;
-        }*/
 
         if (Time.time >= dashCooldown + dashTimeStart) {
             dashEnabled = true;
@@ -142,13 +137,11 @@ public class PlayerMovement : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, new Vector3(0,-1,0), out hit, this.GetComponent<CapsuleCollider>().height / 1.1f)) {
             isAirBorne = false;
-            print(false);
         } else {
             isAirBorne = true;
-            print(true);
         }
 
-        if (!isAirBorne && Time.time > jumpCoolDown + 0.1) {
+        if (!isAirBorne && Time.time > jumpCoolDown + 1) {
             rb.AddForce(new Vector3(0,jumpForce,0));
             jumpCoolDown = Time.time;
         }

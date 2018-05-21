@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour {
 
     public string weaponName;
     public float baseDamage;
+    public float speed;
+    public float knockback;
     public bool attackActive = false;
 
 	// Use this for initialization
@@ -15,9 +17,7 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (attackActive) {
-            print("Q");
-        }
+        
 	}
 
     void OnTriggerStay(Collider other) {

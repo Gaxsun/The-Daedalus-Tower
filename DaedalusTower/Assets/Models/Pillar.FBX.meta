@@ -90,6 +90,7 @@ ModelImporter:
     400080: Tube001
     400082: Tube002
     2100000: 'Material #4'
+    2100002: 'Material #5'
     2300000: Box001
     2300002: Box002
     2300004: Capsule001
