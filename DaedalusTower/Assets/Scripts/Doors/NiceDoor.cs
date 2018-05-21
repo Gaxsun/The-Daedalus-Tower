@@ -9,6 +9,7 @@ public class NiceDoor : MonoBehaviour {
     public float openHeight;
     public float liftSpeed;
 
+    public bool triggered;
 	// Use this for initialization
 	void Start () {
         openSesame = false;
@@ -28,13 +29,16 @@ public class NiceDoor : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         openSesame = true;
+        triggered = true;
     }
 
     private void OnTriggerStay(Collider other) {
         openSesame = true;
+        triggered = true;
     }
 
     private void OnTriggerExit(Collider other) {
         openSesame = false;
+        triggered = false;
     }
 }
