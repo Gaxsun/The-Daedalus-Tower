@@ -17,7 +17,9 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (attackActive) {
+            print("weapon active");
+        }
 	}
 
     void OnTriggerStay(Collider other) {
