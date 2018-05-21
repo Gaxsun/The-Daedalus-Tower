@@ -108,27 +108,22 @@ public class CameraFollow : MonoBehaviour {
         Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.blue);
         if (Physics.Raycast(player.transform.position, transform.position - player.transform.position, out hit, cameraDistance)) {
             Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.red);
-            if (hit.collider.tag == "terrain" && hit.collider.isTrigger == false|| hit.collider.tag == "destTerrain" && hit.collider.isTrigger == false) {
+            if (hit.collider.tag == "terrain" && hit.collider.isTrigger == false || hit.collider.tag == "destTerrain" && hit.collider.isTrigger == false) {
                 cameraCheck = true;
                 springOffset.x = hit.point.x - player.transform.position.x;
                 springOffset.z = hit.point.z - player.transform.position.z;
-                
+
             } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
             }
         } else {
-            if (cameraCheck) {
-                cameraDistanceReset();
-                springOffset.x = initOffset.x;
-                springOffset.z = initOffset.z;
-                rotateOffset.x = initOffset.x;
-                rotateOffset.z = initOffset.z;
-                cameraCheck = false;
-            } else {
-                springOffset.x = rotateOffset.x;
-                springOffset.z = rotateOffset.z;
-            }
+            cameraDistanceReset();
+            springOffset.x = initOffset.x;
+            springOffset.z = initOffset.z;
+            rotateOffset.x = initOffset.x;
+            rotateOffset.z = initOffset.z;
+            cameraCheck = false;
         }
     }
 

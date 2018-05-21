@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour {
     public float baseDamage;
     public float speed;
     public float knockback;
+    public bool twoHanded;
     public bool attackActive = false;
 
 	// Use this for initialization
