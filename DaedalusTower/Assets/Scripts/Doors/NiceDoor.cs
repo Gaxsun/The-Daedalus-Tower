@@ -25,6 +25,7 @@ public class NiceDoor : MonoBehaviour {
         }else if(openSesame == false){
             transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
         }
+        GetComponent<SpawnTrigger>().triggered = triggered;
 	}
 
     private void OnTriggerEnter(Collider other) {

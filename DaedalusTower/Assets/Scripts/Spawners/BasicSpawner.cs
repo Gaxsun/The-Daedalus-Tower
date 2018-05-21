@@ -4,22 +4,33 @@ using UnityEngine;
 
 public class BasicSpawner : MonoBehaviour {
     public GameObject[] enemies;
+    private GameObject[] fighters;
+
     public GameObject triggerDoor;
 
     private bool spawn;
+    public bool corpsePile;
 
     // Use this for initialization
     void Start() {
+        fighters = enemies;
         spawn = true;
+        corpsePile = true;
     }
 
     // Update is called once per frame
     void Update() {
-        if (spawn && triggerDoor.GetComponent<NiceDoor>().triggered) {
+        if (spawn && triggerDoor.GetComponent<SpawnTrigger>().triggered) {
             for (int i = 0; i < enemies.Length; i++) {
-                Instantiate(enemies[i], transform);
+                fighters[i] = Instantiate(enemies[i], transform);
             }
             spawn = false;
+        }
+        corpsePile = true;
+        foreach (GameObject enemy in fighters) {
+            if (enemy != null) {
+                corpsePile = false;
+            }
         }
     }
 }
