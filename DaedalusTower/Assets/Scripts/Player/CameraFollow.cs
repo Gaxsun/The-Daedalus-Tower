@@ -17,6 +17,7 @@ public class CameraFollow : MonoBehaviour {
     public float rotateSpeed;
 
     public float cameraDirection;
+    public float cameraYTarget;
 
 	// Use this for initialization
 	void Start () {
@@ -33,9 +34,7 @@ public class CameraFollow : MonoBehaviour {
             springArm();
         }
         transform.position = player.transform.position + springOffset;
-        transform.LookAt(player.transform);
-        //print(Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z));
-        //print(Mathf.Sqrt(initOffset.x * initOffset.x + initOffset.z * initOffset.z));
+        transform.LookAt(new Vector3(player.transform.position.x, cameraYTarget, player.transform.position.z));
     }
 
     public void cameraRotate(float mouseValueX) {
