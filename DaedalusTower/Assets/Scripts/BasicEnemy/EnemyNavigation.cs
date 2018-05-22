@@ -11,6 +11,11 @@ public class EnemyNavigation : MonoBehaviour {
 
     public int health = 200;
 
+    bool vulnerable = true;
+    float vulnerableCount;
+    public float invulnerableStateLength = 1;
+    public float knockbackTime = 0.5f;
+
     public Transform destinationPoint;
     public float minDistance;
 
@@ -35,6 +40,9 @@ public class EnemyNavigation : MonoBehaviour {
             anim.Play("Take 001 1", 0, 0f);
         }
 
+        if (health <= 0) {
+            Destroy(this.gameObject);
+        }
 
     }
 
@@ -45,7 +53,19 @@ public class EnemyNavigation : MonoBehaviour {
     }
 
     public void takeDamage(GameObject source, int damage, int knockback) {
-        health = health - damage;
-        transform.position = transform.position - transform.forward * knockback * Time.deltaTime;
+        if (vulnerable) {
+            health = health - damage;
+            //transform.position = transform.position - transform.forward * knockback * Time.deltaTime;
+            //transform.GetComponent<NavMeshAgent>().speed = transform.GetComponent<NavMeshAgent>().speed * -1;
+
+            vulnerableCount = Time.time;
+        }
+
+        if (Time.time > vulnerableCount + invulnerableStateLength) {
+            vulnerable = true;
+        } else {
+            vulnerable = false;
+        }
+
     }
 }
