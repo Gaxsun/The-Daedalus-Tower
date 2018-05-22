@@ -9,9 +9,12 @@ public class mistwalker : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject player;
+
     // Use this for initialization
     void Start () {
-		
+        player.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight = true;
+        RenderSettings.fog = true;
 	}
 	
 	// Update is called once per frame

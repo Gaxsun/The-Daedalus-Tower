@@ -19,6 +19,8 @@ public class CameraFollow : MonoBehaviour {
     public float cameraDirection;
     public float cameraYTarget;
 
+    public bool bossFight;
+
 	// Use this for initialization
 	void Start () {
         initOffset.z = -cameraDistance;
@@ -35,6 +37,10 @@ public class CameraFollow : MonoBehaviour {
         }
         transform.position = player.transform.position + springOffset;
         transform.LookAt(new Vector3(player.transform.position.x, cameraYTarget, player.transform.position.z));
+
+        if (bossFight) {
+            cameraYTarget = player.transform.position.y + springOffset.y - 1;
+        }
     }
 
     public void cameraRotate(float mouseValueX) {
