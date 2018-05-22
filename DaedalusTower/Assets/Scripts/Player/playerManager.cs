@@ -7,6 +7,7 @@ public class playerManager : MonoBehaviour {
     //Holds current player config
     public GameObject currentWeapon;
     public GameObject weaponPosition;
+    public int health = 200;
 
 	// Use this for initialization
 	void Start () {
@@ -18,4 +19,9 @@ public class playerManager : MonoBehaviour {
 	void Update () {
         
     }
+
+    public void takeDamage(int damage) {
+        health = health - damage;
+    }
+
 }

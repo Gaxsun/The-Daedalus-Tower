@@ -5,9 +5,9 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
     public string weaponName;
-    public float baseDamage;
+    public int baseDamage;
     public float speed;
-    public float knockback;
+    public int knockback;
     public bool attackActive = false;
 
 	// Use this for initialization
@@ -23,8 +23,14 @@ public class Weapon : MonoBehaviour {
 	}
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "enemy" && attackActive|| other.tag == "destTerrain" && attackActive) {
+        if (other.tag == "enemy" && attackActive) {
+            other.GetComponent<EnemyNavigation>().takeDamage(this.gameObject,baseDamage,knockback);
+        }
+        if (other.tag == "destTerrain" && attackActive) {
             Destroy(other.gameObject);
+        }
+        if (other.tag == "mistwalker" && attackActive) {
+            other.GetComponent<mistwalker>().takeDamage(baseDamage);
         }
     }
 }
