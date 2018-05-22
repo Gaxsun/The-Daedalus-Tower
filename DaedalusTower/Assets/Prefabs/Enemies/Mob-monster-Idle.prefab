@@ -693,6 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95680856581694920}
+  health: 15
   destinationPoint: {fileID: 4995507601564560}
   minDistance: 2
 --- !u!136 &136709141303666126
