@@ -9,7 +9,7 @@ public class EnemyNavigation : MonoBehaviour {
 
     public Animator anim;
 
-    int health = 200;
+    public int health = 200;
 
     public Transform destinationPoint;
     public float minDistance;
