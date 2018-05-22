@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 95365105823275950}
   m_Layer: 0
   m_Name: Low-fidel boss 1 Idle
-  m_TagString: Untagged
+  m_TagString: mistwalker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -21,6 +21,9 @@ public class mistwalker : MonoBehaviour {
         } else {
             clawsActive = false;
         }
+        if (/* not moving &&*/ !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
+            anim.Play("Take 001", 0, 0f);
+        }
     }
 
     void move() {
