@@ -15,8 +15,7 @@ public class EnemyNavigation : MonoBehaviour {
     float vulnerableCount;
     public float invulnerableStateLength = 1;
     public float knockbackTime = 0.5f;
-
-    public Transform destinationPoint;
+    
     public float minDistance;
 
 	// Use this for initialization
@@ -26,13 +25,7 @@ public class EnemyNavigation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if(Vector3.Distance(player.transform.position, transform.position) <= minDistance) {
-            destinationPoint.position = transform.position;
-        }else {
-            destinationPoint.position = player.transform.position;
-        }
-        transform.GetComponent<NavMeshAgent>().destination = destinationPoint.position;
+        transform.GetComponent<NavMeshAgent>().destination = player.transform.position;
 
         if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0")) {
             anim.Play("Take 001", 0, 0f);
