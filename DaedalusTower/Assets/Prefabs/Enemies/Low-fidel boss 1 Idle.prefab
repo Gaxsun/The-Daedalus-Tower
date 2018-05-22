@@ -1259,7 +1259,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976498080746214}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -16.82, y: 1.87, z: 0}
+  m_LocalPosition: {x: 0, y: 1.87, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4658236092473268}
@@ -1558,7 +1558,7 @@ MonoBehaviour:
   clawsActive: 0
   health: 100
   anim: {fileID: 95365105823275950}
-  minDistance: 5
+  minDistance: 7
   maxFogDensity: 0.04
   fogGrowthRate: 10
 --- !u!114 &114296526938078318
