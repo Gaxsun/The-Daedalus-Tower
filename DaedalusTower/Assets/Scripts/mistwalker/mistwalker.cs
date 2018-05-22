@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class mistwalker : MonoBehaviour {
 
@@ -9,16 +10,20 @@ public class mistwalker : MonoBehaviour {
 
     public Animator anim;
 
-    public GameObject player;
+    private GameObject player;
+    public float minDistance;
 
     // Use this for initialization
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight = true;
         RenderSettings.fog = true;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        transform.GetComponent<NavMeshAgent>().destination = player.transform.position;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
             clawsActive = true;
         } else {
