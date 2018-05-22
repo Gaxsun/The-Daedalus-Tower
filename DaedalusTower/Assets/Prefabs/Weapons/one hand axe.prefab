@@ -2533,5 +2533,5 @@ MonoBehaviour:
   weaponName: 1HandAxe
   baseDamage: 3
   speed: 0
-  knockback: 15
+  knockback: 20
   attackActive: 0
