@@ -8,6 +8,8 @@ TagManager:
   - enemy
   - destTerrain
   - mistwalker
+  - Fire
+  - Projectile
   layers:
   - Default
   - TransparentFX
