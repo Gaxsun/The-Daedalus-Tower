@@ -153,6 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  projectileSpeed: 15
+  projectileSpeed: 22
   damage: 0
   fadeRate: 0.3

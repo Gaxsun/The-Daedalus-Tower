@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42, type: 2}
-  - {fileID: 1317597515490782, guid: 95a3939ea5170c94cbf0aca252294c42, type: 2}
-  triggerDoor: {fileID: 0}
+  - {fileID: 1537952501758592, guid: 0e26afe7c89ffd944b8cfb2b6075a627, type: 2}
+  - {fileID: 1537952501758592, guid: 0e26afe7c89ffd944b8cfb2b6075a627, type: 2}
+  spawnTrigger: {fileID: 0}
+  corpsePile: 0
