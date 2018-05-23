@@ -38,7 +38,7 @@ public class mistwalker : MonoBehaviour {
         } else {
             clawsActive = false;
         }
-        if (GetComponent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
+        if (GetComponent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
             anim.Play("Take 001", 0, 0f);
         }
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
@@ -79,6 +79,7 @@ public class mistwalker : MonoBehaviour {
     public void takeDamage(int damage) {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
             anim.Play("Take 001 1", 0, 0f);
+            print(!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2"));
         }
         health = health - damage;
         print("Mistwalker Took Damage");
