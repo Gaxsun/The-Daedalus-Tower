@@ -25,9 +25,9 @@ public class Projectile : MonoBehaviour {
             Color fadeShot = new Color(shotRender.material.GetColor("_TintColor").r - fadeRate*Time.deltaTime, shotRender.material.GetColor("_TintColor").g - fadeRate * Time.deltaTime, shotRender.material.GetColor("_TintColor").b - fadeRate * Time.deltaTime);
             shotRender.material.SetColor("_TintColor", fadeShot);
             //GetComponent<MeshRenderer>().material.color = new Color(GetComponent<MeshRenderer>().material.color.r, GetComponent<MeshRenderer>().material.color.g, GetComponent<MeshRenderer>().material.color.b, GetComponent<MeshRenderer>().material.color.a - fadeRate * Time.deltaTime);
-            if(shotRender.material.GetColor("_TintColor").r <= 5) {
+            if(shotRender.material.GetColor("_TintColor").r <= 0.05) {
                 if (transform.parent != null) {
-                    if (transform.parent.gameObject.tag != "Player" && transform.parent.gameObject.tag != "Enemy") {
+                    if (transform.parent.gameObject.tag != "Player" && transform.parent.gameObject.tag != "enemy") {
                         Destroy(transform.parent.gameObject);
                     }
                 }
@@ -41,16 +41,16 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.isTrigger == false) {
-            GameObject empty = new GameObject();
+            //GameObject empty = new GameObject();
             projectileSpeed = 0;
             if (other.tag == "Player") {
                 other.gameObject.GetComponent<playerManager>().takeDamage(damage);
                 transform.SetParent(other.transform);
-            }else if(other.tag == "Enemy") {
+            }else if(other.tag == "enemy") {
                 transform.SetParent(other.gameObject.transform);
             }else {
-                empty = Instantiate(empty, transform);
-                transform.SetParent(empty.transform);
+                //empty = Instantiate(empty, transform);
+                //transform.SetParent(empty.transform);
             }
             GetComponent<BoxCollider>().enabled = false;
             hit = true;

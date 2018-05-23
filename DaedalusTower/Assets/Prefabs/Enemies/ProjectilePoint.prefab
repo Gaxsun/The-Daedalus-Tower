@@ -155,4 +155,4 @@ MonoBehaviour:
   player: {fileID: 0}
   projectileSpeed: 15
   damage: 0
-  fadeRate: 1
+  fadeRate: 0.3

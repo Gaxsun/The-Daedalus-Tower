@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 136898509637034414}
   - component: {fileID: 195375263062447770}
   - component: {fileID: 114666462139198660}
+  - component: {fileID: 114969272243510830}
   m_Layer: 0
   m_Name: Mob-monster-Idle
   m_TagString: enemy
@@ -664,10 +665,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95173411565457884}
-  health: 15
-  invulnerableStateLength: 1
-  knockbackTime: 0.1
   minDistance: 2
+--- !u!114 &114969272243510830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537952501758592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 969fa32d04fb54f4bb129aa6280e7367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnerableStateLength: 1
+  knockbackTime: 0.5
+  health: 15
 --- !u!136 &136898509637034414
 CapsuleCollider:
   m_ObjectHideFlags: 1

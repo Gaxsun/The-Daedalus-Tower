@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour {
 
     void OnTriggerStay(Collider other) {
         if (other.tag == "enemy" && attackActive) {
-            other.GetComponent<EnemyNavigation>().takeDamage(this.gameObject,baseDamage,knockback);
+            other.GetComponent<Enemy>().takeDamage(this.gameObject,baseDamage,knockback);
         }
         if (other.tag == "destTerrain" && attackActive) {
             Destroy(other.gameObject);

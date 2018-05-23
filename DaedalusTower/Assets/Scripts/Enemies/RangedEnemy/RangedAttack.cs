@@ -6,6 +6,7 @@ public class RangedAttack : MonoBehaviour {
     public GameObject projectile;
     public GameObject eye;
     public float fireRate;
+    public int health;
 
     private GameObject target;
     private float fireTimer;

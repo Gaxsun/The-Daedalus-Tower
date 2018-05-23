@@ -844,7 +844,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192092034767104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.46, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4714521392942492}
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 9500000, guid: 8fa2cb8122060b64d989a84a9e6e9143, type: 3}
   capsule: {fileID: 136746666424597250}
   forwardMoveSpeed: 7
   sidewaysMoveSpeed: 3
@@ -1472,8 +1472,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ada66f7e06d4459f3ce2588355bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 100000, guid: 7c92969c4f4eac74694844480def5396, type: 3}
+  currentWeapon: {fileID: 1807261244714576, guid: dc398d7db07576f418a227f2e88f8725,
+    type: 2}
   weaponPosition: {fileID: 1748954396501560}
+  health: 200
 --- !u!136 &136746666424597250
 CapsuleCollider:
   m_ObjectHideFlags: 1
