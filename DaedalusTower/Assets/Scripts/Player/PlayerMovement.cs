@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour {
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
 
+    private float attackAgainDelay;
+    private string animationLastFrame;
+    private string animationCurrentFrame;
+
     public float dashSpeed;
     public float dashTime;
     private float dashTimeStart;
@@ -41,7 +45,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         setRotation();
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
         } else {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
@@ -50,6 +54,7 @@ public class PlayerMovement : MonoBehaviour {
         if (Time.time >= dashCooldown + dashTimeStart) {
             dashEnabled = true;
         }
+        nextAttackReset();
 
     }
 
@@ -135,7 +140,8 @@ public class PlayerMovement : MonoBehaviour {
     public void Jump() {
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0,-1,0), out hit, this.GetComponent<CapsuleCollider>().height / 1.1f)) {
+        
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), new Vector3(0,-1,0), out hit, 0.1f)) {
             isAirBorne = false;
         } else {
             isAirBorne = true;
@@ -148,23 +154,60 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void playRun() {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandRun") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
-            anim.Play("oneHandRun", 0, 0f);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+            anim.Play("Take 001 0", 0, 0f);
         }
         print("running");
     }
 
     public void playIdle() {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandIdle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
-            anim.Play("oneHandIdle", 0, 0f);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+            anim.Play("Take 001", 0, 0f);
         }
         print("Idle");
     }
 
     public void playerAttack() {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("oneHandAttack")) {
-            anim.Play("oneHandAttack", 0, 0f);
+        if (Time.time > attackAgainDelay + 0.2f) {
+
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+                anim.Play("Take 001 1", 0, 0f);
+            } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+                anim.SetBool("nextAttack", true);
+            }
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
+                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable *= 4;
+            } else {
+                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback;
+            }
+
+            print("Attacking");
+            attackAgainDelay = Time.time;
         }
-        print("Attacking");
+    }
+
+    void nextAttackReset() {
+        
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
+            animationCurrentFrame = "attack 1";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+            animationCurrentFrame = "attack 5";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4")) {
+            animationCurrentFrame = "attack 4";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
+            animationCurrentFrame = "attack 2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
+            animationCurrentFrame = "attack 3";
+        } else {
+            animationCurrentFrame = "notAttack";
+        }
+
+
+        if (animationLastFrame != animationCurrentFrame) {
+            anim.SetBool("nextAttack", false);
+        }
+
+        animationLastFrame = animationCurrentFrame;
     }
 }

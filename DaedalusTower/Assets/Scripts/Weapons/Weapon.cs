@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour {
     public int baseDamage;
     public float speed;
     public int knockback;
+    public int knockbackModdable;
     public bool attackActive = false;
 
 	// Use this for initialization
@@ -24,7 +25,7 @@ public class Weapon : MonoBehaviour {
 
     void OnTriggerStay(Collider other) {
         if (other.tag == "enemy" && attackActive) {
-            other.GetComponent<Enemy>().takeDamage(this.gameObject,baseDamage,knockback);
+            other.GetComponent<Enemy>().takeDamage(this.gameObject,baseDamage, knockbackModdable);
         }
         if (other.tag == "destTerrain" && attackActive) {
             Destroy(other.gameObject);

@@ -949,5 +949,6 @@ MonoBehaviour:
   weaponName: 1HandSword
   baseDamage: 1
   speed: 0
-  knockback: 10
+  knockback: 1
+  knockbackModdable: 0
   attackActive: 0
