@@ -21,12 +21,18 @@ public class CameraFollow : MonoBehaviour {
 
     public bool bossFight;
 
+    CursorLockMode wantedMode;
+
 	// Use this for initialization
 	void Start () {
         initOffset.z = -cameraDistance;
         transform.position = player.transform.position + initOffset;
         rotateOffset = initOffset;
         springOffset = initOffset;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         }
 	
 	// Update is called once per frame
