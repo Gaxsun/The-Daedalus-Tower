@@ -65,8 +65,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4790731934719614}
   - component: {fileID: 137903320917591784}
-  - component: {fileID: 64923502111256882}
-  - component: {fileID: 114258786812114750}
   m_Layer: 0
   m_Name: Pyramid002
   m_TagString: Untagged
@@ -98,8 +96,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4855299034031026}
   - component: {fileID: 137763530577280920}
-  - component: {fileID: 64964652857843586}
-  - component: {fileID: 114051595669950464}
   m_Layer: 0
   m_Name: Pyramid004
   m_TagString: Untagged
@@ -316,8 +312,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4024495081702326}
   - component: {fileID: 137239267887077542}
-  - component: {fileID: 64059662138651710}
-  - component: {fileID: 114179299931418922}
   m_Layer: 0
   m_Name: Pyramid003
   m_TagString: Untagged
@@ -475,8 +469,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4691646447688362}
   - component: {fileID: 137821127803562744}
-  - component: {fileID: 64301124889941038}
-  - component: {fileID: 114297585537250830}
   m_Layer: 0
   m_Name: Cylinder002
   m_TagString: Untagged
@@ -588,9 +580,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4187214454936144}
+  - component: {fileID: 65583907057492284}
+  - component: {fileID: 114729258054536910}
   m_Layer: 0
   m_Name: mixamorig:LeftHandIndex2
-  m_TagString: Untagged
+  m_TagString: leftClaw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,9 +612,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4125587453150950}
+  - component: {fileID: 65866817525829690}
+  - component: {fileID: 114312479534065290}
   m_Layer: 0
   m_Name: mixamorig:RightHandIndex1
-  m_TagString: Untagged
+  m_TagString: rightClaw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,8 +660,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4009346569334610}
   - component: {fileID: 137622087374854150}
-  - component: {fileID: 64380236730679826}
-  - component: {fileID: 114097880916156668}
   m_Layer: 0
   m_Name: Pyramid001
   m_TagString: Untagged
@@ -1374,7 +1368,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614793551611514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4739055208925908}
@@ -1435,76 +1429,30 @@ Transform:
   m_Father: {fileID: 4859807304444742}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &64059662138651710
-MeshCollider:
+--- !u!65 &65583907057492284
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1410863792733858}
+  m_GameObject: {fileID: 1696055595680848}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
---- !u!64 &64301124889941038
-MeshCollider:
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65866817525829690
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527711420576658}
+  m_GameObject: {fileID: 1811487107662266}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
---- !u!64 &64380236730679826
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1854434261280140}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
---- !u!64 &64923502111256882
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1123252217476890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
---- !u!64 &64964652857843586
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183153703721890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!95 &95543119432827574
 Animator:
   serializedVersion: 3
@@ -1522,76 +1470,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114051595669950464
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1183153703721890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
-  clawKnockback: 5
---- !u!114 &114097880916156668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1854434261280140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
-  clawKnockback: 5
---- !u!114 &114179299931418922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1410863792733858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
-  clawKnockback: 5
---- !u!114 &114258786812114750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1123252217476890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
-  clawKnockback: 5
---- !u!114 &114297585537250830
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527711420576658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
-  clawKnockback: 5
 --- !u!114 &114300869719334270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1604,6 +1482,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 50
+--- !u!114 &114312479534065290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811487107662266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mistwalker: {fileID: 1614793551611514}
+  clawDamage: 10
+  clawKnockback: 5
 --- !u!114 &114464827497161054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1631,7 +1523,7 @@ MonoBehaviour:
   clawsActive: 0
   health: 100
   anim: {fileID: 95543119432827574}
-  minDistance: 3
+  minDistance: 5
   bossHealthBar: {fileID: 0}
   bossCanvas: {fileID: 0}
   maxFogDensity: 0.04
@@ -1649,6 +1541,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 50
+--- !u!114 &114729258054536910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696055595680848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mistwalker: {fileID: 1428694181401156}
+  clawDamage: 10
+  clawKnockback: 5
 --- !u!114 &114985172595268730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2322,7 +2228,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1816144832
+  randomSeed: 1823992233
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5545,7 +5451,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1322784464
+  randomSeed: 1170407798
   InitialModule:
     serializedVersion: 3
     enabled: 1

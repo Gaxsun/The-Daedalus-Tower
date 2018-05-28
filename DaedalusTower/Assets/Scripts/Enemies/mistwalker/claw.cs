@@ -8,7 +8,7 @@ public class claw : MonoBehaviour {
 
     public int clawDamage = 10;
     public float clawKnockback;
-
+    
 	// Use this for initialization
 	void Start () {
 		
