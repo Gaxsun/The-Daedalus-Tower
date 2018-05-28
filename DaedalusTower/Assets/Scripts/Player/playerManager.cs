@@ -12,12 +12,13 @@ public class playerManager : MonoBehaviour {
     public Slider healthBar;
     public Canvas can;
     public Canvas death;
+    public Canvas bossCanvas;
     public Canvas win;
     public GameObject fill;
     public int healthRegen = 2; // per sec
     public int health = 200;
     private float secondCount;
-    private float restartCount;
+    private float restartCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -31,16 +32,25 @@ public class playerManager : MonoBehaviour {
         healthBar.value = health;
         if (health <= 0) {
             can.enabled = false;
+            //win.enabled = false;
             death.enabled = true;
-            restartCount = Time.time;
+            restartCount += Time.deltaTime;
+            print(win.enabled);
         }
 
-        if (death.enabled && Time.time == restartCount + 5) {
-            Scene loadedLevel = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(loadedLevel.buildIndex);
+        if (!bossCanvas.enabled && transform.position.x < -90) {
+            win.enabled = true;
+            restartCount += Time.deltaTime;
         }
 
-        print(health);
+
+        if (death.enabled || win.enabled) {
+            if ( restartCount > 5) {
+                Scene loadedLevel = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(loadedLevel.buildIndex);
+            }            
+        }
+
         if (gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight && fill.GetComponent<Image>().color.g < 0.3) {
             fill.GetComponent<Image>().color = new Color(fill.GetComponent<Image>().color.r, fill.GetComponent<Image>().color.g + Time.deltaTime*0.1f, fill.GetComponent<Image>().color.b + Time.deltaTime * 0.1f);
         }

@@ -49,6 +49,10 @@ public class mistwalker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (health <= 0) {
+            bossCanvas.enabled = false;
+        }
+
         bossHealthBar.value = health;
 
         float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
