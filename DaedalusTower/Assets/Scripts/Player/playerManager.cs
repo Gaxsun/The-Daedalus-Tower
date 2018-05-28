@@ -25,6 +25,11 @@ public class playerManager : MonoBehaviour {
         if (health <= 0) {
             can.enabled = false;
         }
+
+        //if () {
+
+        //}
+
     }
 
     public void takeDamage(int damage) {

@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour {
         RaycastHit hit;
         if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + capsule.height/2, transform.position.z), faceEnemyRadius, transform.forward, out hit, faceEnemyDistance)) {
             if (hit.transform.tag == "enemy" || hit.transform.tag == "mistwalker") {
-                transform.LookAt(hit.transform);
+                transform.LookAt(new Vector3(hit.transform.position.x, playerCam.GetComponent<CameraFollow>().modelYOffset, hit.transform.position.z));
             }
         }
     }
