@@ -128,7 +128,6 @@ public class CameraFollow : MonoBehaviour {
 
     public void springArm() {
         RaycastHit hit;
-        RaycastHit trueHit;
         Vector2 distancePoint;
         distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
 

@@ -23,14 +23,17 @@ public class mistwalker : MonoBehaviour {
 
     private float normSpeed;
     private float normAccel;
+    
+    public float attackDelay;
+    private float attackTimer;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight = true;
         RenderSettings.fog = true;
         fogDensity = 0;
-        normSpeed = GetComponent<NavMeshAgent>().speed;
-        normAccel = GetComponent<NavMeshAgent>().acceleration;
+        normSpeed = GetComponentInParent<NavMeshAgent>().speed;
+        normAccel = GetComponentInParent<NavMeshAgent>().acceleration;
 
         bossCanvas = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>();
         bossHealthBar = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>().GetComponentInChildren<Slider>();
@@ -38,6 +41,7 @@ public class mistwalker : MonoBehaviour {
         bossHealthBar.maxValue = health;
         
         bossCanvas.enabled = true;
+        attackTimer = 0;
     }
 	
 	// Update is called once per frame
@@ -46,26 +50,30 @@ public class mistwalker : MonoBehaviour {
         bossHealthBar.value = health;
 
         float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
-        transform.GetComponent<NavMeshAgent>().destination = player.transform.position;
+        transform.GetComponentInParent<NavMeshAgent>().destination = player.transform.position;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
             clawsActive = true;
         } else {
             clawsActive = false;
         }
-        if (GetComponent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
+        if (GetComponentInParent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
             //anim.Play("Take 001", 0, 0f);
             anim.SetBool("moving", false);
+            if (Time.time > attackTimer + attackDelay) {
+                attack();
+            }
         }
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
             transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         }
 
         if(playerDistance <= minDistance) {
-            GetComponent<NavMeshAgent>().speed = 0;
-            GetComponent<NavMeshAgent>().acceleration = 1000;
+            GetComponentInParent<NavMeshAgent>().speed = 0;
+            GetComponentInParent<NavMeshAgent>().acceleration = 1000;
+            attackTimer = 0;
         }else {
-            GetComponent<NavMeshAgent>().speed = normSpeed;
-            GetComponent<NavMeshAgent>().acceleration = normAccel;
+            GetComponentInParent<NavMeshAgent>().speed = normSpeed;
+            GetComponentInParent<NavMeshAgent>().acceleration = normAccel;
             move();
         }
 
@@ -79,6 +87,7 @@ public class mistwalker : MonoBehaviour {
     }
 
     void move() {
+        attackTimer = 0;
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0")) {
             //anim.Play("Take 001 0", 0, 0f);
             anim.SetBool("moving", true);
@@ -87,10 +96,13 @@ public class mistwalker : MonoBehaviour {
 
     void attack() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            //anim.Play("Take 001 2", 0, 0f);
-            anim.SetTrigger("attack");
+            transform.LookAt(player.transform);
+            anim.Play("Take 001 2", 0, 0f);
+            //anim.SetTrigger("attack");
         }
         print("Mistwalker Attacking");
+        attackTimer = Time.time;
+        clawsActive = true;
     }
 
     public void takeDamage(int damage) {
