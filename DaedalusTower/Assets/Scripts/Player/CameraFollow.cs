@@ -17,15 +17,20 @@ public class CameraFollow : MonoBehaviour {
     public float rotateSpeed;
 
     public float cameraDirection;
+
+    private float cameraYInitTarget;
     public float cameraYTarget;
+    public float modelYOffset;
 
     public bool bossFight;
+    public float bossCamY;
 
     CursorLockMode wantedMode;
 
 	// Use this for initialization
 	void Start () {
         initOffset.z = -cameraDistance;
+        cameraYInitTarget = cameraYTarget;
         transform.position = player.transform.position + initOffset;
         rotateOffset = initOffset;
         springOffset = initOffset;
@@ -42,10 +47,16 @@ public class CameraFollow : MonoBehaviour {
             springArm();
         }
         transform.position = player.transform.position + springOffset;
-        transform.LookAt(new Vector3(player.transform.position.x, cameraYTarget, player.transform.position.z));
+        transform.LookAt(new Vector3(player.transform.position.x, modelYOffset + cameraYTarget, player.transform.position.z));
 
         if (bossFight) {
-            cameraYTarget = player.transform.position.y + springOffset.y - 1;
+            cameraYTarget = bossCamY;
+
+            float distancePoint;
+
+            //distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+           // distancePoint /= cameraDistance;
+            //cameraYTarget *= distancePoint;
         }
     }
 
