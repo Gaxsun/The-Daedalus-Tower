@@ -32,9 +32,12 @@ public class mistwalker : MonoBehaviour {
         normSpeed = GetComponent<NavMeshAgent>().speed;
         normAccel = GetComponent<NavMeshAgent>().acceleration;
 
+        bossCanvas = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>();
+        bossHealthBar = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>().GetComponentInChildren<Slider>();
+
         bossHealthBar.maxValue = health;
         
-        bossCanvas.enabled = false;
+        bossCanvas.enabled = true;
     }
 	
 	// Update is called once per frame

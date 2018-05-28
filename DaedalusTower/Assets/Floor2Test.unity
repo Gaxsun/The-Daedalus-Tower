@@ -8147,6 +8147,12 @@ Prefab:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 109910055}
+    - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
+        type: 2}
+      propertyPath: currentWeapon
+      value: 
+      objectReference: {fileID: 1807261244714576, guid: dc398d7db07576f418a227f2e88f8725,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72d019f8ba6f404439bd7ab413c19eb2, type: 2}
   m_IsPrefabParent: 0
@@ -13594,7 +13600,7 @@ GameObject:
   - component: {fileID: 1341397591}
   m_Layer: 5
   m_Name: bossCanvas
-  m_TagString: Untagged
+  m_TagString: bossCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13642,7 +13648,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1341397590}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
