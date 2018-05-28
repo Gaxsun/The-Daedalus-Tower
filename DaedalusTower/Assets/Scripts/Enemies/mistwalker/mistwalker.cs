@@ -28,6 +28,11 @@ public class mistwalker : MonoBehaviour {
     private float attackTimer;
     private float attackPrep;
     private float attackChargeTime;
+
+    bool vulnerable = true;
+    float vulnerableCount;
+    public float invulnerableStateLength = 1;
+
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -114,12 +119,24 @@ public class mistwalker : MonoBehaviour {
     }
 
     public void takeDamage(int damage) {
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            anim.Play("Take 001 1", 0, 0f);
-            print(!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2"));
+        if (vulnerable) {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
+                anim.Play("Take 001 1", 0, 0f);
+                print(!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2"));
+            }
+            health = health - damage;
+            print("Mistwalker Took Damage");
+
+            vulnerableCount = Time.time;
+
         }
-        health = health - damage;
-        print("Mistwalker Took Damage");
+
+        if (Time.time > vulnerableCount + invulnerableStateLength) {
+            vulnerable = true;
+        } else {
+            vulnerable = false;
+        }
+
     }
 
 }
