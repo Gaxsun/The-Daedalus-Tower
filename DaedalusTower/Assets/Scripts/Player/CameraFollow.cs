@@ -20,6 +20,7 @@ public class CameraFollow : MonoBehaviour {
 
     private float cameraYInitTarget;
     public float cameraYTarget;
+    public float wallOffset;
     public float modelYOffset;
 
     public bool bossFight;
@@ -54,9 +55,9 @@ public class CameraFollow : MonoBehaviour {
 
             float distancePoint;
 
-            //distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
-           // distancePoint /= cameraDistance;
-            //cameraYTarget *= distancePoint;
+            distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+            distancePoint /= cameraDistance;
+            cameraYTarget *= distancePoint;
         }
     }
 
@@ -130,7 +131,6 @@ public class CameraFollow : MonoBehaviour {
             if (hit.collider.tag == "terrain" && hit.collider.isTrigger == false || hit.collider.tag == "destTerrain" && hit.collider.isTrigger == false) {
                 springOffset.x = hit.point.x - player.transform.position.x;
                 springOffset.z = hit.point.z - player.transform.position.z;
-
             } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
