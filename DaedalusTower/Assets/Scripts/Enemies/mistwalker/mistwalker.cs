@@ -99,7 +99,10 @@ public class mistwalker : MonoBehaviour {
             fogDensity = maxFogDensity;
         }
         RenderSettings.fogDensity = fogDensity;
-    }
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
+            clawsActive = false;
+        }
+        }
 
     void move() {
         attackTimer = 0;
