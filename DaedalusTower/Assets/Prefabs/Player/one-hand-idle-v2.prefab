@@ -1298,7 +1298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153291675807042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05806887, y: 0.5, z: -18.320478}
+  m_LocalPosition: {x: 0, y: 0.5, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4654811797087802}
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   sidewaysMoveSpeed: 5
   dashSpeed: 12.5
   dashTime: 0.1
-  dashCooldown: 3
+  dashCooldown: 0.5
   dashEnabled: 1
   jumpForce: 2000
   rotateSpeed: 30

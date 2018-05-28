@@ -36,10 +36,10 @@ public class PlayerMovement : MonoBehaviour {
     private float moddableRotateSpeed;
 
     bool dashing = false;
-    
+
 
     // Game Time Started
-    void Start () {
+    void Start() {
         anim = GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
 
@@ -47,10 +47,15 @@ public class PlayerMovement : MonoBehaviour {
         moddableRotateSpeed = rotateSpeed;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        setRotation();
+
+    // Update is called once per frame
+    void Update() {
+        if (gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive == false) {
+            setRotation();
+        } else {
+            faceEnemy();
+        }
+        
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
             moddableForwardMoveSpeed = forwardMoveSpeed;
@@ -89,9 +94,18 @@ public class PlayerMovement : MonoBehaviour {
         Vector2 joystick = new Vector2(Input.GetAxis("LeftStickX"), Input.GetAxis("LeftStickY"));
         if (joystick.x != 0 || joystick.y != 0) {
             float angle = Mathf.Atan2(joystick.x, -joystick.y) * Mathf.Rad2Deg + playerCam.transform.rotation.eulerAngles.y;
-            transform.rotation = Quaternion.Euler(0,angle,0);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
         }
-        
+
+    }
+
+    private void faceEnemy() {
+        RaycastHit hit;
+        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + capsule.height/2, transform.position.z), 0.3f, transform.forward, out hit, 1)) {
+            if (hit.transform.tag == "enemy" || hit.transform.tag == "mistwalker") {
+                transform.LookAt(hit.transform);
+            }
+        }
     }
 
     public void Dash() {
@@ -218,6 +232,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (animationLastFrame != animationCurrentFrame) {
             anim.SetBool("nextAttack", false);
+            setRotation();
         }
 
         animationLastFrame = animationCurrentFrame;

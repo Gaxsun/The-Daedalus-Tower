@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969fa32d04fb54f4bb129aa6280e7367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invulnerableStateLength: 1
+  invulnerableStateLength: 1.5
   knockbackTime: 0.5
   health: 15
 --- !u!136 &136898509637034414
