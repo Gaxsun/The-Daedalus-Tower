@@ -117,6 +117,13 @@ public class PlayerMovement : MonoBehaviour {
             dashTimeStart = Time.time;
         }
 
+        gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+        moddableForwardMoveSpeed = forwardMoveSpeed;
+        moddableRotateSpeed = rotateSpeed;
+
+        anim.Play("Take 001 0", 0, 0f);
+        print("running");
+
         forwardAxisMovement(dashDirectionY * dashSpeed);
         sidewaysAxisMovement(dashDirectionX * dashSpeed);
 
@@ -133,6 +140,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void DashStart() {
         if (!dashCheck()) {
+
             dashDirectionX = Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)));
 
             dashDirectionY = Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)))));
