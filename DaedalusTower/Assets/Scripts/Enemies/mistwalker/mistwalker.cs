@@ -32,7 +32,7 @@ public class mistwalker : MonoBehaviour {
     bool vulnerable = true;
     float vulnerableCount;
     public float invulnerableStateLength = 1;
-
+    private bool attacking = false;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -81,9 +81,10 @@ public class mistwalker : MonoBehaviour {
                 clawsActive = false;
                 attack();
             }
-            if (Time.time > attackPrep + attackChargeTime) {
+            if (Time.time > attackPrep + attackChargeTime && attacking) {
                 clawsActive = true;
                 attackPrep = Mathf.Infinity;
+                attacking = false;
             }
         } else {
             GetComponentInParent<NavMeshAgent>().speed = normSpeed;
@@ -111,6 +112,7 @@ public class mistwalker : MonoBehaviour {
     void attack() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
             transform.LookAt(player.transform);
+            attacking = true;
             anim.Play("Take 001 2", 0, 0f);
             //anim.SetTrigger("attack");
         }
