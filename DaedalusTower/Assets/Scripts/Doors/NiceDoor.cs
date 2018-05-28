@@ -31,21 +31,27 @@ public class NiceDoor : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "Projectile") {
             openSesame = true;
-            triggered = true;
+            if (other.tag == "Player") {
+                triggered = true;
+            }
         }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.tag != "Projectile") {
             openSesame = true;
-            triggered = true;
+            if (other.tag == "Player") {
+                triggered = true;
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag != "Projectile") {
             openSesame = false;
-            triggered = false;
+            if (other.tag == "Player") {
+                triggered = false;
+            }
         }
     }
 }

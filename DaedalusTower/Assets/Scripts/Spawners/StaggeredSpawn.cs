@@ -20,5 +20,6 @@ public class StaggeredSpawn : MonoBehaviour {
             }
             
         }
+        GetComponent<SpawnTrigger>().triggered = triggered;
 	}
 }
