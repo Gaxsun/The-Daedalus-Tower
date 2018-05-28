@@ -10373,6 +10373,11 @@ Prefab:
       propertyPath: dashEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
+        type: 2}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 210746821}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72d019f8ba6f404439bd7ab413c19eb2, type: 2}
   m_IsPrefabParent: 0

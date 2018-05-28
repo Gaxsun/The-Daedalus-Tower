@@ -11,6 +11,9 @@ TagManager:
   - Fire
   - Projectile
   - bossCanvas
+  - healthFill
+  - rightClaw
+  - leftClaw
   layers:
   - Default
   - TransparentFX

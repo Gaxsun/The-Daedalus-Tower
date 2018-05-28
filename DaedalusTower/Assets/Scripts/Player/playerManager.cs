@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class playerManager : MonoBehaviour {
 
@@ -10,10 +11,13 @@ public class playerManager : MonoBehaviour {
     public GameObject weaponPosition;
     public Slider healthBar;
     public Canvas can;
+    public Canvas death;
+    public Canvas win;
     public GameObject fill;
     public int healthRegen = 2; // per sec
     public int health = 200;
     private float secondCount;
+    private float restartCount;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +31,13 @@ public class playerManager : MonoBehaviour {
         healthBar.value = health;
         if (health <= 0) {
             can.enabled = false;
+            death.enabled = true;
+            restartCount = Time.time;
+        }
+
+        if (death.enabled && Time.time == restartCount + 5) {
+            Scene loadedLevel = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(loadedLevel.buildIndex);
         }
 
         print(health);
