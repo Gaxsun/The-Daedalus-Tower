@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody rb;
 
     public float forwardMoveSpeed;
+    private float moddableForwardMoveSpeed;
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
 
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     float jumpCoolDown;
 
     public float rotateSpeed;
+    private float moddableRotateSpeed;
 
     bool dashing = false;
     
@@ -40,6 +42,10 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
         anim = GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
+
+        moddableForwardMoveSpeed = forwardMoveSpeed;
+        moddableRotateSpeed = rotateSpeed;
+
     }
 	
 	// Update is called once per frame
@@ -47,8 +53,12 @@ public class PlayerMovement : MonoBehaviour {
         setRotation();
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+            moddableForwardMoveSpeed = forwardMoveSpeed;
+            moddableRotateSpeed = rotateSpeed;
         } else {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
+            moddableForwardMoveSpeed = forwardMoveSpeed / 10;
+            moddableRotateSpeed = rotateSpeed / 10;
         }
 
         if (Time.time >= dashCooldown + dashTimeStart) {
@@ -66,12 +76,12 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void forwardAxisMovement(float direction) {
-        transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * forwardMoveSpeed * -direction * Time.deltaTime;
-        playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * forwardMoveSpeed * -direction * Time.deltaTime;
+        transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableForwardMoveSpeed * -direction * Time.deltaTime;
+        playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableForwardMoveSpeed * -direction * Time.deltaTime;
     }
 
     public void sidewaysAxisMovement(float direction) {
-        transform.RotateAround(playerCam.transform.position, transform.up, rotateSpeed * direction * Time.deltaTime);
+        transform.RotateAround(playerCam.transform.position, transform.up, moddableRotateSpeed * direction * Time.deltaTime);
         playerCam.GetComponent<CameraFollow>().playerCounterRotate();
     }
 
@@ -179,7 +189,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
-                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable *= 2.5f;
+                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback * 2.5f;
             } else {
                 this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback;
             }

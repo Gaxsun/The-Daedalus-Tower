@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour {
 
         if (knockable == true) {
             transform.position = transform.position - transform.forward * knockbackG * Time.deltaTime;
-            GetComponent<NavMeshAgent>();
         }
 
         if (Time.time > vulnerableCount + knockbackTime) {
