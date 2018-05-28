@@ -53,11 +53,7 @@ public class mistwalker : MonoBehaviour {
 
         float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
         transform.GetComponentInParent<NavMeshAgent>().destination = player.transform.position;
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            clawsActive = true;
-        } else {
-            clawsActive = false;
-        }
+        
         if (GetComponentInParent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
             //anim.Play("Take 001", 0, 0f);
             anim.SetBool("moving", false);

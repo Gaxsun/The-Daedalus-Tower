@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
+  clawDamage: 20
   clawKnockback: 5
 --- !u!114 &114464827497161054
 MonoBehaviour:
@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1428694181401156}
-  clawDamage: 10
+  clawDamage: 20
   clawKnockback: 5
 --- !u!114 &114985172595268730
 MonoBehaviour:
