@@ -10464,6 +10464,11 @@ Prefab:
       propertyPath: win
       value: 
       objectReference: {fileID: 1819236371}
+    - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
+        type: 2}
+      propertyPath: bossCanvas
+      value: 
+      objectReference: {fileID: 1341397593}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72d019f8ba6f404439bd7ab413c19eb2, type: 2}
   m_IsPrefabParent: 0
@@ -21361,7 +21366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1819236369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21405,7 +21410,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819236368}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -24172,7 +24177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2129785848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24216,7 +24221,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2129785847}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
