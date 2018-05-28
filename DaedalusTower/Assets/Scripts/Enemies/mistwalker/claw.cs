@@ -22,7 +22,6 @@ public class claw : MonoBehaviour {
     void OnTriggerStay(Collider other) {
         if (other.tag == "Player" && mistwalker.GetComponent<mistwalker>().clawsActive) {
             other.GetComponent<playerManager>().takeDamage(clawDamage);
-            other.GetComponent<Rigidbody>().AddForce((other.transform.position - transform.position).normalized * clawKnockback);
             mistwalker.GetComponent<mistwalker>().clawsActive = false;
         }
     }

@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbd50ae7331e1646bd5ca0bcaf86509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mistwalker: {fileID: 1614793551611514}
+  mistwalker: {fileID: 1428694181401156}
   clawDamage: 10
   clawKnockback: 5
 --- !u!114 &114464827497161054
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   bossCanvas: {fileID: 0}
   maxFogDensity: 0.04
   fogGrowthRate: 10
-  attackDelay: 1
+  attackDelay: 5
 --- !u!114 &114600843449932296
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,8 @@ public class mistwalker : MonoBehaviour {
     
     public float attackDelay;
     private float attackTimer;
+    private float attackPrep;
+    private float attackChargeTime;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -69,7 +71,14 @@ public class mistwalker : MonoBehaviour {
             GetComponentInParent<NavMeshAgent>().speed = 0;
             GetComponentInParent<NavMeshAgent>().acceleration = 1000;
             if (Time.time > attackTimer + attackDelay) {
+                attackPrep = Time.time;
+                attackChargeTime = 2;
+                clawsActive = false;
                 attack();
+            }
+            if (Time.time > attackPrep + attackChargeTime) {
+                clawsActive = true;
+                attackPrep = Mathf.Infinity;
             }
         } else {
             GetComponentInParent<NavMeshAgent>().speed = normSpeed;
@@ -102,7 +111,6 @@ public class mistwalker : MonoBehaviour {
         }
         print("Mistwalker Attacking");
         attackTimer = Time.time;
-        clawsActive = true;
     }
 
     public void takeDamage(int damage) {

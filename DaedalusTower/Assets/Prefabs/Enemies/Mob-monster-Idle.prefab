@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 195375263062447770}
   - component: {fileID: 114666462139198660}
   - component: {fileID: 114969272243510830}
+  - component: {fileID: 65366669597417014}
   m_Layer: 0
   m_Name: Mob-monster-Idle
   m_TagString: enemy
@@ -214,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537952501758592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.472, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4039382882419158}
@@ -636,6 +637,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &65366669597417014
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537952501758592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0.5, z: 0.3}
 --- !u!95 &95173411565457884
 Animator:
   serializedVersion: 3
@@ -666,6 +679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 95173411565457884}
   minDistance: 2
+  damage: 3
+  attackDelay: 4
 --- !u!114 &114969272243510830
 MonoBehaviour:
   m_ObjectHideFlags: 1
