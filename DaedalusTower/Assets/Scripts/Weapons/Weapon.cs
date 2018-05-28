@@ -7,8 +7,8 @@ public class Weapon : MonoBehaviour {
     public string weaponName;
     public int baseDamage;
     public float speed;
-    public int knockback;
-    public int knockbackModdable;
+    public float knockback;
+    public float knockbackModdable;
     public bool attackActive = false;
 
 	// Use this for initialization

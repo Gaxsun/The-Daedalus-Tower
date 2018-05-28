@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class mistwalker : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class mistwalker : MonoBehaviour {
 
     private GameObject player;
     public float minDistance;
+
+    public Slider bossHealthBar;
+    public Canvas bossCanvas;
 
     private float fogDensity;
     public float maxFogDensity;
@@ -27,10 +31,17 @@ public class mistwalker : MonoBehaviour {
         fogDensity = 0;
         normSpeed = GetComponent<NavMeshAgent>().speed;
         normAccel = GetComponent<NavMeshAgent>().acceleration;
-	}
+
+        bossHealthBar.maxValue = health;
+        
+        bossCanvas.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+
+        bossHealthBar.value = health;
+
         float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
         transform.GetComponent<NavMeshAgent>().destination = player.transform.position;
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {

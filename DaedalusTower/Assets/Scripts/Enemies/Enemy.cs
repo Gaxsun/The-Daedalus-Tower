@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour {
 
     public int health = 200;
 
-    private int knockbackG;
+    private float knockbackG;
 
     // Use this for initialization
     void Start () {
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour {
 
     }
 
-    public void takeDamage(GameObject source, int damage, int knockback) {
+    public void takeDamage(GameObject source, int damage, float knockback) {
         if (vulnerable) {
             knockbackG = knockback;
             health = health - damage;

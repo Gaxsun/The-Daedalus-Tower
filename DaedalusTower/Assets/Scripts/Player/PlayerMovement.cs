@@ -179,7 +179,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
-                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable *= 4;
+                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable *= 2.5f;
             } else {
                 this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback;
             }
