@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4197333630852782}
   - component: {fileID: 33405774273888214}
   - component: {fileID: 23114565545785546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4980220258046086}
   - component: {fileID: 33372499125619166}
   - component: {fileID: 23908101304564174}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 95372193861895836}
   - component: {fileID: 65960013581032858}
   - component: {fileID: 114072463017680014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: One-Handed sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4652041543237070}
   - component: {fileID: 33565341974208344}
   - component: {fileID: 23680895814885732}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hedra001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4468822812825076}
   - component: {fileID: 33679391982043394}
   - component: {fileID: 23108272144406608}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hose001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4505988024544208}
   - component: {fileID: 33394485224685170}
   - component: {fileID: 23668097378611284}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pyramid001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4394734773336086}
   - component: {fileID: 33468094925268402}
   - component: {fileID: 23748843080423192}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tube001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4020036919181380}
   - component: {fileID: 33838748635470870}
   - component: {fileID: 23797414528261250}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4902318343152674}
   - component: {fileID: 33069520090865128}
   - component: {fileID: 23265826277237470}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pyramid002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 4078650797553142}
   - component: {fileID: 33703677044239214}
   - component: {fileID: 23602788211466320}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 4772119337493342}
   - component: {fileID: 33077700324794272}
   - component: {fileID: 23077617330220960}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4911369422241070}
   - component: {fileID: 33096606974035994}
   - component: {fileID: 23676610903343544}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Box003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 4917716550070224}
   - component: {fileID: 33454012555132642}
   - component: {fileID: 23970365486601936}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

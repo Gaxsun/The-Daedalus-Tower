@@ -28,6 +28,8 @@ public class CameraFollow : MonoBehaviour {
 
     CursorLockMode wantedMode;
 
+    public Vector3 playerLocation;
+
 	// Use this for initialization
 	void Start () {
         initOffset.z = -cameraDistance;
@@ -38,7 +40,7 @@ public class CameraFollow : MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        playerLocation = new Vector3(player.transform.position.x, modelYOffset, player.transform.position.z);
         }
 	
 	// Update is called once per frame
@@ -48,7 +50,7 @@ public class CameraFollow : MonoBehaviour {
             springArm();
         }
         transform.position = player.transform.position + springOffset;
-        transform.LookAt(new Vector3(player.transform.position.x, modelYOffset + cameraYTarget, player.transform.position.z));
+        transform.LookAt(new Vector3(playerLocation.x, playerLocation.y + cameraYTarget, playerLocation.z));
 
         if (bossFight) {
             cameraYTarget = bossCamY;
@@ -59,12 +61,13 @@ public class CameraFollow : MonoBehaviour {
             distancePoint /= cameraDistance;
             cameraYTarget *= distancePoint;
         }
+        playerLocation = new Vector3(player.transform.position.x, modelYOffset, player.transform.position.z);
     }
 
     public void cameraRotate(float mouseValueX) {
-        transform.RotateAround(player.transform.position, player.transform.up, rotateSpeed * Time.deltaTime * mouseValueX);
-        rotateOffset.x = transform.position.x - player.transform.position.x;
-        rotateOffset.z = transform.position.z - player.transform.position.z;
+        transform.RotateAround(playerLocation, player.transform.up, rotateSpeed * Time.deltaTime * mouseValueX);
+        rotateOffset.x = transform.position.x - playerLocation.x;
+        rotateOffset.z = transform.position.z - playerLocation.z;
 
         if (rotateOffset.x > cameraDistance + cameraPadding) {
             rotateOffset.x = cameraDistance;
@@ -94,8 +97,8 @@ public class CameraFollow : MonoBehaviour {
     }
 
     public void playerCounterRotate() {
-        rotateOffset.x = transform.position.x - player.transform.position.x;
-        rotateOffset.z = transform.position.z - player.transform.position.z;
+        rotateOffset.x = transform.position.x - playerLocation.x;
+        rotateOffset.z = transform.position.z - playerLocation.z;
         if (rotateOffset.x > cameraDistance + cameraPadding) {
             rotateOffset.x = cameraDistance;
         } else if (rotateOffset.x < -cameraDistance - cameraPadding) {
@@ -125,12 +128,17 @@ public class CameraFollow : MonoBehaviour {
 
     public void springArm() {
         RaycastHit hit;
-        Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.blue);
-        if (Physics.Raycast(player.transform.position, transform.position - player.transform.position, out hit, cameraDistance)) {
-            Debug.DrawRay(player.transform.position, transform.position - player.transform.position, Color.red);
-            if (hit.collider.tag == "terrain" && hit.collider.isTrigger == false || hit.collider.tag == "destTerrain" && hit.collider.isTrigger == false) {
-                springOffset.x = hit.point.x - player.transform.position.x;
-                springOffset.z = hit.point.z - player.transform.position.z;
+        RaycastHit trueHit;
+        Vector2 distancePoint;
+        distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
+
+        Debug.DrawRay(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), Color.white);
+        if (Physics.Raycast(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), out hit, springOffset.magnitude)) {
+            Debug.DrawRay(playerLocation, hit.point - playerLocation, Color.green);
+
+            if (hit.collider.tag == "terrain"|| hit.collider.tag == "destTerrain") {
+                springOffset.x = hit.point.x - playerLocation.x;
+                springOffset.z = hit.point.z - playerLocation.z;
             } else {
                 springOffset.x = rotateOffset.x;
                 springOffset.z = rotateOffset.z;
