@@ -3631,7 +3631,7 @@ Prefab:
         type: 2}
       propertyPath: enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1976498080746214, guid: af4bb5b8bcb9ba44b978c83cdbb375a0,
+      objectReference: {fileID: 1614793551611514, guid: 61a4afb70bce4344da344cc58c5061cd,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 857909b728acd3246a5895002f27f9a6, type: 2}
@@ -10094,7 +10094,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4679086150995752, guid: 72d019f8ba6f404439bd7ab413c19eb2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4679086150995752, guid: 72d019f8ba6f404439bd7ab413c19eb2, type: 2}
       propertyPath: m_LocalPosition.y

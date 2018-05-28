@@ -59,9 +59,7 @@ public class mistwalker : MonoBehaviour {
         if (GetComponentInParent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
             //anim.Play("Take 001", 0, 0f);
             anim.SetBool("moving", false);
-            if (Time.time > attackTimer + attackDelay) {
-                attack();
-            }
+            
         }
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
             transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
@@ -70,8 +68,10 @@ public class mistwalker : MonoBehaviour {
         if(playerDistance <= minDistance) {
             GetComponentInParent<NavMeshAgent>().speed = 0;
             GetComponentInParent<NavMeshAgent>().acceleration = 1000;
-            attackTimer = 0;
-        }else {
+            if (Time.time > attackTimer + attackDelay) {
+                attack();
+            }
+        } else {
             GetComponentInParent<NavMeshAgent>().speed = normSpeed;
             GetComponentInParent<NavMeshAgent>().acceleration = normAccel;
             move();
