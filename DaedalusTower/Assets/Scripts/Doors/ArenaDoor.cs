@@ -10,6 +10,7 @@ public class ArenaDoor : MonoBehaviour {
     public float liftSpeed;
 
     public GameObject[] arenaSpawners;
+    public GameObject[] otherDoors;
     public bool arenaBegin;
     private bool arenaEnd;
 
@@ -46,8 +47,13 @@ public class ArenaDoor : MonoBehaviour {
         if (arenaEnd && transform.position.y < openHeight) {
             openSesame = true;
         }
-    }
 
+        foreach (GameObject door in otherDoors) {
+            door.GetComponent<ArenaDoor>().openSesame = openSesame;
+            door.GetComponent<ArenaDoor>().arenaBegin = arenaBegin;
+            door.GetComponent<ArenaDoor>().arenaEnd = arenaEnd;
+        }
+    }
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             openSesame = true;
