@@ -155,14 +155,16 @@ public class PlayerMovement : MonoBehaviour {
 
     public void playRun() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
-            anim.Play("Take 001 0", 0, 0f);
+            //anim.Play("Take 001 0", 0, 0f);
+            anim.SetBool("running", true);
         }
         print("running");
     }
 
     public void playIdle() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
-            anim.Play("Take 001", 0, 0f);
+            //anim.Play("Take 001", 0, 0f);
+            anim.SetBool("running", false);
         }
         print("Idle");
     }

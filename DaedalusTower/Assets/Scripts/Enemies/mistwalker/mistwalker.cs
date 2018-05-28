@@ -39,7 +39,8 @@ public class mistwalker : MonoBehaviour {
             clawsActive = false;
         }
         if (GetComponent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
-            anim.Play("Take 001", 0, 0f);
+            //anim.Play("Take 001", 0, 0f);
+            anim.SetBool("moving", false);
         }
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
             transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
@@ -51,7 +52,7 @@ public class mistwalker : MonoBehaviour {
         }else {
             GetComponent<NavMeshAgent>().speed = normSpeed;
             GetComponent<NavMeshAgent>().acceleration = normAccel;
-            //move();
+            move();
         }
 
 
@@ -65,13 +66,15 @@ public class mistwalker : MonoBehaviour {
 
     void move() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0")) {
-            anim.Play("Take 001 0", 0, 0f);
+            //anim.Play("Take 001 0", 0, 0f);
+            anim.SetBool("moving", true);
         }
     }
 
     void attack() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            anim.Play("Take 001 2", 0, 0f);
+            //anim.Play("Take 001 2", 0, 0f);
+            anim.SetTrigger("attack");
         }
         print("Mistwalker Attacking");
     }
