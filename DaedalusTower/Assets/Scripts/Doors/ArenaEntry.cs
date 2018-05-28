@@ -15,6 +15,8 @@ public class ArenaEntry : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        GetComponentInParent<ArenaDoor>().arenaBegin = true;
+        if (other.tag == "Player") {
+            GetComponentInParent<ArenaDoor>().arenaBegin = true;
+        }
     }
 }
