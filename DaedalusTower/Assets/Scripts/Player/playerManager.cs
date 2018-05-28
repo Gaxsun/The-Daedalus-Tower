@@ -34,10 +34,10 @@ public class playerManager : MonoBehaviour {
             fill.GetComponent<Image>().color = new Color(fill.GetComponent<Image>().color.r, fill.GetComponent<Image>().color.g + Time.deltaTime*0.1f, fill.GetComponent<Image>().color.b + Time.deltaTime * 0.1f);
         }
 
-        if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1) {
+        if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
             health = health + healthRegen;
             secondCount = Time.time;
-        } else if(Time.time > secondCount + 1) {
+        } else if(Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
             health = Mathf.RoundToInt(healthBar.maxValue);
             secondCount = Time.time;
         }
