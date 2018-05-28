@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
     private string animationLastFrame;
     private string animationCurrentFrame;
 
+    public float faceEnemyRadius = 0.3f;
+    public float faceEnemyDistance = 1;
+
     public float dashSpeed;
     public float dashTime;
     private float dashTimeStart;
@@ -101,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void faceEnemy() {
         RaycastHit hit;
-        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + capsule.height/2, transform.position.z), 0.3f, transform.forward, out hit, 1)) {
+        if (Physics.SphereCast(new Vector3(transform.position.x, transform.position.y + capsule.height/2, transform.position.z), faceEnemyRadius, transform.forward, out hit, faceEnemyDistance)) {
             if (hit.transform.tag == "enemy" || hit.transform.tag == "mistwalker") {
                 transform.LookAt(hit.transform);
             }
