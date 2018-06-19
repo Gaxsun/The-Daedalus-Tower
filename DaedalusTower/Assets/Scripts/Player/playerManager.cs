@@ -8,6 +8,7 @@ public class playerManager : MonoBehaviour {
 
     //Holds current player config
     public GameObject currentWeapon;
+    public GameObject currentArmor;
     public GameObject weaponPosition;
     public Slider healthBar;
     public Canvas can;
@@ -19,6 +20,8 @@ public class playerManager : MonoBehaviour {
     public int health = 200;
     private float secondCount;
     private float restartCount = 0;
+
+    public List<GameObject> inventory;
 
 	// Use this for initialization
 	void Start () {
@@ -67,6 +70,19 @@ public class playerManager : MonoBehaviour {
 
     public void takeDamage(int damage) {
         health = health - damage;
+    }
+
+    public void addItemToInventory(GameObject itemToAdd) {
+        inventory.Add(itemToAdd);
+    }
+
+    public void removeItemFromInventory(GameObject itemToRemove) {
+        // gonne need to know specific application of this function before implementing it
+        //inventory.Remove(itemToRemove);
+    }
+
+    public void removeItemFromInventory(int indexToRemove) {
+        inventory.Remove(inventory[indexToRemove]);
     }
 
 }
