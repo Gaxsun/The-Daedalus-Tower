@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive == false) {
+        if (gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive == false && GetComponent<PlayerInput>().controlsEnabled) {
             setRotation();
         } else {
             faceEnemy();

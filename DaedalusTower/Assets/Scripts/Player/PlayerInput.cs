@@ -7,9 +7,10 @@ public class PlayerInput : MonoBehaviour {
     CursorLockMode wantedMode;
 
     public bool controlsEnabled = true;
+    bool pausePrimed;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         //Lock Cursor
         wantedMode = CursorLockMode.Locked;
     }
@@ -18,6 +19,8 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
         Cursor.lockState = wantedMode;
+
+        Pause();
 
         if (controlsEnabled) {
             inputs();
@@ -30,7 +33,7 @@ public class PlayerInput : MonoBehaviour {
          * 
          * 
          * 
-         * Keyboard Input
+         * Keyboard Input (obsolete)
          * 
          * 
          * 
@@ -88,6 +91,24 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetAxis("RightStickX") != 0) {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("RightStickX"));
+        }
+    }
+
+    private void Pause() {
+
+        if (Input.GetAxis("StartButton") != 0) {
+            pausePrimed = true;
+        }
+
+        if (pausePrimed && Input.GetAxis("StartButton") == 0) {
+            if (Time.timeScale == 1) {
+                Time.timeScale = 0F;
+                controlsEnabled = false;
+            } else {
+                Time.timeScale = 1F;
+                controlsEnabled = true;
+            }
+            pausePrimed = false;
         }
     }
 }
