@@ -15,6 +15,7 @@ public class playerManager : MonoBehaviour {
     public Canvas death;
     public Canvas bossCanvas;
     public Canvas win;
+    public Canvas inventoryWindow;
     public GameObject fill;
     public int healthRegen = 2; // per sec
     public int health = 200;

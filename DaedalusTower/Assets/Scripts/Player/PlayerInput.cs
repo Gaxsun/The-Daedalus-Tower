@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour {
 
         Cursor.lockState = wantedMode;
 
-        Pause();
+        Pause();      
 
         if (controlsEnabled) {
             inputs();
@@ -95,17 +95,19 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void Pause() {
-
-        if (Input.GetAxis("StartButton") != 0) {
-            pausePrimed = true;
+        if (Input.GetAxisRaw("StartButton") != 0) {
+            pausePrimed = true; 
         }
-
-        if (pausePrimed && Input.GetAxis("StartButton") == 0) {
+        
+        if (pausePrimed && Input.GetAxisRaw("StartButton") == 0) {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0F;
+                GetComponent<playerManager>().inventoryWindow.enabled = true;
                 controlsEnabled = false;
             } else {
+                
                 Time.timeScale = 1F;
+                GetComponent<playerManager>().inventoryWindow.enabled = false;
                 controlsEnabled = true;
             }
             pausePrimed = false;
