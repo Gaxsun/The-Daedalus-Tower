@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour {
         if (vulnerable) {
             knockbackG = knockback;
             health = health - damage;
-
+            source.GetComponent<Weapon>().playHitEffects();
             vulnerableCount = Time.time;
         }
 

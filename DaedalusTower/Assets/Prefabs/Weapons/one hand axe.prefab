@@ -2653,3 +2653,4 @@ MonoBehaviour:
   knockback: 7
   knockbackModdable: 0
   attackActive: 0
+  effectObject: {fileID: 1143569556469128}

@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour {
     public float knockback;
     public float knockbackModdable;
     public bool attackActive = false;
+    public GameObject effectObject;
+    public AudioSource weaponHit;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,10 @@ public class Weapon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (attackActive) {
+            effectObject.GetComponent<TrailRenderer>().enabled = true;
             print("weapon active");
+        } else {
+            effectObject.GetComponent<TrailRenderer>().enabled = false;
         }
 	}
 
@@ -34,4 +39,12 @@ public class Weapon : MonoBehaviour {
             other.GetComponent<mistwalker>().takeDamage(baseDamage);
         }
     }
+
+    public void playHitEffects() {
+        weaponHit.Play();
+
+        //instantiate spark and flash
+
+    }
+
 }
