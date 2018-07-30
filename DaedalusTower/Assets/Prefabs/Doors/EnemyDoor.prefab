@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65318581794966306}
   - component: {fileID: 23012161930421880}
   - component: {fileID: 208607808858975444}
-  - component: {fileID: 114943926982010430}
+  - component: {fileID: 114813777654696118}
   m_Layer: 0
   m_Name: EnemyDoor
   m_TagString: terrain
@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099197783553250}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 6, y: 5.1, z: 1.0000005}
+  m_LocalRotation: {x: 0, y: 0.9659258, z: 0, w: 0.2588191}
+  m_LocalPosition: {x: -10.125, y: 3.25, z: 17.5}
+  m_LocalScale: {x: 7, y: 5.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 150, z: 0}
 --- !u!23 &23012161930421880
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -109,8 +109,8 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 8, z: 4}
-  m_Center: {x: 0, y: 0, z: -1.3}
---- !u!114 &114943926982010430
+  m_Center: {x: 0, y: 0, z: -2}
+--- !u!114 &114813777654696118
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,11 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1099197783553250}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 328e1a89fe2dea2448d1ca0917e98c00, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b564b9a99c90e949bdeebbcdef9a2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openHeight: 7.1
-  liftSpeed: 3
+  openHeight: 10
+  liftSpeed: 6
+  triggered: 0
 --- !u!208 &208607808858975444
 NavMeshObstacle:
   m_ObjectHideFlags: 1

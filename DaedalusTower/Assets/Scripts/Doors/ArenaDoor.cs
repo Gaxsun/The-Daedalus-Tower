@@ -12,6 +12,7 @@ public class ArenaDoor : MonoBehaviour {
     public GameObject[] arenaSpawners;
     public GameObject[] otherDoors;
     public bool arenaBegin;
+    public bool staggeredSpawns;
     private bool arenaEnd;
 
     // Use this for initialization
@@ -33,10 +34,19 @@ public class ArenaDoor : MonoBehaviour {
         if (arenaBegin && arenaEnd == false) {
             openSesame = false;
             bool corpsePile = true;
-            foreach (GameObject spawner in arenaSpawners) {
-                spawner.GetComponent<ArenaSpawner>().arenaBegin = arenaBegin;
-                if (spawner.GetComponent<ArenaSpawner>().arenaClear == false) {
-                    corpsePile = false;
+            if (staggeredSpawns) {
+                GetComponent<SpawnTrigger>().triggered = true;
+                foreach(GameObject spawner in arenaSpawners) {
+                    if(spawner.GetComponent<BasicSpawner>().corpsePile == false) {
+                        corpsePile = false;
+                    }
+                }
+            } else {
+                foreach (GameObject spawner in arenaSpawners) {
+                    spawner.GetComponent<ArenaSpawner>().arenaBegin = arenaBegin;
+                    if (spawner.GetComponent<ArenaSpawner>().arenaClear == false) {
+                        corpsePile = false;
+                    }
                 }
             }
             if (corpsePile) {
