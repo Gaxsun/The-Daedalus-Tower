@@ -15,7 +15,6 @@ public class playerManager : MonoBehaviour {
     public Canvas death;
     public Canvas bossCanvas;
     public Canvas win;
-    public Canvas inventoryWindow;
     public GameObject fill;
     public int healthRegen = 2; // per sec
     public int health = 200;
@@ -38,8 +37,9 @@ public class playerManager : MonoBehaviour {
             can.enabled = false;
             //win.enabled = false;
             death.enabled = true;
+            print("(.)(.)");
             restartCount += Time.deltaTime;
-            print(win.enabled);
+            print(death.enabled);
         }
 
         if (!bossCanvas.enabled && transform.position.x < -90) {
@@ -71,19 +71,6 @@ public class playerManager : MonoBehaviour {
 
     public void takeDamage(int damage) {
         health = health - damage;
-    }
-
-    public void addItemToInventory(GameObject itemToAdd) {
-        inventory.Add(itemToAdd);
-    }
-
-    public void removeItemFromInventory(GameObject itemToRemove) {
-        // gonne need to know specific application of this function before implementing it
-        //inventory.Remove(itemToRemove);
-    }
-
-    public void removeItemFromInventory(int indexToRemove) {
-        inventory.Remove(inventory[indexToRemove]);
     }
 
 }

@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour {
     public bool attackActive = false;
     public GameObject effectObject;
     public AudioSource weaponHit;
+    public GameObject hitEffectObject;
+    Vector3 currentCollisionPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -40,11 +42,14 @@ public class Weapon : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter(Collision other) {
+        currentCollisionPoint = other.contacts[0].point;
+    }
+
     public void playHitEffects() {
         weaponHit.Play();
-
+        Instantiate(hitEffectObject, currentCollisionPoint, Quaternion.identity);
         //instantiate spark and flash
-
     }
 
 }

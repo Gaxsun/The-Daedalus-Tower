@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour {
 
         Cursor.lockState = wantedMode;
 
-        Pause();      
+        //Pause();      
 
         if (controlsEnabled) {
             inputs();
@@ -94,7 +94,7 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    private void Pause() {
+    /*private void Pause() {
         if (Input.GetAxisRaw("StartButton") != 0) {
             pausePrimed = true; 
         }
@@ -112,5 +112,5 @@ public class PlayerInput : MonoBehaviour {
             }
             pausePrimed = false;
         }
-    }
+    }*/
 }
