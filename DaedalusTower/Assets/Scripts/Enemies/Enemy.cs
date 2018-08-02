@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour {
     void Start () {
         
     }
-	
+	//lmao
 	// Update is called once per frame
 	void Update () {
         if (this.gameObject.GetComponent<RangedAttack>() != null) {
