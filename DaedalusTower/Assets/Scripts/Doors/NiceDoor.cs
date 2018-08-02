@@ -17,6 +17,7 @@ public class NiceDoor : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+	//niceone
 	void Update () {
         if (openSesame && transform.localPosition.y < openHeight) {
             transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
