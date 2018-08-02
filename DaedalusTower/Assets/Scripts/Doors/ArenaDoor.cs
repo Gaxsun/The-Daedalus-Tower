@@ -22,6 +22,7 @@ public class ArenaDoor : MonoBehaviour {
         closedHeight = transform.position.y;
     }
 
+    // Ben was here, dab
     // Update is called once per frame
     void Update() {
         if (openSesame && transform.position.y < openHeight) {
