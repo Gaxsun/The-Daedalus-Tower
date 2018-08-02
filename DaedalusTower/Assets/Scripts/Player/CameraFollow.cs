@@ -40,7 +40,7 @@ public class CameraFollow : MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        playerLocation = new Vector3(player.transform.position.x, modelYOffset, player.transform.position.z);
+        playerLocation = new Vector3(player.transform.position.x, initOffset.y, player.transform.position.z);
         }
 	
 	// Update is called once per frame
@@ -61,7 +61,7 @@ public class CameraFollow : MonoBehaviour {
             distancePoint /= cameraDistance;
             cameraYTarget *= distancePoint;
         }
-        playerLocation = new Vector3(player.transform.position.x, modelYOffset, player.transform.position.z);
+        playerLocation = new Vector3(player.transform.position.x, initOffset.y + player.transform.position.y, player.transform.position.z);
     }
 
     public void cameraRotate(float mouseValueX) {
@@ -156,7 +156,7 @@ public class CameraFollow : MonoBehaviour {
         
         distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
 
-        initOffset = new Vector3(distancePoint.x, initOffset.y, distancePoint.y);
+        initOffset = new Vector3(distancePoint.x, modelYOffset, distancePoint.y);
 
         if (initOffset.x > cameraDistance + cameraPadding) {
             initOffset.x = cameraDistance;
