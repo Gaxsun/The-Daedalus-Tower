@@ -6991,6 +6991,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223382449192684216, guid: 0d94e27a3b09fb543b31822f56b2b680,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d94e27a3b09fb543b31822f56b2b680, type: 2}
   m_IsPrefabParent: 0
@@ -30256,8 +30261,7 @@ Prefab:
         type: 2}
       propertyPath: can
       value: 
-      objectReference: {fileID: 223633674792655406, guid: 91560b2025b970e42b29917f753c3e56,
-        type: 2}
+      objectReference: {fileID: 1715524735}
     - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
         type: 2}
       propertyPath: healthBar
@@ -30288,14 +30292,12 @@ Prefab:
         type: 2}
       propertyPath: death
       value: 
-      objectReference: {fileID: 223382449192684216, guid: 0d94e27a3b09fb543b31822f56b2b680,
-        type: 2}
+      objectReference: {fileID: 1675421369}
     - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
         type: 2}
       propertyPath: win
       value: 
-      objectReference: {fileID: 223908139934994970, guid: 30b92cf08b86ef14bb602d3d91e18596,
-        type: 2}
+      objectReference: {fileID: 1311338706}
     - target: {fileID: 114482317162301424, guid: 72d019f8ba6f404439bd7ab413c19eb2,
         type: 2}
       propertyPath: bossCanvas
@@ -75735,6 +75737,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4817335953912958, guid: d0fb5d7a681bc91498a579b940c75cad,
     type: 2}
   m_PrefabInternal: {fileID: 1308805586}
+--- !u!223 &1311338706 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223908139934994970, guid: 30b92cf08b86ef14bb602d3d91e18596,
+    type: 2}
+  m_PrefabInternal: {fileID: 1216834098}
 --- !u!1 &1312422423
 GameObject:
   m_ObjectHideFlags: 0
@@ -85339,6 +85346,11 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223633674792655406, guid: 91560b2025b970e42b29917f753c3e56,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91560b2025b970e42b29917f753c3e56, type: 2}
   m_IsPrefabParent: 0
@@ -89942,6 +89954,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1675229131}
   m_Mesh: {fileID: 4300028, guid: 328b923964dbcdd4fb1bb0a1cd3e232b, type: 3}
+--- !u!223 &1675421369 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223382449192684216, guid: 0d94e27a3b09fb543b31822f56b2b680,
+    type: 2}
+  m_PrefabInternal: {fileID: 115622051}
 --- !u!1 &1677220478
 GameObject:
   m_ObjectHideFlags: 0
@@ -94336,6 +94353,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4817335953912958, guid: d0fb5d7a681bc91498a579b940c75cad,
     type: 2}
   m_PrefabInternal: {fileID: 1712412109}
+--- !u!223 &1715524735 stripped
+Canvas:
+  m_PrefabParentObject: {fileID: 223633674792655406, guid: 91560b2025b970e42b29917f753c3e56,
+    type: 2}
+  m_PrefabInternal: {fileID: 1536901166}
 --- !u!1 &1721475992
 GameObject:
   m_ObjectHideFlags: 0
