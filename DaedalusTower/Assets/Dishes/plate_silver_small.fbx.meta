@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 0d11beb45f298554cbae8e04d45d96c5
+timeCreated: 1446129738
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: BezierCurve.000
+    100002: BezierCurve.001
+    100004: BezierCurve.002
+    100006: BezierCurve.003
+    100008: BezierCurve.004
+    100010: BezierCurve.005
+    100012: BezierCurve.007
+    100014: Cube.000
+    100016: Cube.001
+    100018: Cube.002
+    100020: Cube.003
+    100022: Cube.004
+    100024: Cube.005
+    100026: Cube.006
+    100028: Cube.007
+    100030: Cube.008
+    100032: Cube.013
+    100034: Plane
+    100036: //RootNode
+    100038: Sun
+    400000: BezierCurve.000
+    400002: BezierCurve.001
+    400004: BezierCurve.002
+    400006: BezierCurve.003
+    400008: BezierCurve.004
+    400010: BezierCurve.005
+    400012: BezierCurve.007
+    400014: Cube.000
+    400016: Cube.001
+    400018: Cube.002
+    400020: Cube.003
+    400022: Cube.004
+    400024: Cube.005
+    400026: Cube.006
+    400028: Cube.007
+    400030: Cube.008
+    400032: Cube.013
+    400034: Plane
+    400036: //RootNode
+    400038: Sun
+    2300000: BezierCurve.000
+    2300002: BezierCurve.001
+    2300004: BezierCurve.002
+    2300006: BezierCurve.003
+    2300008: BezierCurve.004
+    2300010: BezierCurve.005
+    2300012: BezierCurve.007
+    2300014: Cube.000
+    2300016: Cube.001
+    2300018: Cube.002
+    2300020: Cube.003
+    2300022: Cube.004
+    2300024: Cube.005
+    2300026: Cube.006
+    2300028: Cube.007
+    2300030: Cube.008
+    2300032: Cube.013
+    2300034: Plane
+    2300036: //RootNode
+    3300000: BezierCurve.000
+    3300002: BezierCurve.001
+    3300004: BezierCurve.002
+    3300006: BezierCurve.003
+    3300008: BezierCurve.004
+    3300010: BezierCurve.005
+    3300012: BezierCurve.007
+    3300014: Cube.000
+    3300016: Cube.001
+    3300018: Cube.002
+    3300020: Cube.003
+    3300022: Cube.004
+    3300024: Cube.005
+    3300026: Cube.006
+    3300028: Cube.007
+    3300030: Cube.008
+    3300032: Cube.013
+    3300034: Plane
+    3300036: //RootNode
+    4300000: Cube.008
+    4300002: Cube.007
+    4300004: Cube.006
+    4300006: Cube.005
+    4300008: Cube.004
+    4300010: Cube.003
+    4300012: Cube.002
+    4300014: Cube.001
+    4300016: Cube.000
+    4300018: Cube.013
+    4300020: BezierCurve.007
+    4300022: BezierCurve.005
+    4300024: BezierCurve.003
+    4300026: BezierCurve.002
+    4300028: BezierCurve.001
+    4300030: Plane
+    4300032: BezierCurve.000
+    4300034: BezierCurve.004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

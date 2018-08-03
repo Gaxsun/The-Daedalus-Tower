@@ -12,17 +12,17 @@ public class EnemyDoor : MonoBehaviour {
     // Use this for initialization
     void Start() {
         openSesame = false;
-        closedHeight = transform.position.y;
+        closedHeight = transform.localPosition.y;
     }
 
     // Update is called once per frame
     void Update() {
-        if (openSesame && transform.position.y < openHeight) {
-            transform.position += transform.up * liftSpeed * Time.deltaTime;
-        } else if (openSesame == false && transform.position.y > closedHeight) {
-            transform.position -= transform.up * liftSpeed * Time.deltaTime;
+        if (openSesame && transform.localPosition.y < openHeight) {
+            transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
+        } else if (openSesame == false && transform.localPosition.y > closedHeight) {
+            transform.localPosition -= transform.up * liftSpeed * Time.deltaTime;
         } else if (openSesame == false) {
-            transform.position = new Vector3(transform.position.x, closedHeight, transform.position.z);
+            transform.localPosition = new Vector3(transform.localPosition.x, closedHeight, transform.localPosition.z);
         }
     }
 
