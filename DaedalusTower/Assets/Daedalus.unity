@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 0
+    m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -10180,7 +10180,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 202711641}
-  - component: {fileID: 202711645}
   - component: {fileID: 202711644}
   - component: {fileID: 202711643}
   - component: {fileID: 202711642}
@@ -10259,17 +10258,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &202711645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 202711640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &202788718
 GameObject:
   m_ObjectHideFlags: 0
@@ -10521,10 +10509,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 208212758}
-  - component: {fileID: 208212763}
   - component: {fileID: 208212762}
   - component: {fileID: 208212761}
-  - component: {fileID: 208212760}
   - component: {fileID: 208212759}
   m_Layer: 0
   m_Name: Arch
@@ -10560,17 +10546,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 1197696102}
---- !u!114 &208212760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208212757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &208212761
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10612,17 +10587,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &208212763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 208212757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &211752016
 GameObject:
   m_ObjectHideFlags: 0
@@ -29084,10 +29048,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 440680795}
-  - component: {fileID: 440680794}
   - component: {fileID: 440680793}
   - component: {fileID: 440680792}
-  - component: {fileID: 440680791}
   - component: {fileID: 440680790}
   m_Layer: 0
   m_Name: Stairs
@@ -29110,17 +29072,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 2050090093}
---- !u!114 &440680791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 440680789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &440680792
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -29162,17 +29113,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &440680794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 440680789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &440680795
 Transform:
   m_ObjectHideFlags: 0
@@ -69514,7 +69454,6 @@ GameObject:
   - component: {fileID: 1218472309}
   - component: {fileID: 1218472313}
   - component: {fileID: 1218472312}
-  - component: {fileID: 1218472311}
   - component: {fileID: 1218472310}
   m_Layer: 0
   m_Name: Stairs (1)
@@ -69554,17 +69493,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 2050090093}
---- !u!114 &1218472311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1218472308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &1218472312
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -84399,7 +84327,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1509214125}
-  - component: {fileID: 1509214124}
   - component: {fileID: 1509214123}
   - component: {fileID: 1509214122}
   - component: {fileID: 1509214120}
@@ -84465,17 +84392,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1509214124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1509214119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1509214125
 Transform:
   m_ObjectHideFlags: 0
@@ -88196,7 +88112,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1636165342}
-  - component: {fileID: 1636165346}
   - component: {fileID: 1636165345}
   - component: {fileID: 1636165344}
   - component: {fileID: 1636165343}
@@ -88275,17 +88190,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1636165346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1636165341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1636248789
 Prefab:
   m_ObjectHideFlags: 0
@@ -94111,7 +94015,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1708344141}
-  - component: {fileID: 1708344140}
   - component: {fileID: 1708344139}
   - component: {fileID: 1708344138}
   - component: {fileID: 1708344136}
@@ -94177,17 +94080,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1708344140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1708344135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1708344141
 Transform:
   m_ObjectHideFlags: 0
@@ -105298,10 +105190,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1941736599}
-  - component: {fileID: 1941736604}
   - component: {fileID: 1941736603}
   - component: {fileID: 1941736602}
-  - component: {fileID: 1941736601}
   - component: {fileID: 1941736600}
   m_Layer: 0
   m_Name: Arch
@@ -105337,17 +105227,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 2046848095}
---- !u!114 &1941736601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941736598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &1941736602
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105389,17 +105268,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1941736604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941736598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1942142174
 GameObject:
   m_ObjectHideFlags: 0
@@ -110457,7 +110325,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2104457884}
-  - component: {fileID: 2104457883}
   - component: {fileID: 2104457882}
   - component: {fileID: 2104457881}
   - component: {fileID: 2104457879}
@@ -110523,17 +110390,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2104457883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2104457878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2104457884
 Transform:
   m_ObjectHideFlags: 0
