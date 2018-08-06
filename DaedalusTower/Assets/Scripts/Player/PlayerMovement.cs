@@ -89,7 +89,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void sidewaysAxisMovement(float direction) {
-        transform.RotateAround(playerCam.transform.position, transform.up, moddableRotateSpeed * direction * Time.deltaTime);
+        CameraFollow followCam = playerCam.GetComponent<CameraFollow>();
+        transform.RotateAround(playerCam.transform.position, transform.up, moddableRotateSpeed * direction * Time.deltaTime * (2 - Mathf.Sqrt(followCam.springOffset.x * followCam.springOffset.x + followCam.springOffset.z * followCam.springOffset.z) / followCam.cameraDistance));
         playerCam.GetComponent<CameraFollow>().playerCounterRotate();
     }
 
