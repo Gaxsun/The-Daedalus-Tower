@@ -28,6 +28,7 @@ public class CameraFollow : MonoBehaviour {
     CursorLockMode wantedMode;
 
     public Vector3 playerLocation;
+    private float currentCamDistance;
 
 	// Use this for initialization
 	void Start () {
@@ -36,23 +37,29 @@ public class CameraFollow : MonoBehaviour {
         rotateOffset = initOffset;
         springOffset = initOffset;
         cameraYTarget = cameraTarget.y;
-        cameraTarget = player.transform.position + springOffset * -(1 + 10 * Mathf.Asin((1 - Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z) / cameraDistance))) / Mathf.PI;
+        currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
+        cameraTarget = player.transform.position + springOffset * - (1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI);
         cameraTarget.y = cameraYTarget;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
+        
         }
 	
 	// Update is called once per frame
 	void Update () {
+        currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
         springArm();
-        if(Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z) > cameraDistance) {
+        if(currentCamDistance >= cameraDistance) {
             cameraDistanceReset();
+        }else if(currentCamDistance < cameraDistance / 2) {
+            player.GetComponentInChildren<Renderer>().material.color = new Color(player.GetComponentInChildren<Renderer>().material.color.r, player.GetComponentInChildren<Renderer>().material.color.g, player.GetComponentInChildren<Renderer>().material.color.b, 
+                                                                                1 - currentCamDistance);
         }
         transform.position = player.transform.position + springOffset;
         cameraYTarget = cameraTarget.y;
-        cameraTarget = player.transform.position + (springOffset * -(1 + 10 * Mathf.Asin((1 - Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z) / cameraDistance))) / Mathf.PI).normalized * cameraDistance;
+        cameraTarget = player.transform.position + (springOffset * -(1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI)).normalized * cameraDistance;
         cameraTarget.y = cameraYTarget;
         transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
         Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
@@ -124,7 +131,7 @@ public class CameraFollow : MonoBehaviour {
             if (hit.collider.tag == "terrain"|| hit.collider.tag == "destTerrain") {
                 springOffset.x = hit.point.x - playerLocation.x;
                 springOffset.z = hit.point.z - playerLocation.z;
-                springOffset.y = (Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z) / cameraDistance) * initOffset.y + modelYOffset * (1 - Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z) / cameraDistance);
+                springOffset.y = currentCamDistance / cameraDistance * initOffset.y + modelYOffset * (1 - currentCamDistance / cameraDistance);
                 
             } else {
                 springOffset.x = rotateOffset.x;

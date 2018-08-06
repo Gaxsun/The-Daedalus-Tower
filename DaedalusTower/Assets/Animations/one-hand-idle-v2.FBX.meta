@@ -124,7 +124,32 @@ ModelImporter:
     13700004: Hair
     13700006: Pants
     13700008: Shoes
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 9e836179da2ed3745b7226b008b7b014, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 5b298316913cc784bbbf41fb64e4bbcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: c18691a2fe7756941be7ab42c3bcdc48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: 52f9edaa4351f2941a0570b5401e8f07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: 7ef714d0ea7c52d44b4dd4ddb4bed4ca, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
