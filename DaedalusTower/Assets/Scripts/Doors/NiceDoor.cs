@@ -15,19 +15,21 @@ public class NiceDoor : MonoBehaviour {
         openSesame = false;
         closedHeight = transform.localPosition.y;
 	}
-	
-	// Update is called once per frame
-	//niceone
-	void Update () {
+
+    // Update is called once per frame
+    //niceone
+    void Update() {
         if (openSesame && transform.localPosition.y < openHeight) {
             transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
-        }else if(openSesame == false && transform.localPosition.y > closedHeight){
+        } else if (openSesame == false && transform.localPosition.y > closedHeight) {
             transform.localPosition -= transform.up * liftSpeed * Time.deltaTime;
-        }else if(openSesame == false){
+        } else if (openSesame == false) {
             transform.localPosition = new Vector3(transform.localPosition.x, closedHeight, transform.localPosition.z);
         }
-        GetComponent<SpawnTrigger>().triggered = triggered;
-	}
+        if (GetComponent<SpawnTrigger>()) {
+            GetComponent<SpawnTrigger>().triggered = triggered;
+        }
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag != "Projectile") {
