@@ -51,11 +51,8 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
         currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
         springArm();
-        if(currentCamDistance >= cameraDistance) {
+        if (currentCamDistance >= cameraDistance) {
             cameraDistanceReset();
-        }else if(currentCamDistance < cameraDistance / 2) {
-            player.GetComponentInChildren<Renderer>().material.color = new Color(player.GetComponentInChildren<Renderer>().material.color.r, player.GetComponentInChildren<Renderer>().material.color.g, player.GetComponentInChildren<Renderer>().material.color.b, 
-                                                                                1 - currentCamDistance);
         }
         transform.position = player.transform.position + springOffset;
         cameraYTarget = cameraTarget.y;
@@ -107,17 +104,9 @@ public class CameraFollow : MonoBehaviour {
     }
 
     public void playerCounterRotate() {
-        rotateOffset.x = transform.position.x - playerLocation.x;
-        rotateOffset.z = transform.position.z - playerLocation.z;
-
-        springArm();
-        
-        if (springOffset.y > initOffset.y) {
-            springOffset.y = initOffset.y;
-        } else if (springOffset.y < playerLocation.y) {
-            springOffset.y = playerLocation.y;
+        rotateOffset.x = transform.position.x - player.transform.position.x;
+        rotateOffset.z = transform.position.z - player.transform.position.z;
         }
-    }
 
     public void springArm() {
         RaycastHit hit;
@@ -125,7 +114,7 @@ public class CameraFollow : MonoBehaviour {
         distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
 
         Debug.DrawRay(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), Color.white);
-        if (Physics.Raycast(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), out hit, springOffset.magnitude)) {
+        if (Physics.Raycast(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), out hit, cameraDistance)) {
             Debug.DrawRay(playerLocation, hit.point - playerLocation, Color.green);
 
             if (hit.collider.tag == "terrain"|| hit.collider.tag == "destTerrain") {
