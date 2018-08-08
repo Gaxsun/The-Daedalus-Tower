@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour {
 
     Rigidbody rb;
 
-    public float forwardMoveSpeed;
-    private float moddableForwardMoveSpeed;
+    public float speed;
+    private float moddableSpeed;
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
 
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour {
     float jumpCoolDown;
 
     public float rotateSpeed;
-    private float moddableRotateSpeed;
 
     bool dashing = false;
 
@@ -47,9 +46,7 @@ public class PlayerMovement : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
 
-        moddableForwardMoveSpeed = forwardMoveSpeed;
-        moddableRotateSpeed = rotateSpeed;
-
+        moddableSpeed = speed;
     }
 
     // Update is called once per frame
@@ -62,12 +59,10 @@ public class PlayerMovement : MonoBehaviour {
         
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
-            moddableForwardMoveSpeed = forwardMoveSpeed;
-            moddableRotateSpeed = rotateSpeed;
+            moddableSpeed = speed;
         } else {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
-            moddableForwardMoveSpeed = forwardMoveSpeed / 10;
-            moddableRotateSpeed = rotateSpeed / 10;
+            moddableSpeed = speed / 10;
         }
 
         if (Time.time >= dashCooldown + dashTimeStart) {
@@ -75,7 +70,6 @@ public class PlayerMovement : MonoBehaviour {
             dashTrail.GetComponent<TrailRenderer>().enabled = true;
         }
         nextAttackReset();
-
     }
 
     void FixedUpdate() {
@@ -87,13 +81,13 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void forwardAxisMovement(float direction) {
-        transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableForwardMoveSpeed * -direction * Time.deltaTime;
-        playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableForwardMoveSpeed * -direction * Time.deltaTime;
+        transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableSpeed * -direction * Time.deltaTime;
+        playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableSpeed * -direction * Time.deltaTime;
     }
 
     public void sidewaysAxisMovement(float direction) {
         CameraFollow followCam = playerCam.GetComponent<CameraFollow>();
-        transform.RotateAround(playerCam.transform.position, transform.up, moddableRotateSpeed * direction * Time.deltaTime);// * (2 - Mathf.Sqrt(followCam.springOffset.x * followCam.springOffset.x + followCam.springOffset.z * followCam.springOffset.z) / followCam.cameraDistance));
+        transform.RotateAround(playerCam.transform.position, transform.up, moddableSpeed * direction * Time.deltaTime * 8 * (4 - Mathf.Sqrt(followCam.springOffset.x * followCam.springOffset.x + followCam.springOffset.z * followCam.springOffset.z)/followCam.cameraDistance * 3));
         followCam.playerCounterRotate();
     }
 
@@ -125,15 +119,14 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
-        moddableForwardMoveSpeed = forwardMoveSpeed;
-        moddableRotateSpeed = rotateSpeed;
+        moddableSpeed = speed;
 
         anim.Play("Take 001 0", 0, 0f);
         print("running");
 
         forwardAxisMovement(dashDirectionY * dashSpeed);
         sidewaysAxisMovement(dashDirectionX * dashSpeed);
-
+        playerCam.GetComponent<CameraFollow>().springArm();
     }
 
     private bool dashCheck() {
