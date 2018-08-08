@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     float dashDirectionX;
     float dashDirectionY;
     public bool dashEnabled = true;
+    public GameObject dashTrail;
 
     bool isAirBorne = false;
     public float jumpForce;
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Time.time >= dashCooldown + dashTimeStart) {
             dashEnabled = true;
+            dashTrail.GetComponent<TrailRenderer>().enabled = true;
         }
         nextAttackReset();
 
@@ -80,6 +82,7 @@ public class PlayerMovement : MonoBehaviour {
         if (dashing) {
             Dash();
             dashEnabled = false;
+            dashTrail.GetComponent<TrailRenderer>().enabled = false;
         }
     }
 
