@@ -29,7 +29,11 @@ public class Enemy : MonoBehaviour {
         }
 
         if (health <= 0) {
-            Destroy(this.gameObject);
+            if (this.gameObject.GetComponent<Skeleton>() != null) {
+
+            } else {
+                Destroy(this.gameObject);
+            }
         }
 
         if (knockable == true) {
