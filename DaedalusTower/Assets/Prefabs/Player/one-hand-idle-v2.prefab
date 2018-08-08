@@ -1700,6 +1700,7 @@ MonoBehaviour:
   dashTime: 0.1
   dashCooldown: 0.5
   dashEnabled: 1
+  dashTrail: {fileID: 1882355009043100}
   jumpForce: 2000
   rotateSpeed: 30
 --- !u!114 &114482317162301424

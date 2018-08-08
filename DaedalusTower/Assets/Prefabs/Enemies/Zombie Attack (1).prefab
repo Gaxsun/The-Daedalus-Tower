@@ -79,6 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4765001383346846}
+  - component: {fileID: 65296626190630212}
   m_Layer: 0
   m_Name: Cup_R
   m_TagString: Untagged
@@ -176,7 +177,7 @@ GameObject:
   - component: {fileID: 195195046667125842}
   m_Layer: 0
   m_Name: Zombie Attack (1)
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2287,8 +2288,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153936275908562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5703266e-17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 4509913812170400}
   - {fileID: 4163715126415784}
@@ -2726,6 +2727,18 @@ Transform:
   m_Father: {fileID: 4868064383865246}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65296626190630212
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1079247924767132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95376548799977990
 Animator:
   serializedVersion: 3
@@ -2769,9 +2782,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 95376548799977990}
-  minDistance: 0
-  damage: 0
-  attackDelay: 0
+  boxCollider: {fileID: 1079247924767132}
+  minDistance: 1
+  damage: 3
+  attackDelay: 1
 --- !u!137 &137103362784583684
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

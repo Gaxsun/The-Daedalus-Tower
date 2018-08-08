@@ -9,6 +9,8 @@ public class Skeleton : MonoBehaviour {
 
     public Animator anim;
 
+    public GameObject boxCollider;
+
     public float minDistance;
 
     public int damage;
@@ -23,17 +25,23 @@ public class Skeleton : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        print("current anim state: " + anim.GetInteger("currentAnimationState"));
         GetComponent<NavMeshAgent>().destination = player.transform.position;
-
-        if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
-            anim.SetInteger("currentAnimationState", 0);
-            if (Time.time > attackTimer + attackDelay) {
-                print("working");
-                GetComponent<BoxCollider>().enabled = true;
-                attack();
+        if (Vector3.Distance(player.transform.position, transform.position) <= minDistance) {
+            GetComponent<NavMeshAgent>().destination = transform.position;
+            if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
+                anim.SetInteger("currentAnimationState", 0);
+                if (Time.time > attackTimer + attackDelay) {
+                    boxCollider.GetComponent<BoxCollider>().enabled = true;
+                    attack();
+                }
             }
-        } else if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("walk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack")) {
-            anim.SetInteger("currentAnimationState", 1);
+        } else if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("walk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("walk2")) {
+            if (Mathf.RoundToInt(Random.Range(0, 100)) >= 90) {
+                anim.SetInteger("currentAnimationState", 4);
+            } else {
+                anim.SetInteger("currentAnimationState", 1);
+            }  
         }
 
         if (previousAnimationState == 0) {
@@ -50,12 +58,13 @@ public class Skeleton : MonoBehaviour {
     }
 
     void attack() {
-        
+        print("working");
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
-            if (Mathf.RoundToInt(Random.Range(3,2)) == 3) {
-                anim.SetInteger("currentAnimationState", 3);
+
+            if (Mathf.RoundToInt(Random.Range(0,10)) >= 5) {
+                anim.Play("attack", 0); //SetInteger("currentAnimationState", 3);
             } else {
-                anim.SetInteger("currentAnimationState", 2);
+                anim.Play("attack2", 0);
             }
         }
     }
@@ -63,7 +72,7 @@ public class Skeleton : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if ((anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) && other.tag == "Player") {
             player.GetComponent<playerManager>().takeDamage(damage);
-            GetComponent<BoxCollider>().enabled = false;
+            boxCollider.GetComponent<BoxCollider>().enabled = false;
         }
     }
 

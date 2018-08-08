@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour {
     public float knockbackModdable;
     public bool attackActive = false;
     public GameObject effectObject;
+    public GameObject effectObject2;
     public AudioSource weaponHit;
     public GameObject hitEffectObject;
     Vector3 currentCollisionPoint;
