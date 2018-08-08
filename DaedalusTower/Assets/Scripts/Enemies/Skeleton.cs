@@ -60,7 +60,7 @@ public class Skeleton : MonoBehaviour {
     void attack() {
         print("working");
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
-
+            Random.InitState(Mathf.RoundToInt(Time.time)  * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
             if (Mathf.RoundToInt(Random.Range(0,10)) >= 5) {
                 anim.Play("attack", 0); //SetInteger("currentAnimationState", 3);
             } else {
