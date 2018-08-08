@@ -19,12 +19,12 @@ public class CameraFollow : MonoBehaviour {
     public float cameraDirection;
     public Vector3 cameraTarget;
     private float cameraYTarget;
-    public float wallOffset;
     public float modelYOffset;
 
     public bool bossFight;
     public float bossCamY;
-
+    public bool lockOn;
+    public GameObject lockTarget;
     CursorLockMode wantedMode;
 
     public Vector3 playerLocation;
@@ -44,31 +44,20 @@ public class CameraFollow : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
+        lockOn = false;
         
         }
 	
 	// Update is called once per frame
 	void Update () {
         currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
+        targetLock();
+        playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
         springArm();
         if (currentCamDistance >= cameraDistance) {
             cameraDistanceReset();
         }
         transform.position = player.transform.position + springOffset;
-        cameraYTarget = cameraTarget.y;
-        cameraTarget = player.transform.position + (springOffset * -(1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI)).normalized * cameraDistance;
-        cameraTarget.y = cameraYTarget;
-        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
-        Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
-        if (bossFight) {
-            cameraTarget.y = bossCamY;
-            float distancePoint;
-
-            distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
-            distancePoint /= cameraDistance;
-            cameraTarget *= distancePoint;
-        }
-        playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
     }
 
     public void cameraRotate(float rotateValueX) {
@@ -161,5 +150,33 @@ public class CameraFollow : MonoBehaviour {
 
         springOffset = initOffset;
         rotateOffset = initOffset;
+    }
+
+    private void targetLock() {
+        if (lockOn) {
+            if (lockTarget == null) {
+                lockOn = false;
+            } else {
+                cameraTarget = lockTarget.transform.position;
+                cameraTarget.y = 0;
+                Vector3 lockRotate = (lockTarget.transform.position - player.transform.position).normalized * -cameraDistance;
+                rotateOffset = new Vector3(lockRotate.x, rotateOffset.y, lockRotate.z);
+            }
+        }
+        cameraYTarget = cameraTarget.y;
+        cameraTarget = player.transform.position + (springOffset * -(1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI)).normalized * cameraDistance;
+        cameraTarget.y = cameraYTarget;
+
+        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
+        Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
+
+        if (bossFight) {
+            cameraTarget.y = bossCamY;
+            float distancePoint;
+
+            distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+            distancePoint /= cameraDistance;
+            cameraTarget *= distancePoint;
+        }
     }
 }

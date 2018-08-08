@@ -8,25 +8,33 @@ public class PlayerInput : MonoBehaviour {
 
     public bool controlsEnabled = true;
     bool pausePrimed;
-
+    float lockTimer;
+    public float lockDelay;
+    bool liveTarget;
+    RaycastHit lockTarget;
+    public GameObject lockCircle;
+    GameObject currentCircle;
+    GameObject targetEnemy;
+    public Color targetFade;
+    public Color targetActive;
     // Use this for initialization
     void Start () {
         //Lock Cursor
         wantedMode = CursorLockMode.Locked;
+        lockTimer = 0;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         Cursor.lockState = wantedMode;
-
         //Pause();      
 
         if (controlsEnabled) {
             inputs();
-        }  
-         
-	}
+        }
+        lockingOn();
+    }
 
     private void inputs() {
         /*
@@ -89,11 +97,67 @@ public class PlayerInput : MonoBehaviour {
             }           
         }
 
-        if (Input.GetAxis("RightStickX") != 0) {
+        if (Input.GetAxis("RightStickX") != 0 && GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn == false) {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("RightStickX"));
+        }
+
+        if (Input.GetAxis("RightStickClick") != 0) {
+        
+            if (Time.time > (lockTimer + lockDelay)) {
+                print(Time.time);
+                print(lockTimer + lockDelay);
+                lockTimer = Time.time;
+                if (GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
+                    GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn = false;
+                } else {
+                    if (liveTarget && lockTarget.collider.gameObject.tag == "enemy") {
+                        GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockTarget = lockTarget.collider.gameObject;
+                        GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn = true;
+                    } else if (liveTarget && lockTarget.collider.gameObject.tag == "mistwalker") {
+                        GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockTarget = lockTarget.collider.gameObject;
+                        GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn = true;
+                    }
+                }
+            }
         }
     }
 
+    private void lockingOn() {
+        Debug.DrawRay(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z) * 30, Color.yellow, 1);
+        if (Physics.BoxCast(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, transform.localScale / 4, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z),
+                                out lockTarget, transform.rotation, 30) && lockTarget.collider.gameObject.tag == "enemy") {
+            liveTarget = true;
+            if (!currentCircle) {
+                targetEnemy = lockTarget.collider.gameObject;
+                currentCircle = Instantiate(lockCircle, targetEnemy.transform.position, Quaternion.identity);
+            }
+        } else if (Physics.BoxCast(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, transform.localScale / 4, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z),
+                                    out lockTarget, transform.rotation, 30) && lockTarget.collider.gameObject.tag == "mistwalker") {
+            liveTarget = true;
+            if (!currentCircle) {
+                targetEnemy = lockTarget.collider.gameObject;
+                currentCircle = Instantiate(lockCircle, new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y+2, targetEnemy.transform.position.z), Quaternion.identity);
+            }
+        } else {
+            liveTarget = false;
+        }
+
+        if (currentCircle) {
+            if(lockTarget.collider.gameObject != targetEnemy && !GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
+                targetEnemy = lockTarget.collider.gameObject;
+            }
+            currentCircle.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2, targetEnemy.transform.position.z);
+            currentCircle.transform.LookAt(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation);
+        }
+        if (!GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn && !liveTarget) {
+            Destroy(currentCircle);
+        } else if (!GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
+            currentCircle.GetComponent<TextMesh>().color = new Color(0.45f, .45f, .45f, .45f);
+        } else {
+            currentCircle.GetComponent<TextMesh>().color = new Color(1, 1, 1, 1);
+
+        }
+    }
     /*private void Pause() {
         if (Input.GetAxisRaw("StartButton") != 0) {
             pausePrimed = true; 
