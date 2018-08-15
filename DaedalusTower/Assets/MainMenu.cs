@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
+    public Button playButton;
+    public Button optionButton;
 
     public void PlayGame ()
 	{
@@ -13,5 +16,13 @@ public class MainMenu : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenMenu() {
+        playButton.Select();
+    }
+
+    public void OpenOptions() {
+        optionButton.Select();
     }
 }
