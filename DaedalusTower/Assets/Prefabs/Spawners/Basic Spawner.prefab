@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481855652588704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1537952501758592, guid: 0e26afe7c89ffd944b8cfb2b6075a627, type: 2}
-  - {fileID: 1537952501758592, guid: 0e26afe7c89ffd944b8cfb2b6075a627, type: 2}
+  - {fileID: 1153936275908562, guid: 4e7970882bbdd114e82855583b0ade24, type: 2}
   spawnTrigger: {fileID: 0}
   corpsePile: 0
