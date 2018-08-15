@@ -85,6 +85,11 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetAxis("X") != 0) {
             GetComponent<PlayerMovement>().playerAttack();
+            GetComponent<Animator>().SetInteger("nextAttack", 1);
+        }
+
+        if(Input.GetAxis("Y") != 0) {
+            GetComponent<Animator>().SetInteger("nextAttack", 2);
         }
 
         if (Input.GetAxis("A") != 0) {
@@ -147,7 +152,7 @@ public class PlayerInput : MonoBehaviour {
                 targetEnemy = lockTarget.collider.gameObject;
             }
             currentCircle.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2, targetEnemy.transform.position.z);
-            currentCircle.transform.LookAt(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation);
+            currentCircle.transform.LookAt(GetComponent<PlayerMovement>().playerCam.transform);
         }
         if (!GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn && !liveTarget) {
             Destroy(currentCircle);
