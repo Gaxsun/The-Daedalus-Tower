@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour {
 
             dashing = true;
             GetComponent<PlayerInput>().controlsEnabled = false;
-            anim.Play("running", 0, 0f);
+            anim.Play("run", 0, 0f);
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
             dashTimeStart = Time.time;
         }

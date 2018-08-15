@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour {
 
         if (health <= 0) {
             if (this.gameObject.GetComponent<Skeleton>() != null) {
-
+                GetComponent<Skeleton>().playDeath();
             } else {
                 Destroy(this.gameObject);
             }
@@ -51,6 +51,9 @@ public class Enemy : MonoBehaviour {
     public void takeDamage(GameObject source, int damage, float knockback) {
         if (vulnerable) {
             if (GetComponent<Skeleton>() != null) {
+                if (GetComponent<Skeleton>().anim.GetInteger("currentAnimationState") == 5) {
+                    return;
+                }
                 GetComponent<Skeleton>().playDamaged();
             }
             knockbackG = knockback;
