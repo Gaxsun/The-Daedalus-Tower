@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: TutorialFloor
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _DETAIL_MULX2
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,8 +23,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 770ea85aec027044e8a1563f9b88d792, type: 3}
+        m_Scale: {x: 1.94, y: 2.07}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
         m_Texture: {fileID: 0}
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 7.5, y: 10}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 770ea85aec027044e8a1563f9b88d792, type: 3}
+        m_Texture: {fileID: 2800000, guid: f971c85df37f9924b9e391d870d2b7ad, type: 3}
         m_Scale: {x: 7.5, y: 10}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
