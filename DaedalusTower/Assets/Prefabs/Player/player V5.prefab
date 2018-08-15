@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 114403986015138970}
   m_Layer: 0
   m_Name: player V5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,8 +1418,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683017778722664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4591244742102438}
@@ -1773,10 +1773,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsEnabled: 1
-  lockDelay: 0
-  lockCircle: {fileID: 0}
-  targetFade: {r: 0, g: 0, b: 0, a: 0}
-  targetActive: {r: 0, g: 0, b: 0, a: 0}
+  lockDelay: 0.5
+  lockCircle: {fileID: 1391257802467644, guid: 01d6f4db0a93e0e4dba90e69a9b88670, type: 2}
+  targetFade: {r: 0, g: 0, b: 0, a: 0.39215687}
+  targetActive: {r: 1, g: 1, b: 1, a: 1}
 --- !u!136 &136938290151084022
 CapsuleCollider:
   m_ObjectHideFlags: 1
