@@ -13,4 +13,12 @@ public class SpawnTrigger : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter(Collision collision) {
+        triggered = true;
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        triggered = false;
+    }
 }
