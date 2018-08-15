@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
     public float knockback;
     public float knockbackModdable;
     public bool attackActive = false;
+    public bool heavyAttack;
     public GameObject effectObject;
     public GameObject effectObject2;
     public AudioSource weaponHit;
@@ -23,11 +24,21 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
         if (attackActive) {
-            effectObject.GetComponent<TrailRenderer>().enabled = true;
+            if (heavyAttack) {
+                effectObject2.GetComponent<TrailRenderer>().enabled = true;
+                effectObject.GetComponent<TrailRenderer>().enabled = false;
+            } else {
+                effectObject.GetComponent<TrailRenderer>().enabled = true;
+                effectObject2.GetComponent<TrailRenderer>().enabled = false;
+            }
             print("weapon active");
         } else {
             effectObject.GetComponent<TrailRenderer>().enabled = false;
+            effectObject2.GetComponent<TrailRenderer>().enabled = false;
         }
 	}
 

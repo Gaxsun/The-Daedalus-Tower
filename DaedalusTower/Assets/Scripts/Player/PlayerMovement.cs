@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+
+    //0->no attack  1->light attack  2->heavy attack   
+
     public Camera playerCam;
 
     public Animator anim;
@@ -57,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
             faceEnemy();
         }
         
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
+        if (!isAttacking()) {
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
             moddableSpeed = speed;
         } else {
@@ -121,7 +124,7 @@ public class PlayerMovement : MonoBehaviour {
         gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
         moddableSpeed = speed;
 
-        anim.Play("Take 001 0", 0, 0f);
+        anim.Play("run", 0, 0f);
         print("running");
 
         forwardAxisMovement(dashDirectionY * dashSpeed);
@@ -161,7 +164,7 @@ public class PlayerMovement : MonoBehaviour {
 
             dashing = true;
             GetComponent<PlayerInput>().controlsEnabled = false;
-            anim.Play("oneHandRun", 0, 0f);
+            anim.Play("running", 0, 0f);
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
             print("running");
             dashTimeStart = Time.time;
@@ -201,45 +204,115 @@ public class PlayerMovement : MonoBehaviour {
         print("Idle");
     }
 
-    public void playerAttack() {
-        if (Time.time > attackAgainDelay + 0.2f) {
-
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
-                anim.Play("Take 001 1", 0, 0f);
-            } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") || anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
-                anim.SetBool("nextAttack", true);
-            }
-
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
-                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback * 2.5f;
-            } else {
-                this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockbackModdable = this.gameObject.GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().knockback;
-            }
-
-            print("Attacking");
+    public bool attackInputSanitization() {
+        if (Time.time > attackAgainDelay + 0.04f) {
             attackAgainDelay = Time.time;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    bool isAttacking() {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("7H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L 0")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("8H")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L 0")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4L")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else {
+            return false;
         }
     }
 
     void nextAttackReset() {
         
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
-            animationCurrentFrame = "attack 1";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
-            animationCurrentFrame = "attack 5";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4")) {
-            animationCurrentFrame = "attack 4";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            animationCurrentFrame = "attack 2";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3")) {
-            animationCurrentFrame = "attack 3";
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("run")) {
+            animationCurrentFrame = "run";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle")) {
+            animationCurrentFrame = "idle";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L")) {
+            animationCurrentFrame = "1L";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1H")) {
+            animationCurrentFrame = "1H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L")) {
+            animationCurrentFrame = "2L";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
+            animationCurrentFrame = "6H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
+            animationCurrentFrame = "2H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5L")) {
+            animationCurrentFrame = "5L";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3L")) {
+            animationCurrentFrame = "3L";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4H")) {
+            animationCurrentFrame = "4H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("7H")) {
+            animationCurrentFrame = "7H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3H")) {
+            animationCurrentFrame = "3H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6L")) {
+            animationCurrentFrame = "6L";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L 0")) {
+            animationCurrentFrame = "1L 0";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5H")) {
+            animationCurrentFrame = "5H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("8H")) {
+            animationCurrentFrame = "8H";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L 0")) {
+            animationCurrentFrame = "2L 0";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4L")) {
+            animationCurrentFrame = "4L";
         } else {
             animationCurrentFrame = "notAttack";
         }
-
+        print(animationLastFrame != animationCurrentFrame);
 
         if (animationLastFrame != animationCurrentFrame) {
-            anim.SetBool("nextAttack", false);
+            print("elwood");
+            anim.SetInteger("nextAttack", 0);
             setRotation();
         }
 
