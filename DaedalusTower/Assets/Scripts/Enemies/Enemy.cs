@@ -50,6 +50,9 @@ public class Enemy : MonoBehaviour {
 
     public void takeDamage(GameObject source, int damage, float knockback) {
         if (vulnerable) {
+            if (GetComponent<Skeleton>() != null) {
+                GetComponent<Skeleton>().playDamaged();
+            }
             knockbackG = knockback;
             health = health - damage;
             source.GetComponent<Weapon>().playHitEffects();

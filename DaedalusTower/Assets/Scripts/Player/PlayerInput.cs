@@ -86,12 +86,12 @@ public class PlayerInput : MonoBehaviour {
         GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
         GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
 
-        if (Input.GetAxis("X") != 0) {
-            GetComponent<PlayerMovement>().playerAttack();
+        if (Input.GetButtonUp("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
+            print(Time.time);
         }
 
-        if(Input.GetAxis("Y") != 0) {
+        if(Input.GetButtonUp("Y")) {
             GetComponent<Animator>().SetInteger("nextAttack", 2);
         }
 
@@ -99,7 +99,7 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().Jump();
         }
 
-        if (Input.GetAxis("RightBumper") != 0) {
+            if (Input.GetAxis("RightBumper") != 0) {
             if (GetComponent<PlayerMovement>().dashEnabled) {
                 GetComponent<PlayerMovement>().DashStart();
             }           

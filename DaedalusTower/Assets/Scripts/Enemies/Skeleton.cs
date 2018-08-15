@@ -57,6 +57,10 @@ public class Skeleton : MonoBehaviour {
         previousAnimationState = anim.GetInteger("currentAnimationState");
     }
 
+    public void playDamaged() {
+        anim.Play("walk", 0);
+    }
+
     void attack() {
         print("working");
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
