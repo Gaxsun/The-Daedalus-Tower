@@ -6,17 +6,15 @@ public class CameraFollow : MonoBehaviour {
 
     public GameObject player;
     public float cameraDistance;
-
-    public float minCameraDistance;
     public float cameraPadding;
     
+    [Header("Player/Camera Local Offsets")]
     public Vector3 initOffset;
     public Vector3 springOffset;
     public Vector3 rotateOffset;
 
     public float rotateSpeed;
 
-    public float cameraDirection;
     public Vector3 cameraTarget;
     private float cameraYTarget;
     public float modelYOffset;

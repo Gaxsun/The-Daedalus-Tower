@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour {
     public bool controlsEnabled = true;
     bool pausePrimed;
     float lockTimer;
+
+    [Header("LockOn Settings")]
     public float lockDelay;
     bool liveTarget;
     RaycastHit lockTarget;
@@ -16,6 +18,7 @@ public class PlayerInput : MonoBehaviour {
     GameObject currentCircle;
     GameObject targetEnemy;
     public Color targetFade;
+   
     public Color targetActive;
     // Use this for initialization
     void Start () {
@@ -157,9 +160,9 @@ public class PlayerInput : MonoBehaviour {
         if (!GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn && !liveTarget) {
             Destroy(currentCircle);
         } else if (!GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
-            currentCircle.GetComponent<TextMesh>().color = new Color(0.45f, .45f, .45f, .45f);
+            currentCircle.GetComponent<TextMesh>().color = targetFade;
         } else {
-            currentCircle.GetComponent<TextMesh>().color = new Color(1, 1, 1, 1);
+            currentCircle.GetComponent<TextMesh>().color = targetActive;
 
         }
     }
