@@ -14,11 +14,15 @@ public class SpawnTrigger : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter(Collision collision) {
-        triggered = true;
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player") {
+            triggered = true;
+        }
     }
 
-    private void OnCollisionExit(Collision collision) {
-        triggered = false;
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            triggered = false;
+        }
     }
 }
