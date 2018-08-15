@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public Button playButton;
-    public Button optionButton;
+    public Slider optionSlider;
+    public Button backButton;
 
     public void PlayGame ()
 	{
@@ -23,6 +24,11 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void OpenOptions() {
-        optionButton.Select();
+        optionSlider.Select();
+    }
+
+    public void OpenControls()
+    {
+        backButton.Select();
     }
 }
