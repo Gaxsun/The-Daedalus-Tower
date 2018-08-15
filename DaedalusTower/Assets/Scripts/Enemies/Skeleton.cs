@@ -25,7 +25,6 @@ public class Skeleton : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        print("current anim state: " + anim.GetInteger("currentAnimationState"));
         GetComponent<NavMeshAgent>().destination = player.transform.position;
         if (Vector3.Distance(player.transform.position, transform.position) <= minDistance) {
             GetComponent<NavMeshAgent>().destination = transform.position;
@@ -62,7 +61,6 @@ public class Skeleton : MonoBehaviour {
     }
 
     void attack() {
-        print("working");
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
             Random.InitState(Mathf.RoundToInt(Time.time)  * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
             if (Mathf.RoundToInt(Random.Range(0,10)) >= 5) {

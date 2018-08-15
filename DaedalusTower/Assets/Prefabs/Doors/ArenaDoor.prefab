@@ -26,7 +26,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1980220492918164
 GameObject:
@@ -42,12 +42,13 @@ GameObject:
   - component: {fileID: 23140895267674790}
   - component: {fileID: 208701100806087940}
   - component: {fileID: 114618198722002838}
+  - component: {fileID: 114515772271820620}
   m_Layer: 0
   m_Name: ArenaDoor
   m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4517871934410116
 Transform:
@@ -68,9 +69,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980220492918164}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0, y: 3.25, z: -2}
-  m_LocalScale: {x: 7, y: 5.5, z: 0.50000024}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -20.25, y: 3.25, z: 0}
+  m_LocalScale: {x: 7, y: 5.5, z: 0.5000005}
   m_Children:
   - {fileID: 4517871934410116}
   m_Father: {fileID: 0}
@@ -139,7 +140,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 8, z: 6}
+  m_Size: {x: 1.2, y: 4, z: 6}
   m_Center: {x: 0, y: 0, z: -3}
 --- !u!65 &65812302158678326
 BoxCollider:
@@ -164,6 +165,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbec9a22ca1a8a74b97ad81cd4645008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114515772271820620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980220492918164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acdcb4c1cae60a4392dbb3b8fa97f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
 --- !u!114 &114618198722002838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,8 +192,14 @@ MonoBehaviour:
   liftSpeed: 8
   arenaSpawners:
   - {fileID: 0}
-  otherDoors: []
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  otherDoors:
+  - {fileID: 0}
   arenaBegin: 0
+  staggeredSpawns: 1
 --- !u!208 &208701100806087940
 NavMeshObstacle:
   m_ObjectHideFlags: 1

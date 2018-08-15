@@ -125,7 +125,6 @@ public class PlayerMovement : MonoBehaviour {
         moddableSpeed = speed;
 
         anim.Play("run", 0, 0f);
-        print("running");
 
         forwardAxisMovement(dashDirectionY * dashSpeed);
         sidewaysAxisMovement(dashDirectionX * dashSpeed);
@@ -166,7 +165,6 @@ public class PlayerMovement : MonoBehaviour {
             GetComponent<PlayerInput>().controlsEnabled = false;
             anim.Play("running", 0, 0f);
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
-            print("running");
             dashTimeStart = Time.time;
         }
         
@@ -193,7 +191,6 @@ public class PlayerMovement : MonoBehaviour {
         //    anim.Play("Take 001 0", 0, 0f);
         anim.SetBool("running", true);
         //}
-        print("running");
     }
 
     public void playIdle() {
@@ -201,7 +198,6 @@ public class PlayerMovement : MonoBehaviour {
             //anim.Play("Take 001", 0, 0f);
             anim.SetBool("running", false);
         //}
-        print("Idle");
     }
 
     public bool attackInputSanitization() {
@@ -308,10 +304,7 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             animationCurrentFrame = "notAttack";
         }
-        print(animationLastFrame != animationCurrentFrame);
-
         if (animationLastFrame != animationCurrentFrame) {
-            print("elwood");
             anim.SetInteger("nextAttack", 0);
             setRotation();
         }

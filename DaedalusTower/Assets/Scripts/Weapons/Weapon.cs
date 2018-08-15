@@ -35,7 +35,6 @@ public class Weapon : MonoBehaviour {
                 effectObject.GetComponent<TrailRenderer>().enabled = true;
                 effectObject2.GetComponent<TrailRenderer>().enabled = false;
             }
-            print("weapon active");
         } else {
             effectObject.GetComponent<TrailRenderer>().enabled = false;
             effectObject2.GetComponent<TrailRenderer>().enabled = false;

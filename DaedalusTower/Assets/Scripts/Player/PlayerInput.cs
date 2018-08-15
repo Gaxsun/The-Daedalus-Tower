@@ -88,7 +88,6 @@ public class PlayerInput : MonoBehaviour {
 
         if (Input.GetButtonUp("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
-            print(Time.time);
         }
 
         if(Input.GetButtonUp("Y")) {
