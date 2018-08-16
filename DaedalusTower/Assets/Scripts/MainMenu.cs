@@ -9,6 +9,16 @@ public class MainMenu : MonoBehaviour {
     public Slider optionSlider;
     public Button backButton;
 
+    CursorLockMode wantedMode;
+
+    public void Awake() {
+        wantedMode = CursorLockMode.Locked;
+    }
+
+    public void Update() {
+        Cursor.lockState = wantedMode;
+    }
+
     public void PlayGame ()
 	{
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
