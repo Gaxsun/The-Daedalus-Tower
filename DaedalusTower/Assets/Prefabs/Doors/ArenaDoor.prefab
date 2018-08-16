@@ -26,7 +26,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1980220492918164
 GameObject:
@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 65119827044476872}
   - component: {fileID: 65328842356874368}
   - component: {fileID: 23140895267674790}
-  - component: {fileID: 208701100806087940}
   - component: {fileID: 114618198722002838}
   - component: {fileID: 114515772271820620}
   m_Layer: 0
@@ -48,7 +47,7 @@ GameObject:
   m_TagString: terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4517871934410116
 Transform:
@@ -69,9 +68,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980220492918164}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -20.25, y: 3.25, z: 0}
-  m_LocalScale: {x: 7, y: 5.5, z: 0.5000005}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 34.5, y: 3.25, z: 0}
+  m_LocalScale: {x: 7.0000534, y: 5.5, z: 0.50000024}
   m_Children:
   - {fileID: 4517871934410116}
   m_Father: {fileID: 0}
@@ -190,28 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openHeight: 10
   liftSpeed: 8
-  arenaSpawners:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  otherDoors:
-  - {fileID: 0}
+  arenaSpawners: []
+  otherDoors: []
   arenaBegin: 0
-  staggeredSpawns: 1
---- !u!208 &208701100806087940
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980220492918164}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
+  staggeredSpawns: 0

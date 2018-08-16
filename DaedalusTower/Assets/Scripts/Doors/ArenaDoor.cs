@@ -64,6 +64,7 @@ public class ArenaDoor : MonoBehaviour {
             door.GetComponent<ArenaDoor>().arenaEnd = arenaEnd;
         }
     }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             openSesame = true;

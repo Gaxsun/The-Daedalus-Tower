@@ -31,6 +31,7 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
         Cursor.lockState = wantedMode;
+        Cursor.visible = false;
         //Pause();      
 
         if (controlsEnabled) {
