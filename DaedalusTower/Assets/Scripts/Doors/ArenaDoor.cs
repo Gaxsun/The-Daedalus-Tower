@@ -53,7 +53,6 @@ public class ArenaDoor : MonoBehaviour {
             if (corpsePile) {
                 arenaEnd = true;
             }
-            transform.localPosition = new Vector3(transform.localPosition.x, closedHeight, transform.localPosition.z);
         }
         if (arenaEnd && transform.localPosition.y < openHeight) {
             openSesame = true;
