@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4580981280635204}
   - component: {fileID: 33327121309643126}
   - component: {fileID: 23340004561502122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4020544076833268}
   - component: {fileID: 33340826397496830}
   - component: {fileID: 23151906092094556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4296389820354478}
   - component: {fileID: 33698166352347138}
   - component: {fileID: 23348356315802748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4537209621446022}
   - component: {fileID: 33471263157435010}
   - component: {fileID: 23653429662334364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4447145812951548}
   - component: {fileID: 33106725571029836}
   - component: {fileID: 23706607676935512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4941421246008212}
   - component: {fileID: 33161679199991274}
   - component: {fileID: 23627420875952652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4498181172370752}
   - component: {fileID: 33905820853757158}
   - component: {fileID: 23042675705038046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4479084086197686}
   - component: {fileID: 33076193945371340}
   - component: {fileID: 23794085109510452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4245285650917990}
   - component: {fileID: 33147491659179840}
   - component: {fileID: 23308867849502516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4007040775461760}
   - component: {fileID: 33260973490722602}
   - component: {fileID: 23627905406718434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4475083437843790}
   - component: {fileID: 33570909319122458}
   - component: {fileID: 23786632167318090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4646525945156378}
   - component: {fileID: 33503727501045010}
   - component: {fileID: 23700711175459496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4434547182767002}
   - component: {fileID: 33563761262734660}
   - component: {fileID: 23598990634256862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 4313908093419426}
   - component: {fileID: 33721150929498840}
   - component: {fileID: 23399441746913030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4011953000662618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StraightSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 4174974018761816}
   - component: {fileID: 33720534463496224}
   - component: {fileID: 23692121207367316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 4821189848864514}
   - component: {fileID: 33255405863197344}
   - component: {fileID: 23948862223014826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike047
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4462877578391472}
   - component: {fileID: 33124735262135080}
   - component: {fileID: 23530368834060406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike042
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 4956110906931152}
   - component: {fileID: 33130690342587550}
   - component: {fileID: 23577692078868006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4042407159593772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmallCurveSpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 4911855227642056}
   - component: {fileID: 33376216119643162}
   - component: {fileID: 23488438756568950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike028
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 4186551172998626}
   - component: {fileID: 33444906629254870}
   - component: {fileID: 23546630450830082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 4712181866699350}
   - component: {fileID: 33266491678821500}
   - component: {fileID: 23524818379641804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 4479048414123950}
   - component: {fileID: 33077130216389006}
   - component: {fileID: 23205216898495418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike046
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4065456532638898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HandleSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 4299013503259210}
   - component: {fileID: 33355329442466122}
   - component: {fileID: 23402035682539778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 4922733365505826}
   - component: {fileID: 33731769893536084}
   - component: {fileID: 23698253238744482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 4315019715184872}
   - component: {fileID: 33160326211528494}
   - component: {fileID: 23063628390286000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 4901099873478356}
   - component: {fileID: 33226284933209568}
   - component: {fileID: 23322578268173668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 4339388403156384}
   - component: {fileID: 33283070826866810}
   - component: {fileID: 23665528551372026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 4743051504304590}
   - component: {fileID: 33756657780237432}
   - component: {fileID: 23786434070327036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +542,7 @@ GameObject:
   - component: {fileID: 4720063030280352}
   - component: {fileID: 33372478694515162}
   - component: {fileID: 23937256404317608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 4066784519673822}
   - component: {fileID: 33346176594771770}
   - component: {fileID: 23208508363174378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 4260023541451948}
   - component: {fileID: 33540358874547900}
   - component: {fileID: 23040077498342736}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 4047096656582720}
   - component: {fileID: 33003619807525050}
   - component: {fileID: 23521161490499550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   - component: {fileID: 4542305953154300}
   - component: {fileID: 33221382155424198}
   - component: {fileID: 23995429191771382}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 4924075356286588}
   - component: {fileID: 33689290314624812}
   - component: {fileID: 23027051393789850}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike032
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 4829972340291410}
   - component: {fileID: 33051748489577738}
   - component: {fileID: 23335860271410770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 4265935916707936}
   - component: {fileID: 33047064732214694}
   - component: {fileID: 23146126072350590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   - component: {fileID: 4040188419705256}
   - component: {fileID: 33640205295538270}
   - component: {fileID: 23491961608540384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 4421803680983652}
   - component: {fileID: 33388184111075680}
   - component: {fileID: 23650791464589086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 4091233055282818}
   - component: {fileID: 33554947854680172}
   - component: {fileID: 23505584747772764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,7 +728,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4777315023612254}
   - component: {fileID: 96107956891700896}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: heavyAttackTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 4296323706207106}
   - component: {fileID: 33168623320360076}
   - component: {fileID: 23477632051472520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 4661170275731846}
   - component: {fileID: 33079851349581240}
   - component: {fileID: 23348589843760110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tube001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 4542968431319462}
   - component: {fileID: 33217358176830302}
   - component: {fileID: 23455351493698732}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +796,7 @@ GameObject:
   - component: {fileID: 4774588263283746}
   - component: {fileID: 33245459635134424}
   - component: {fileID: 23311933560811542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 4688060406591198}
   - component: {fileID: 33886157450785726}
   - component: {fileID: 23004423856116464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 4056643619559106}
   - component: {fileID: 33200886872656176}
   - component: {fileID: 23550250633692230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,8 +849,9 @@ GameObject:
   - component: {fileID: 82314752735671586}
   - component: {fileID: 114098813799212888}
   - component: {fileID: 65284217227842324}
+  - component: {fileID: 65322222167947504}
   - component: {fileID: 54231825394685576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Two handed sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -867,7 +868,7 @@ GameObject:
   - component: {fileID: 4447724947825706}
   - component: {fileID: 33434003498639930}
   - component: {fileID: 23026698519189604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +885,7 @@ GameObject:
   - component: {fileID: 4887008472307276}
   - component: {fileID: 33088099333849958}
   - component: {fileID: 23082186120141958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +902,7 @@ GameObject:
   - component: {fileID: 4475023820971740}
   - component: {fileID: 33522881300638090}
   - component: {fileID: 23636206336393606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,7 +919,7 @@ GameObject:
   - component: {fileID: 4489423542905798}
   - component: {fileID: 33195550635293650}
   - component: {fileID: 23264452738344976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -935,7 +936,7 @@ GameObject:
   - component: {fileID: 4531152145648466}
   - component: {fileID: 33807993487777114}
   - component: {fileID: 23176332100133946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torus001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +953,7 @@ GameObject:
   - component: {fileID: 4062797570418370}
   - component: {fileID: 33157494246875238}
   - component: {fileID: 23258721556495602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -969,7 +970,7 @@ GameObject:
   - component: {fileID: 4694525846641184}
   - component: {fileID: 33119239311235578}
   - component: {fileID: 23462583155963786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,7 +987,7 @@ GameObject:
   - component: {fileID: 4282219631849690}
   - component: {fileID: 33374964586781078}
   - component: {fileID: 23124750083089930}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike048
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1004,7 @@ GameObject:
   - component: {fileID: 4543010998443652}
   - component: {fileID: 33624632769498852}
   - component: {fileID: 23293678320384060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hedra001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1021,7 @@ GameObject:
   - component: {fileID: 4676558170175406}
   - component: {fileID: 33303912890474604}
   - component: {fileID: 23634282254308836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike040
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1038,7 @@ GameObject:
   - component: {fileID: 4080211548117868}
   - component: {fileID: 33694612525645560}
   - component: {fileID: 23230408237022990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1055,7 @@ GameObject:
   - component: {fileID: 4754161026573794}
   - component: {fileID: 33596178839326870}
   - component: {fileID: 23180123566787742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1072,7 @@ GameObject:
   - component: {fileID: 4085817621436580}
   - component: {fileID: 33663223826297596}
   - component: {fileID: 23656894906989998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pyramid006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525360044964450}
   - component: {fileID: 96964095533818668}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: lightAttackTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1105,7 @@ GameObject:
   - component: {fileID: 4855740772290858}
   - component: {fileID: 33803261301242832}
   - component: {fileID: 23583477378600950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike039
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1120,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4730657810196718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigCurvySpikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1136,7 +1137,7 @@ GameObject:
   - component: {fileID: 4984781715269948}
   - component: {fileID: 33247054356250014}
   - component: {fileID: 23974015645301286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,7 +1154,7 @@ GameObject:
   - component: {fileID: 4730533211923242}
   - component: {fileID: 33503591538141454}
   - component: {fileID: 23206568419698196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1170,7 +1171,7 @@ GameObject:
   - component: {fileID: 4455235831582628}
   - component: {fileID: 33428927837973678}
   - component: {fileID: 23973832413136576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1187,7 +1188,7 @@ GameObject:
   - component: {fileID: 4330114283758256}
   - component: {fileID: 33125962455238348}
   - component: {fileID: 23489390379297298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: handleWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1205,7 @@ GameObject:
   - component: {fileID: 4773811819722780}
   - component: {fileID: 33546709419722382}
   - component: {fileID: 23220757401310028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1222,7 @@ GameObject:
   - component: {fileID: 4063604299110468}
   - component: {fileID: 33587829326300370}
   - component: {fileID: 23832174729824940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1238,7 +1239,7 @@ GameObject:
   - component: {fileID: 4341238796279538}
   - component: {fileID: 33502174109500330}
   - component: {fileID: 23085192608150826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike037
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,7 +1256,7 @@ GameObject:
   - component: {fileID: 4942530529399334}
   - component: {fileID: 33032435375760922}
   - component: {fileID: 23740663108975310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BladeSpike030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5071,6 +5072,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 0.1}
   m_Center: {x: -0.08, y: 1.1, z: 0}
+--- !u!65 &65322222167947504
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1684543797228842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 2, z: 0.1}
+  m_Center: {x: -0.08, y: 1.1, z: 0}
 --- !u!82 &82314752735671586
 AudioSource:
   m_ObjectHideFlags: 1
@@ -5138,7 +5151,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

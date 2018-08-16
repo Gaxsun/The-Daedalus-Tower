@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 114073526485506526}
   - component: {fileID: 195195046667125842}
   - component: {fileID: 54019214576442410}
-  - component: {fileID: 136311294096654572}
+  - component: {fileID: 136376765080758282}
   m_Layer: 0
   m_Name: Zombie Attack (1)
   m_TagString: enemy
@@ -2836,7 +2836,7 @@ MonoBehaviour:
   damage: 3
   attackDelay: 1
   deathTimerStartTime: 0
---- !u!136 &136311294096654572
+--- !u!136 &136376765080758282
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

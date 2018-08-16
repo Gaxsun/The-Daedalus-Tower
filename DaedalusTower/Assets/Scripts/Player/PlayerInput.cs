@@ -24,6 +24,7 @@ public class PlayerInput : MonoBehaviour {
     void Start () {
         //Lock Cursor
         wantedMode = CursorLockMode.Locked;
+        Cursor.visible = false;
         lockTimer = 0;
     }
 	
@@ -31,7 +32,6 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
         Cursor.lockState = wantedMode;
-        Cursor.visible = false;
         //Pause();      
 
         if (controlsEnabled) {
