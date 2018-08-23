@@ -9,16 +9,17 @@ public class MainMenu : MonoBehaviour {
     public Slider optionSlider;
     public Button backButton;
     public bool continueButton = false;
+    public Button advanceButton;
 
-    //CursorLockMode wantedMode;
+    CursorLockMode wantedMode;
 
-    //public void Awake() {
-    //wantedMode = CursorLockMode.Locked;
-    // }
+    public void Awake() {
+    wantedMode = CursorLockMode.Locked;
+     }
 
-    //public void Update() {
-    //Cursor.lockState = wantedMode;
-    // }
+    public void Update() {
+    Cursor.lockState = wantedMode;
+     }
 
 
     public GameObject loadingScreen;
@@ -74,17 +75,24 @@ public class MainMenu : MonoBehaviour {
         Application.Quit();
     }
 
-    public void OpenMenu() {
+    public void OpenMenu()
+    {
         playButton.Select();
     }
 
-    public void OpenOptions() {
+    public void OpenOptions()
+    {
         optionSlider.Select();
     }
 
     public void OpenControls()
     {
         backButton.Select();
+    }
+
+    public void OpenLoading()
+    {
+        advanceButton.Select();
     }
 
     public void ContinueScene()

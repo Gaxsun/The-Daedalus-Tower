@@ -1665,6 +1665,7 @@ MonoBehaviour:
   optionSlider: {fileID: 1135790481}
   backButton: {fileID: 2138731036}
   continueButton: 0
+  advanceButton: {fileID: 586770671}
   loadingScreen: {fileID: 2056804466}
   slider: {fileID: 347111206}
   progressText: {fileID: 1984143358}
