@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class SpawnTrigger : MonoBehaviour {
     public bool triggered;
+    public bool bossFight;
 	// Use this for initialization
 	void Start () {
         triggered = false;
+        bossFight = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (bossFight) {
+            triggered = true;
+        }
 	}
 
     private void OnTriggerEnter(Collider other) {
