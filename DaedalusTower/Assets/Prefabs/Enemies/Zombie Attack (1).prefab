@@ -2836,6 +2836,8 @@ MonoBehaviour:
   damage: 3
   attackDelay: 1
   deathTimerStartTime: 0
+  hitEffectObject: {fileID: 1274205231688904, guid: d288ff6d7c356564689226ecb06315a9,
+    type: 2}
 --- !u!136 &136376765080758282
 CapsuleCollider:
   m_ObjectHideFlags: 1

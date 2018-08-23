@@ -21,6 +21,9 @@ public class Skeleton : MonoBehaviour {
 
     public float deathTimerStartTime;
 
+    public GameObject hitEffectObject;
+    private Vector3 currentCollisionPoint;
+
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -105,6 +108,7 @@ public class Skeleton : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if ((anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) && other.tag == "Player") {
             player.GetComponent<playerManager>().takeDamage(damage);
+            playHitEffects();
             boxCollider.GetComponent<BoxCollider>().enabled = false;
         }
     }
@@ -113,4 +117,12 @@ public class Skeleton : MonoBehaviour {
         anim.SetInteger("currentAnimationState", 5);
     }
 
+    void OnCollisionEnter(Collision other) {
+        currentCollisionPoint = other.contacts[0].point;
+    }
+
+    public void playHitEffects() {
+        Instantiate(hitEffectObject, currentCollisionPoint, Quaternion.identity);
+        //instantiate spark and flash
+    }
 }
