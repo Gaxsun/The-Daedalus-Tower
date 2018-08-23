@@ -48,7 +48,6 @@ public class mistwalker : MonoBehaviour {
     private bool fightReset;
 
     public float finalStageSpeedBoost;
-
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -176,6 +175,7 @@ public class mistwalker : MonoBehaviour {
             fightReset = true;
             attackDelay /= 2;
             anim.speed *= finalStageSpeedBoost;
+            GetComponent<NavMeshAgent>().speed *= finalStageSpeedBoost;
         }else if(health < maxHealth * stage2Health && !stage2){
             GetComponent<SpawnTrigger>().bossFight = true;
             stage2Spawner = Instantiate(stage2Spawner, transform.parent.position, Quaternion.identity);

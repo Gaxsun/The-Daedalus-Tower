@@ -1510,6 +1510,8 @@ MonoBehaviour:
   mistwalker: {fileID: 1428694181401156}
   clawDamage: 20
   clawKnockback: 5
+  hitEffectObject: {fileID: 1263569810379856, guid: a66f7e983cc09f34c9768f907d60a6cd,
+    type: 2}
 --- !u!114 &114464827497161054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1578,6 +1580,8 @@ MonoBehaviour:
   mistwalker: {fileID: 1428694181401156}
   clawDamage: 20
   clawKnockback: 5
+  hitEffectObject: {fileID: 1263569810379856, guid: a66f7e983cc09f34c9768f907d60a6cd,
+    type: 2}
 --- !u!114 &114985172595268730
 MonoBehaviour:
   m_ObjectHideFlags: 1
