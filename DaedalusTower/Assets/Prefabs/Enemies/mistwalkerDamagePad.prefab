@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848373463720846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.91, z: -48.69288}
+  m_LocalPosition: {x: 0, y: 0.501, z: 0}
   m_LocalScale: {x: 5, y: 0.001, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 08b3f94c14c948e4090adae963b04fe0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,8 @@ MonoBehaviour:
   radius: 5
   growthSpeed: 1
   damage: 5
-  timeFromDamToDest: 2
+  timeFromDamToDest: 3
+  puddleBoom: {fileID: 1432575754690796, guid: d919ed2cbe5c2fe40a7922150350b850, type: 2}
 --- !u!136 &136373435103788958
 CapsuleCollider:
   m_ObjectHideFlags: 1

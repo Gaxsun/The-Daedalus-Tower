@@ -48,6 +48,10 @@ public class mistwalker : MonoBehaviour {
     private bool fightReset;
 
     public float finalStageSpeedBoost;
+
+    public float pulseDelay;
+    private float pulseTimeDelay;
+    public GameObject pulsePad;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -123,6 +127,11 @@ public class mistwalker : MonoBehaviour {
         }
 
         fightStages();
+
+        if(Time.time > pulseDelay + pulseTimeDelay && stage2) {
+            Instantiate(pulsePad, player.transform.position, Quaternion.identity);
+            pulseTimeDelay = Time.time;
+        }
     }
 
     void move() {
@@ -185,6 +194,7 @@ public class mistwalker : MonoBehaviour {
             stage2 = true;
             fightReset = true;
             attackDelay /= 2;
+            pulseTimeDelay = Time.time;
         }
 
         if(Time.time > stageReturnDelay + postSpawnDelay && fightReset) {

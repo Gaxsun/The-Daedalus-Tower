@@ -1554,6 +1554,8 @@ MonoBehaviour:
     type: 2}
   postSpawnDelay: 10
   finalStageSpeedBoost: 1.3
+  pulseDelay: 7
+  pulsePad: {fileID: 1848373463720846, guid: d008b203775d3f042ba5e7d8ceb83be4, type: 2}
 --- !u!114 &114600843449932296
 MonoBehaviour:
   m_ObjectHideFlags: 1

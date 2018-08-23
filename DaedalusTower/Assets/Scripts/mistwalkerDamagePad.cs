@@ -8,17 +8,17 @@ public class mistwalkerDamagePad : MonoBehaviour {
     public float growthSpeed;
     public int damage;
     public float timeFromDamToDest;
+    public GameObject puddleBoom;
     float timerStart;
 
 	// Use this for initialization
 	void Start () {
         transform.localScale = new Vector3(0, 0.001f, 0);
-        timerStart = Time.time + 1000000;
+        timerStart = Time.time;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        print(Time.time >= timerStart + timeFromDamToDest);
         if (Time.time >= timerStart + timeFromDamToDest) {
             Destroy(this.gameObject);
         }
@@ -26,14 +26,18 @@ public class mistwalkerDamagePad : MonoBehaviour {
 
         if (transform.localScale.x <= radius) {
             transform.localScale += new Vector3(Time.deltaTime * growthSpeed, 0, Time.deltaTime * growthSpeed);
+            timerStart = Time.time;
         }
-	}
+        if (transform.localScale.x >= radius) {
+            Instantiate(puddleBoom, transform.position, Quaternion.identity);
+        }
+    }
 
     private void OnTriggerStay(Collider other) {
         if (transform.localScale.x >= radius) {
             timerStart = Time.time;
             other.GetComponent<playerManager>().takeDamage(damage);
-            //play damage particle effect here
+            Instantiate(puddleBoom, transform.position, Quaternion.identity);
         }
     }
 }
