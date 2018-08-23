@@ -30,6 +30,8 @@ public class MainMenu : MonoBehaviour {
     public void PlayGame (int sceneIndex)
 	{
         StartCoroutine(LoadAsynchronously(sceneIndex));
+        OpenLoading();
+        Destroy(playButton);
     }
 
     IEnumerator LoadAsynchronously (int sceneIndex)
