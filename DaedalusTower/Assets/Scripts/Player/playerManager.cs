@@ -37,7 +37,6 @@ public class playerManager : MonoBehaviour {
             can.enabled = false;
             //win.enabled = false;
             death.enabled = true;
-            print("(.)(.)");
             restartCount += Time.deltaTime;
             print(death.enabled);
         }
