@@ -209,7 +209,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    bool isAttacking() {
+    public bool isAttacking() {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;

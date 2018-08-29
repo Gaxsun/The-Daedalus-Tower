@@ -81,7 +81,12 @@ ModelImporter:
     4300000: Body_mesh
     9500000: //RootNode
     13700000: Body_mesh
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Infernal_dog_mat
+    second: {fileID: 2100000, guid: d13c084ede48ab84c886cb524de4d117, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -23,7 +23,7 @@ public class hellhound : MonoBehaviour {
 
     public GameObject hitEffectObject;
     private Vector3 currentCollisionPoint;
-
+    private bool attackFix = true;
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,6 +47,7 @@ public class hellhound : MonoBehaviour {
                 }
                 if (Time.time > attackTimer + attackDelay) {
                     boxCollider.GetComponent<BoxCollider>().enabled = true;
+                    attackFix = true;
                     attack();
                 }
             }
@@ -103,10 +104,15 @@ public class hellhound : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if ((anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(1)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(2)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(3)")) && other.tag == "Player") {
-            player.GetComponent<playerManager>().takeDamage(damage);
-            playHitEffects();
-            boxCollider.GetComponent<BoxCollider>().enabled = false;
+        if ((anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(1)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(2)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(3)")) && (other.tag == "Player" || (other.tag == "Weapon" && !player.GetComponent<PlayerMovement>().isAttacking()))) {
+            if (attackFix) {
+                player.GetComponent<playerManager>().takeDamage(damage);
+                playHitEffects();
+                attackTimer = Time.time;
+                boxCollider.GetComponent<BoxCollider>().enabled = false;
+                print(boxCollider.GetComponent<BoxCollider>().enabled);
+                attackFix = false;
+            }
         }
     }
 
