@@ -54,6 +54,10 @@ public class Enemy : MonoBehaviour {
                 if (GetComponent<Skeleton>().anim.GetInteger("currentAnimationState") == 5) {
                     return;
                 }
+                AudioSource skeletonSounds = GetComponent<Skeleton>().skeletonSounds;
+                skeletonSounds.clip = GetComponent<Skeleton>().damageSounds[Mathf.RoundToInt(Random.Range(0, 3))];
+                skeletonSounds.loop = false;
+                skeletonSounds.Play();
                 GetComponent<Skeleton>().playDamaged();
             }
             knockbackG = knockback;

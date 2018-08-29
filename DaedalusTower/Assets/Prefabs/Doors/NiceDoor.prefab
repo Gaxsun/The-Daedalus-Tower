@@ -60,6 +60,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 80c6e6d7a8a981349a1a8679327a9a06, type: 2}
+  - {fileID: 2100000, guid: 98fdc2daf868f0246afbdd9cea6aa3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,3 +137,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggered: 0
+  bossFight: 0

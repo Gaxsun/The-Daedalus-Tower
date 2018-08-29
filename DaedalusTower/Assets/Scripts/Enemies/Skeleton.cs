@@ -24,10 +24,47 @@ public class Skeleton : MonoBehaviour {
     public GameObject hitEffectObject;
     private Vector3 currentCollisionPoint;
 
+    public AudioClip[] attackSounds;
+    public AudioClip[] deathSounds;
+    public AudioClip[] ambientSounds;
+    public AudioClip[] spawnSounds;
+    public AudioClip[] damageSounds;
+    public AudioSource skeletonSounds;
+    private bool dead = false;
+
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         attackTimer = 0;
+
+        Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+        int randNum = Mathf.RoundToInt(Random.Range(0, 60));
+        if (randNum >= 50)
+        {
+            skeletonSounds.clip = ambientSounds[0];
+        }
+        else if (randNum >= 40)
+        {
+            skeletonSounds.clip = ambientSounds[1];
+        }
+        else if (randNum >= 30)
+        {
+            skeletonSounds.clip = ambientSounds[2];
+        }
+        else if (randNum >= 20)
+        {
+            skeletonSounds.clip = ambientSounds[3];
+        }
+        else if (randNum >= 10)
+        {
+            skeletonSounds.clip = ambientSounds[4];
+        }
+        else
+        {
+            skeletonSounds.clip = deathSounds[5];
+        }
+        skeletonSounds.loop = true;
+        skeletonSounds.Play();
     }
 
     // Update is called once per frame
@@ -102,6 +139,27 @@ public class Skeleton : MonoBehaviour {
             } else {
                 anim.Play("attack2", 0);
             }
+
+            int randNum = Mathf.RoundToInt(Random.Range(0, 40));
+            if (randNum >= 30)
+            {
+                skeletonSounds.clip = attackSounds[0];
+            }
+            else if(randNum >= 20)
+            {
+                skeletonSounds.clip = attackSounds[1];
+            }
+            else if (randNum >= 10)
+            {
+                skeletonSounds.clip = attackSounds[2];
+            }
+            else
+            {
+                skeletonSounds.clip = attackSounds[3];
+            }
+
+            skeletonSounds.loop = false;
+            skeletonSounds.Play();
         }
     }
 
@@ -115,6 +173,26 @@ public class Skeleton : MonoBehaviour {
 
     public void playDeath() {
         anim.SetInteger("currentAnimationState", 5);
+        if (!dead)
+        {
+            Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            int randNum = Mathf.RoundToInt(Random.Range(0, 30));
+            if (randNum >= 20)
+            {
+                skeletonSounds.clip = deathSounds[0];
+            }
+            else if (randNum >= 10)
+            {
+                skeletonSounds.clip = deathSounds[1];
+            }
+            else
+            {
+                skeletonSounds.clip = deathSounds[2];
+            }
+            skeletonSounds.loop = false;
+            skeletonSounds.Play();
+            dead = true;
+        }
     }
 
     void OnCollisionEnter(Collision other) {
