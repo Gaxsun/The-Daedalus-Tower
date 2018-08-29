@@ -22,7 +22,7 @@ public class BasicSpawner : MonoBehaviour {
     void Update() {
         if (spawn && spawnTrigger.GetComponent<SpawnTrigger>().triggered) {
             for (int i = 0; i < enemies.Length; i++) {
-                fighters[i] = Instantiate(enemies[i], transform);
+                fighters[i] = Instantiate(enemies[i], transform.position, Quaternion.identity);
             }
             spawn = false;
         }

@@ -24,6 +24,14 @@ public class Skeleton : MonoBehaviour {
     public GameObject hitEffectObject;
     private Vector3 currentCollisionPoint;
 
+    public AudioClip[] attackSounds;
+    public AudioClip[] deathSounds;
+    public AudioClip[] ambientSounds;
+    public AudioClip[] spawnSounds;
+    public AudioClip[] damageSounds;
+    public AudioSource skeletonSounds;
+
+
     // Use this for initialization
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -102,6 +110,26 @@ public class Skeleton : MonoBehaviour {
             } else {
                 anim.Play("attack2", 0);
             }
+
+            int randNum = Mathf.RoundToInt(Random.Range(0, 40));
+            if (randNum >= 30)
+            {
+                skeletonSounds.clip = attackSounds[0];
+            }
+            else if(randNum >= 20)
+            {
+                skeletonSounds.clip = attackSounds[1];
+            }
+            else if (randNum >= 10)
+            {
+                skeletonSounds.clip = attackSounds[2];
+            }
+            else
+            {
+                skeletonSounds.clip = attackSounds[3];
+            }
+
+            skeletonSounds.Play();
         }
     }
 
@@ -115,6 +143,22 @@ public class Skeleton : MonoBehaviour {
 
     public void playDeath() {
         anim.SetInteger("currentAnimationState", 5);
+
+        int randNum = Mathf.RoundToInt(Random.Range(0, 30));
+        if (randNum >= 20)
+        {
+            skeletonSounds.clip = deathSounds[0];
+        }
+        else if (randNum >= 10)
+        {
+            skeletonSounds.clip = deathSounds[1];
+        }
+        else
+        {
+            skeletonSounds.clip = deathSounds[2];
+        }
+
+        skeletonSounds.Play();
     }
 
     void OnCollisionEnter(Collision other) {
