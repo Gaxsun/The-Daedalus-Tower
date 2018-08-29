@@ -23,7 +23,7 @@ public class mistwalker : MonoBehaviour {
 
     private float normSpeed;
     private float normAccel;
-    
+
     public float attackDelay;
     private float attackTimer;
     private float attackPrep;
@@ -46,12 +46,20 @@ public class mistwalker : MonoBehaviour {
     private bool stage2;
     private bool stage3;
     private bool fightReset;
+    private bool alive = true;
 
     public float finalStageSpeedBoost;
 
     public float pulseDelay;
     private float pulseTimeDelay;
     public GameObject pulsePad;
+
+    public AudioClip[] attackSounds;
+    public AudioClip[] deathSounds;
+    public AudioClip[] damageSounds;
+    public AudioClip[] spawnSounds;
+    public AudioSource mistwalkerSounds;
+
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -60,6 +68,10 @@ public class mistwalker : MonoBehaviour {
         fogDensity = 0;
         normSpeed = GetComponentInParent<NavMeshAgent>().speed;
         normAccel = GetComponentInParent<NavMeshAgent>().acceleration;
+
+        mistwalkerSounds.clip = spawnSounds[0];
+        mistwalkerSounds.loop = false;
+        mistwalkerSounds.Play();
 
         bossCanvas = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>();
         bossHealthBar = GameObject.FindGameObjectWithTag("bossCanvas").GetComponent<Canvas>().GetComponentInChildren<Slider>();
@@ -147,10 +159,19 @@ public class mistwalker : MonoBehaviour {
             transform.LookAt(player.transform);
             attacking = true;
             anim.Play("Take 001 2", 0, 0f);
+
+            Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            mistwalkerSounds.clip = attackSounds[Mathf.RoundToInt(Random.Range(0, 2))];
+            mistwalkerSounds.loop = false;
+            mistwalkerSounds.Play();
+
             //anim.SetTrigger("attack");
         }
         print("Mistwalker Attacking");
         attackTimer = Time.time;
+
+        
+
     }
 
     public void takeDamage(int damage) {
@@ -158,9 +179,14 @@ public class mistwalker : MonoBehaviour {
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
                 anim.Play("Take 001 1", 0, 0f);
                 print(!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2"));
+
+                mistwalkerSounds.clip = damageSounds[0];
+                mistwalkerSounds.loop = false;
+                mistwalkerSounds.Play();
             }
             health = health - damage;
             print("Mistwalker Took Damage");
+                   
 
             vulnerableCount = Time.time;
 
@@ -171,7 +197,6 @@ public class mistwalker : MonoBehaviour {
         } else {
             vulnerable = false;
         }
-
     }
 
     private void fightStages() {
@@ -195,6 +220,14 @@ public class mistwalker : MonoBehaviour {
             fightReset = true;
             attackDelay /= 2;
             pulseTimeDelay = Time.time;
+        }
+    
+        if(health <= 0 && alive == true){
+            mistwalkerSounds.clip = deathSounds[0];
+            mistwalkerSounds.loop = false;
+            mistwalkerSounds.Play();
+            alive = false;
+
         }
 
         if(Time.time > stageReturnDelay + postSpawnDelay && fightReset) {
