@@ -1169,7 +1169,7 @@ MonoBehaviour:
   fireEffect: {fileID: 1505928384990246, guid: f0f61156558d9fe4b9fc1162e3b5129c, type: 2}
   minDistance: 2
   damage: 3
-  attackDelay: 5
+  attackDelay: 2
   deathTimerStartTime: 0
   hitEffectObject: {fileID: 1274205231688904, guid: d288ff6d7c356564689226ecb06315a9,
     type: 2}

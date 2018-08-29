@@ -14,6 +14,7 @@ TagManager:
   - healthFill
   - rightClaw
   - leftClaw
+  - Weapon
   layers:
   - Default
   - TransparentFX
