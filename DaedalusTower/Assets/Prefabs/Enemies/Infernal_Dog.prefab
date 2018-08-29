@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 54264856261002954}
   - component: {fileID: 195193982982414464}
   - component: {fileID: 114277382229837244}
+  - component: {fileID: 82451550021204066}
   m_Layer: 0
   m_Name: Infernal_Dog
   m_TagString: enemy
@@ -1122,6 +1123,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 20, z: 20}
   m_Center: {x: -5, y: 3, z: 0}
+--- !u!82 &82451550021204066
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498225077241832}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95090120145903120
 Animator:
   serializedVersion: 3
@@ -1168,6 +1249,19 @@ MonoBehaviour:
   boxCollider: {fileID: 1729978147959878}
   fireEffect: {fileID: 1505928384990246, guid: f0f61156558d9fe4b9fc1162e3b5129c, type: 2}
   minDistance: 2
+  attackSounds:
+  - {fileID: 8300000, guid: c6c0db0132e43f247a6ab9024dab66bd, type: 3}
+  - {fileID: 8300000, guid: b4c4693ccacf91a4498633fcefe7648b, type: 3}
+  - {fileID: 8300000, guid: 7e5d3a5d0f14ac5479eb89e677fcb34b, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: d63e9d7012a7e1646a469ef36b1b5ce7, type: 3}
+  - {fileID: 8300000, guid: b6b8f8cc85779604b9d8ac7b25fa18ba, type: 3}
+  ambientSounds:
+  - {fileID: 8300000, guid: 160aba6d896e4bc4983089d211c708a5, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: d63e9d7012a7e1646a469ef36b1b5ce7, type: 3}
+  - {fileID: 8300000, guid: b6b8f8cc85779604b9d8ac7b25fa18ba, type: 3}
+  hellhoundSounds: {fileID: 82451550021204066}
   damage: 3
   attackDelay: 2
   deathTimerStartTime: 0

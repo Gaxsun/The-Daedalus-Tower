@@ -14,10 +14,17 @@ public class hellhound : MonoBehaviour {
 
     public float minDistance;
 
+    public AudioClip[] attackSounds;
+    public AudioClip[] deathSounds;
+    public AudioClip[] ambientSounds;
+    public AudioClip[] damageSounds;
+    public AudioSource hellhoundSounds;
+
     public int damage;
     public float attackDelay;
     private float attackTimer;
     private int previousAnimationState = 0;
+    private bool alive = true;
 
     public float deathTimerStartTime;
 
@@ -81,6 +88,19 @@ public class hellhound : MonoBehaviour {
         }
 
         previousAnimationState = anim.GetInteger("currentAnimationState");
+
+        if(hellhoundSounds.isPlaying == false)
+        {
+            hellhoundSounds.clip = ambientSounds[0];
+            hellhoundSounds.loop = false;
+            hellhoundSounds.Play();
+        }
+
+        if(hellhoundSounds.isPlaying == false)
+        {
+            hellhoundSounds.clip = null;
+        }
+
     }
 
     public void playDamaged() {
@@ -100,6 +120,15 @@ public class hellhound : MonoBehaviour {
             } else {
                 anim.Play("Attack(3)", 0);
             }
+
+            if (hellhoundSounds.clip != attackSounds[0] && hellhoundSounds.clip != attackSounds[1] && hellhoundSounds.clip != attackSounds[2])
+            {
+                Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+                hellhoundSounds.clip = attackSounds[Mathf.RoundToInt(Random.Range(0, 3))];
+                hellhoundSounds.loop = false;
+                hellhoundSounds.Play();               
+            }
+            
         }
     }
 
@@ -122,6 +151,14 @@ public class hellhound : MonoBehaviour {
         } else {
             anim.Play("Dead", 0);
         }
+        if(alive == true)
+        {
+            Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            hellhoundSounds.clip = deathSounds[Mathf.RoundToInt(Random.Range(0, 2))];
+            hellhoundSounds.loop = false;
+            hellhoundSounds.Play();
+        }
+
     }
 
     void OnCollisionEnter(Collision other) {

@@ -59,6 +59,13 @@ public class Enemy : MonoBehaviour {
                 skeletonSounds.loop = false;
                 skeletonSounds.Play();
                 GetComponent<Skeleton>().playDamaged();
+            }else if (GetComponent<hellhound>() != null)
+            {
+                AudioSource hellhoundSounds = GetComponent<hellhound>().hellhoundSounds;
+                hellhoundSounds.clip = GetComponent<hellhound>().damageSounds[Mathf.RoundToInt(Random.Range(0, 2))];
+                hellhoundSounds.loop = false;
+                hellhoundSounds.Play();
+                GetComponent<hellhound>().playDamaged();
             }
             knockbackG = knockback;
             health = health - damage;
