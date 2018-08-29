@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 114272124709896202}
   - component: {fileID: 136849493141430216}
   - component: {fileID: 195478074632373642}
+  - component: {fileID: 82811963931706626}
   m_Layer: 0
   m_Name: Low-fidel boss 1 Idle
   m_TagString: mistwalker
@@ -1476,6 +1477,86 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!82 &82811963931706626
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976498080746214}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95365105823275950
 Animator:
   serializedVersion: 3
@@ -1506,6 +1587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1976498080746214}
   clawDamage: 10
+  clawKnockback: 0
+  hitEffectObject: {fileID: 0}
 --- !u!114 &114151021393969030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1519,6 +1602,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1976498080746214}
   clawDamage: 10
+  clawKnockback: 0
+  hitEffectObject: {fileID: 0}
 --- !u!114 &114235048500709592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1532,6 +1617,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1976498080746214}
   clawDamage: 10
+  clawKnockback: 0
+  hitEffectObject: {fileID: 0}
 --- !u!114 &114244045894492202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1559,8 +1646,30 @@ MonoBehaviour:
   health: 100
   anim: {fileID: 95365105823275950}
   minDistance: 7
+  bossHealthBar: {fileID: 0}
+  bossCanvas: {fileID: 0}
   maxFogDensity: 0.04
   fogGrowthRate: 10
+  attackDelay: 0
+  invulnerableStateLength: 1
+  stage2Health: 0
+  stage3Health: 0
+  stage2Spawner: {fileID: 0}
+  stage3Spawner: {fileID: 0}
+  postSpawnDelay: 0
+  finalStageSpeedBoost: 0
+  pulseDelay: 0
+  pulsePad: {fileID: 0}
+  attackSounds:
+  - {fileID: 8300000, guid: 08df5a8c31b8379429f6ea8ed00a36fe, type: 3}
+  - {fileID: 8300000, guid: 129b3798f84ebde4ba873f207f911379, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 5e96c46bdd98d6845bb11eef4cc94012, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: de1bb1d1a1fd19e4dbd58dc196ce30ee, type: 3}
+  spawnSounds:
+  - {fileID: 8300000, guid: 76e8760294c957846b9857cc02cc2f4d, type: 3}
+  mistwalkerSounds: {fileID: 82811963931706626}
 --- !u!114 &114296526938078318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1574,6 +1683,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1976498080746214}
   clawDamage: 10
+  clawKnockback: 0
+  hitEffectObject: {fileID: 0}
 --- !u!114 &114561000849376888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1599,6 +1710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mistwalker: {fileID: 1976498080746214}
   clawDamage: 10
+  clawKnockback: 0
+  hitEffectObject: {fileID: 0}
 --- !u!114 &114614520249587896
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3577,7 +3577,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -4450,9 +4450,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 840d1cf965d0a274daf9e32df1173a69, type: 3}
   - {fileID: 8300000, guid: 81ac493fc09ecbe43972b16df7ac5228, type: 3}
   - {fileID: 8300000, guid: e1ef36b6390462d418dff217c1d274a5, type: 3}
-  ambientSounds: []
-  spawnSounds: []
-  damageSounds: []
+  ambientSounds:
+  - {fileID: 8300000, guid: 5625d8aba01cdd4439c282fb15ef620d, type: 3}
+  - {fileID: 8300000, guid: 6f4aae98bc3db7f4e806b8c24d24bac1, type: 3}
+  - {fileID: 8300000, guid: 5552fdc80e5241c4abd95ff22764c015, type: 3}
+  - {fileID: 8300000, guid: 82a65353a4e6a3849bdab524b14d3b28, type: 3}
+  - {fileID: 8300000, guid: 817dd7c32cde3de4b91bfd6724bea623, type: 3}
+  - {fileID: 8300000, guid: df46fdd124c9de04a8d803e9b63da30c, type: 3}
+  spawnSounds:
+  - {fileID: 8300000, guid: c3d0d874e76c5854a982ca494b9c86ed, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: 48121481e695de34f9ac1bb77fc8c7d8, type: 3}
+  - {fileID: 8300000, guid: 5e2beac20a5dc02449877f6ccef71b0a, type: 3}
+  - {fileID: 8300000, guid: 1050feb5fc754494da18b8b06cd21313, type: 3}
   skeletonSounds: {fileID: 82346895063012492}
 --- !u!136 &136376765080758282
 CapsuleCollider:
