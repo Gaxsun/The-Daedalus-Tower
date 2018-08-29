@@ -63,7 +63,7 @@ public class Skeleton : MonoBehaviour {
         {
             skeletonSounds.clip = deathSounds[5];
         }
-        skeletonSounds.loop = true;
+        skeletonSounds.loop = false;
         skeletonSounds.Play();
     }
 
@@ -123,6 +123,16 @@ public class Skeleton : MonoBehaviour {
         }
 
         previousAnimationState = anim.GetInteger("currentAnimationState");
+
+        if(skeletonSounds.isPlaying == false)
+        {
+            Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            skeletonSounds.clip = ambientSounds[Mathf.RoundToInt(Random.Range(0, 6))];
+            skeletonSounds.loop = false;
+            skeletonSounds.Play();
+
+        }           
+
     }
 
     public void playDamaged() {
