@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public CapsuleCollider capsule;
 
+    public GameObject groundPoundEffect;
+
     Rigidbody rb;
 
     public float speed;
@@ -44,6 +46,7 @@ public class PlayerMovement : MonoBehaviour {
     bool dashing = false;
 
 
+
     // Game Time Started
     void Start() {
         anim = GetComponentInChildren<Animator>();
@@ -72,6 +75,7 @@ public class PlayerMovement : MonoBehaviour {
             dashEnabled = true;
             dashTrail.GetComponent<TrailRenderer>().enabled = true;
         }
+        groundPound();
         nextAttackReset();
     }
 
@@ -311,4 +315,26 @@ public class PlayerMovement : MonoBehaviour {
 
         animationLastFrame = animationCurrentFrame;
     }
+
+    private void groundPound() {
+        if (isGroundPoundAttack()) {
+            Instantiate(groundPoundEffect);
+        }
+    }
+
+    private bool isGroundPoundAttack() {
+        if (animationCurrentFrame != animationLastFrame) {
+            if (animationLastFrame == "4H") {
+                return true;
+            } else if (animationLastFrame == "4L") {
+                return true;
+            } else if (animationLastFrame == "5H") {
+                return true;
+            } else if (animationLastFrame == "6H") {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
