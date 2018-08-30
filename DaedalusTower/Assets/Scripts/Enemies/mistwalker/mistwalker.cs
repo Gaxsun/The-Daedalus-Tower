@@ -140,7 +140,7 @@ public class mistwalker : MonoBehaviour {
 
         fightStages();
 
-        if(Time.time > pulseDelay + pulseTimeDelay && stage2) {
+        if(Time.time > pulseDelay + pulseTimeDelay + GetComponent<mistwalkerDamagePad>().timeFromDamToDest && stage2) {
             Instantiate(pulsePad, player.transform.position, Quaternion.identity);
             pulseTimeDelay = Time.time;
         }
