@@ -61,7 +61,7 @@ public class Skeleton : MonoBehaviour {
         }
         else
         {
-            skeletonSounds.clip = deathSounds[5];
+            skeletonSounds.clip = deathSounds[0];
         }
         skeletonSounds.loop = false;
         skeletonSounds.Play();
