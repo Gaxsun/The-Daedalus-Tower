@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: e88706aeb063c5841a697c3a5279ea9f
-timeCreated: 1535587621
-=======
-guid: 9ca926ac5ae49d5428ec8217a39c25e1
-timeCreated: 1535592463
-licenseType: Free
->>>>>>> fdd987081a11ef629c2d35a5f55f96c20bb9c5d9
 VideoClipImporter:
   externalObjects: {}
   serializedVersion: 2

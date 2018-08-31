@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour {
             dashEnabled = true;
             dashTrail.GetComponent<TrailRenderer>().enabled = true;
         }
-        groundPound();
+        
         nextAttackReset();
     }
 
@@ -310,19 +310,21 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (animationLastFrame != animationCurrentFrame) {
             anim.SetInteger("nextAttack", 0);
+            
             setRotation();
         }
-
+        groundPound();
         animationLastFrame = animationCurrentFrame;
     }
 
     private void groundPound() {
         if (isGroundPoundAttack()) {
-            Instantiate(groundPoundEffect);
+            Instantiate(groundPoundEffect, transform.position, Quaternion.identity);
         }
     }
 
     private bool isGroundPoundAttack() {
+        print(animationCurrentFrame != animationLastFrame);
         if (animationCurrentFrame != animationLastFrame) {
             if (animationLastFrame == "4H") {
                 return true;

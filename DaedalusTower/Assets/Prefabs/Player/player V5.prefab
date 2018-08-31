@@ -1750,6 +1750,8 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   anim: {fileID: 95199054790328166}
   capsule: {fileID: 136938290151084022}
+  groundPoundEffect: {fileID: 1976368910600126, guid: 0f258ab8359433544b1f2a04f64d7f11,
+    type: 2}
   speed: 5
   sidewaysMoveSpeed: 5
   faceEnemyRadius: 0.3
