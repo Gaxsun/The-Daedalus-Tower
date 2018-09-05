@@ -61,6 +61,15 @@ public class Weapon : MonoBehaviour {
         }
         if (other.tag == "mistwalker" && attackActive) {
             other.GetComponent<mistwalker>().takeDamage(baseDamage);
+
+            if (weaponSoundSource.isPlaying == false)
+            {
+                weaponSoundSource.Stop();
+                weaponSoundSource.clip = weaponSound[Mathf.RoundToInt(Random.Range(0, 2))];
+                weaponSoundSource.loop = false;
+                weaponSoundSource.Play();
+            }
+
         }
     }
 

@@ -106,10 +106,40 @@ public class PlayerInput : MonoBehaviour {
         //change these to get button down
         if (Input.GetButtonUp("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
+
+            int randNum = Mathf.RoundToInt(Random.Range(0, 30));
+
+            if (randNum >= 20 && inputSoundsSource.isPlaying == false)
+            {
+                inputSoundsSource.Stop();
+                inputSoundsSource.clip = inputSounds[3];
+                inputSoundsSource.loop = false;
+                inputSoundsSource.Play();
+            }
+            else if (randNum >= 10 && inputSoundsSource.isPlaying == false)
+            {
+                inputSoundsSource.Stop();
+                inputSoundsSource.clip = inputSounds[4];
+                inputSoundsSource.loop = false;
+                inputSoundsSource.Play();
+            }
+
         }
 
         if(Input.GetButtonUp("Y")) {
             GetComponent<Animator>().SetInteger("nextAttack", 2);
+
+            //Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            int randNum = Mathf.RoundToInt(Random.Range(0, 50));
+            print(randNum);
+            if (randNum >= 39 && inputSoundsSource.clip != inputSounds[2])
+            {
+                inputSoundsSource.Stop();
+                inputSoundsSource.clip = inputSounds[2];
+                inputSoundsSource.loop = false;
+                inputSoundsSource.Play();
+            }
+
         }
 
         if (Input.GetAxis("A") != 0) {

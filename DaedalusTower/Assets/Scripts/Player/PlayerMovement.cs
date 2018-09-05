@@ -36,9 +36,12 @@ public class PlayerMovement : MonoBehaviour {
     float dashDirectionY;
     public bool dashEnabled = true;
     public GameObject dashTrail;
-
+    
     private AudioSource jumpSound;
     private AudioClip[] jumpClip;
+    public AudioClip[] bangClip;
+    public AudioSource bangSource;
+
 
     public bool isAirBorne = false;
     public float jumpForce;
@@ -240,7 +243,7 @@ public class PlayerMovement : MonoBehaviour {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
-            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;           
             return true;
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
@@ -296,7 +299,7 @@ public class PlayerMovement : MonoBehaviour {
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L")) {
             animationCurrentFrame = "2L";
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
-            animationCurrentFrame = "6H";
+            animationCurrentFrame = "6H";   
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
             animationCurrentFrame = "2H";
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5L")) {
@@ -336,7 +339,15 @@ public class PlayerMovement : MonoBehaviour {
     private void groundPound() {
         if (isGroundPoundAttack()) {
             Instantiate(groundPoundEffect, transform.position, Quaternion.identity);
+
+            if (bangSource.isPlaying == false)
+            {
+                bangSource.clip = bangClip[0];
+                bangSource.loop = false;
+                bangSource.Play();
+            }
         }
+        
     }
 
     private bool isGroundPoundAttack() {

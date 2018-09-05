@@ -31,6 +31,10 @@ public class playerManager : MonoBehaviour {
     public int powerOfGodsDamageBoost = 3;
     public int healthRegen = 2; // per sec
 
+    public AudioClip[] playerSounds;
+    public AudioSource playerSoundsSource;
+    public bool dead;
+
     public List<GameObject> inventory;
 
 	// Use this for initialization
@@ -39,6 +43,8 @@ public class playerManager : MonoBehaviour {
         Instantiate(currentWeapon, weaponPosition.transform);
         healthBar.maxValue = healthMax;
         powerOfGodsBar.maxValue = powerOfGodsMax;
+
+        dead = false;
     }
 	
 	// Update is called once per frame
@@ -53,6 +59,16 @@ public class playerManager : MonoBehaviour {
             death.enabled = true;
             restartCount += Time.deltaTime;
             print(death.enabled);
+
+            if(playerSoundsSource.isPlaying == false && dead == false)
+            {
+                playerSoundsSource.Stop();
+                playerSoundsSource.clip = playerSounds[0];
+                playerSoundsSource.loop = false;
+                playerSoundsSource.Play();
+                dead = true;
+            }
+
         }
 
         if (!bossCanvas.enabled && transform.position.x < -90) {
@@ -126,6 +142,15 @@ public class playerManager : MonoBehaviour {
     public void takeDamage(int damage) {
         health = health - damage;
         endGodPower();
+
+        if (playerSoundsSource.isPlaying == false && dead == false)
+        {
+            playerSoundsSource.Stop();
+            playerSoundsSource.clip = playerSounds[Mathf.RoundToInt(Random.Range(1, 3))];
+            playerSoundsSource.loop = false;
+            playerSoundsSource.Play();
+        }
+
     }
 
 }

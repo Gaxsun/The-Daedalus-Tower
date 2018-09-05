@@ -84,6 +84,7 @@ public class mistwalker : MonoBehaviour {
         stage2 = false;
         stage3 = false;
         fightReset = false;
+
     }
 
     // Update is called once per frame
