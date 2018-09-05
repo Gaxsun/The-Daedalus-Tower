@@ -26,6 +26,7 @@ public class PlayerInput : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //Lock Cursor
+        pausePrimed = true;
         wantedMode = CursorLockMode.Locked;
         Cursor.visible = false;
         lockTimer = 0;
@@ -35,7 +36,7 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 
         Cursor.lockState = wantedMode;
-        //Pause();      
+        Pause();      
 
         if (controlsEnabled) {
             inputs();
@@ -195,7 +196,7 @@ public class PlayerInput : MonoBehaviour {
 
         }
     }
-    /*private void Pause() {
+    private void Pause() {
         if (Input.GetAxisRaw("StartButton") != 0) {
             pausePrimed = true; 
         }
@@ -203,15 +204,15 @@ public class PlayerInput : MonoBehaviour {
         if (pausePrimed && Input.GetAxisRaw("StartButton") == 0) {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0F;
-                GetComponent<playerManager>().inventoryWindow.enabled = true;
+                //GetComponent<playerManager>().inventoryWindow.enabled = true;
                 controlsEnabled = false;
             } else {
                 
                 Time.timeScale = 1F;
-                GetComponent<playerManager>().inventoryWindow.enabled = false;
+                //GetComponent<playerManager>().inventoryWindow.enabled = false;
                 controlsEnabled = true;
             }
             pausePrimed = false;
         }
-    }*/
+    }
 }
