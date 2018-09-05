@@ -13,9 +13,11 @@ public class Weapon : MonoBehaviour {
     public bool heavyAttack;
     public GameObject effectObject;
     public GameObject effectObject2;
-    public AudioSource weaponHit;
     public GameObject hitEffectObject;
     Vector3 currentCollisionPoint;
+
+    public AudioClip[] weaponSound;
+    public AudioSource weaponSoundSource;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +46,15 @@ public class Weapon : MonoBehaviour {
     void OnTriggerStay(Collider other) {
         if (other.tag == "enemy" && attackActive) {
             other.GetComponent<Enemy>().takeDamage(this.gameObject,baseDamage, knockbackModdable);
+
+            if (weaponSoundSource.isPlaying == false)
+            {
+                weaponSoundSource.Stop();
+                weaponSoundSource.clip = weaponSound[Mathf.RoundToInt(Random.Range(0, 2))];
+                weaponSoundSource.loop = false;
+                weaponSoundSource.Play();
+            }
+
         }
         if (other.tag == "destTerrain" && attackActive) {
             Destroy(other.gameObject);
@@ -58,7 +69,6 @@ public class Weapon : MonoBehaviour {
     }
 
     public void playHitEffects() {
-        weaponHit.Play();
         Instantiate(hitEffectObject, currentCollisionPoint, Quaternion.identity);
         //instantiate spark and flash
     }

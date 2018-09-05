@@ -846,11 +846,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4032393746132318}
   - component: {fileID: 95178042430306178}
-  - component: {fileID: 82314752735671586}
   - component: {fileID: 114098813799212888}
   - component: {fileID: 65284217227842324}
   - component: {fileID: 65322222167947504}
   - component: {fileID: 54231825394685576}
+  - component: {fileID: 82791611145382344}
   m_Layer: 8
   m_Name: Two handed sword
   m_TagString: Weapon
@@ -5084,7 +5084,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2, z: 0.1}
   m_Center: {x: -0.08, y: 1.1, z: 0}
---- !u!82 &82314752735671586
+--- !u!82 &82791611145382344
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -5093,7 +5093,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e40d59771a953d340ac7e8ffb270283b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5151,7 +5151,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5375,6 +5375,9 @@ MonoBehaviour:
   heavyAttack: 0
   effectObject: {fileID: 1840941148187220}
   effectObject2: {fileID: 1594336436685182}
-  weaponHit: {fileID: 82314752735671586}
   hitEffectObject: {fileID: 1249854140947588, guid: 37b2df328f46a6b43ab9d19914edddb6,
     type: 2}
+  weaponSound:
+  - {fileID: 8300000, guid: b8823adb8f8b39a4187c4d69eb130a67, type: 3}
+  - {fileID: 8300000, guid: 4bb90c845bc21e14caa8f9584cb3221a, type: 3}
+  weaponSoundSource: {fileID: 82791611145382344}

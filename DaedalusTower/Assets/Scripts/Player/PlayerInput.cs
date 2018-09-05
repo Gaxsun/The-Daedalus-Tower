@@ -18,6 +18,9 @@ public class PlayerInput : MonoBehaviour {
     GameObject currentCircle;
     GameObject targetEnemy;
     public Color targetFade;
+
+    public AudioClip[] inputSounds;
+    public AudioSource inputSoundsSource;
    
     public Color targetActive;
     // Use this for initialization
@@ -80,8 +83,20 @@ public class PlayerInput : MonoBehaviour {
          */
         if (Input.GetAxis("LeftStickY") != 0 || Input.GetAxis("LeftStickX") != 0) {
             GetComponent<PlayerMovement>().playRun();
+            if(inputSoundsSource.isPlaying == false && GetComponent<PlayerMovement>().isAirBorne == false)
+            {
+                inputSoundsSource.clip = inputSounds[0];
+                inputSoundsSource.loop = true;
+                inputSoundsSource.Play();
+            }
         } else {
             GetComponent<PlayerMovement>().playIdle();
+            if(inputSoundsSource.clip == inputSounds[0])
+            {
+                inputSoundsSource.Stop();
+                inputSoundsSource.clip = null;
+                inputSoundsSource.loop = false;
+            }
         }
 
         GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
