@@ -37,7 +37,10 @@ public class PlayerMovement : MonoBehaviour {
     public bool dashEnabled = true;
     public GameObject dashTrail;
 
-    bool isAirBorne = false;
+    private AudioSource jumpSound;
+    private AudioClip[] jumpClip;
+
+    public bool isAirBorne = false;
     public float jumpForce;
     float jumpCoolDown;
 
@@ -51,7 +54,8 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         anim = GetComponentInChildren<Animator>();
         rb = this.GetComponent<Rigidbody>();
-
+        jumpSound = GetComponent<PlayerInput>().inputSoundsSource;
+        jumpClip = GetComponent<PlayerInput>().inputSounds;
         moddableSpeed = speed;
     }
 
@@ -77,6 +81,15 @@ public class PlayerMovement : MonoBehaviour {
         }
         groundPound();
         nextAttackReset();
+        RaycastHit hit;
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), Vector3.down, out hit, 0.11f))
+        {
+            isAirBorne = false;
+        }
+        else
+        {
+            isAirBorne = true;
+        }
     }
 
     void FixedUpdate() {
@@ -175,18 +188,19 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Jump() {
-
-        RaycastHit hit;
-        
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), new Vector3(0,-1,0), out hit, 0.1f)) {
-            isAirBorne = false;
-        } else {
-            isAirBorne = true;
-        }
-
         if (!isAirBorne && Time.time > jumpCoolDown + 1) {
             rb.AddForce(new Vector3(0,jumpForce,0));
             jumpCoolDown = Time.time;
+            
+            if (jumpSound.clip != jumpClip[1] || jumpSound.isPlaying == false)
+            {
+                jumpSound.Stop();
+                jumpSound.clip = null;
+                jumpSound.clip = jumpClip[1];
+                jumpSound.loop = false;
+                jumpSound.Play();
+            }
+
         }
     }
 
@@ -194,6 +208,7 @@ public class PlayerMovement : MonoBehaviour {
         //if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 0") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 3") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 4") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 5")) {
         //    anim.Play("Take 001 0", 0, 0f);
         anim.SetBool("running", true);
+
         //}
     }
 
