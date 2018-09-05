@@ -153,7 +153,57 @@ ModelImporter:
     13700018: Pants002
     13700020: shoes
     13700022: shoes.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chest Plater
+    second: {fileID: 2100000, guid: 9b2bcbf4ae7a1f842a06c7663e9a25ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feet
+    second: {fileID: 2100000, guid: d39ca1adf70e6b641b0bc83cbcfef388, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HELMET
+    second: {fileID: 2100000, guid: e5946e02d9d1cfe40b68cedbe3ba2fbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hands
+    second: {fileID: 2100000, guid: 4ea1d299b03f920419af04a837bd29dd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #4'
+    second: {fileID: 2100000, guid: 3bd4fd38f9be24a418ed570ed26f23d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: acc17321ec32b49418f2fb4e8a5623f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handsa
+    second: {fileID: 2100000, guid: 8db0eb7a04134084d823220589fb1fe6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red
+    second: {fileID: 2100000, guid: 2f0fc2f31dc1d684fa821ddbecfe9cad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoes
+    second: {fileID: 2100000, guid: e248c08da976fce4884974e7aab7d1f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wings
+    second: {fileID: 2100000, guid: 6071b9fc782d4de4cb5c5c768824f014, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
