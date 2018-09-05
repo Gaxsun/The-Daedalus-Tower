@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour {
     public GameObject player;
     public float cameraDistance;
     public float cameraPadding;
-    
+
     [Header("Player/Camera Local Offsets")]
     public Vector3 initOffset;
     public Vector3 springOffset;
@@ -24,6 +24,9 @@ public class CameraFollow : MonoBehaviour {
     public bool lockOn;
     public GameObject lockTarget;
     CursorLockMode wantedMode;
+
+    public AudioClip[] ambientSounds;
+    public AudioSource ambientSoundSource;
 
     public Vector3 playerLocation;
     private float currentCamDistance;
@@ -43,6 +46,12 @@ public class CameraFollow : MonoBehaviour {
         Cursor.visible = false;
         playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
         lockOn = false;
+
+        ambientSoundSource.Stop();
+        ambientSoundSource.clip = null;
+        ambientSoundSource.clip = ambientSounds[0];
+        ambientSoundSource.loop = true;
+        ambientSoundSource.Play();
         
         }
 	
@@ -171,6 +180,14 @@ public class CameraFollow : MonoBehaviour {
         if (bossFight) {
             cameraTarget.y = bossCamY;
             float distancePoint;
+
+            if (ambientSoundSource.clip == ambientSounds[0])
+            {
+                ambientSoundSource.Stop();
+                ambientSoundSource.clip = ambientSounds[1];
+                ambientSoundSource.loop = true;
+                ambientSoundSource.Play();
+            }
 
             distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
             distancePoint /= cameraDistance;
