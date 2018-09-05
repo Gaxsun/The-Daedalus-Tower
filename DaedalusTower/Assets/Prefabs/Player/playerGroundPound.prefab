@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  growthSpeed: 20
+  growthSpeed: 40
   damage: 1
   knockback: 5
   timeFromDamToDest: 1
