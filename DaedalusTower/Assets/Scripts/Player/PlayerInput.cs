@@ -87,6 +87,7 @@ public class PlayerInput : MonoBehaviour {
         GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
         GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
 
+        //change these to get button down
         if (Input.GetButtonUp("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
         }
@@ -99,7 +100,20 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().Jump();
         }
 
-            if (Input.GetAxis("RightBumper") != 0) {
+        if (Input.GetAxis("B") != 0) {
+            if (GetComponent<playerManager>().powerOfGods == GetComponent<playerManager>().powerOfGodsMax) {
+                GetComponent<playerManager>().powerOfGodsActive = true;
+                GetComponent<playerManager>().GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
+                GetComponent<playerManager>().GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
+                GetComponent<playerManager>().powerOfGods -= Mathf.RoundToInt(GetComponent<playerManager>().powerOfGodsDecayRate * Time.time);
+                GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage * GetComponent<playerManager>().powerOfGodsDamageBoost;
+            } else {
+                GetComponent<playerManager>().endGodPower();
+            }
+            
+        }
+
+        if (Input.GetAxis("RightBumper") != 0) {
             if (GetComponent<PlayerMovement>().dashEnabled) {
                 GetComponent<PlayerMovement>().DashStart();
             }           

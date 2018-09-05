@@ -16,10 +16,20 @@ public class playerManager : MonoBehaviour {
     public Canvas bossCanvas;
     public Canvas win;
     public GameObject fill;
-    public int healthRegen = 2; // per sec
     public int health = 200;
+    public int healthMax = 200;
     private float secondCount;
     private float restartCount = 0;
+
+    public Slider powerOfGodsBar;
+    public Image powerOfGodsBarBG;
+    public bool powerOfGodsActive = false;
+    public int powerOfGodsMax = 200;
+    public int powerOfGods = 0;
+    public float powerOfGodsDecayRate;
+    public float powerOfGodsSpeedBoost;
+    public int powerOfGodsDamageBoost;
+    public int healthRegen = 2; // per sec
 
     public List<GameObject> inventory;
 
@@ -27,11 +37,15 @@ public class playerManager : MonoBehaviour {
 	void Start () {
         // Place selected weapon in player's hand
         Instantiate(currentWeapon, weaponPosition.transform);
-        healthBar.maxValue = health;
+        healthBar.maxValue = healthMax;
+        powerOfGodsBar.maxValue = powerOfGodsMax;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        powerOfTheGods();
+
         healthBar.value = health;
         if (health <= 0) {
             can.enabled = false;
@@ -58,18 +72,57 @@ public class playerManager : MonoBehaviour {
             fill.GetComponent<Image>().color = new Color(fill.GetComponent<Image>().color.r, fill.GetComponent<Image>().color.g + Time.deltaTime*0.1f, fill.GetComponent<Image>().color.b + Time.deltaTime * 0.1f);
         }
 
-        if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
-            health = health + healthRegen;
-            secondCount = Time.time;
-        } else if(Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
-            health = Mathf.RoundToInt(healthBar.maxValue);
-            secondCount = Time.time;
+    }
+
+    void powerOfTheGods() {
+        powerOfGodsBar.value = powerOfGods;
+
+        //set bar color if ready to activate.
+        if (powerOfGods == powerOfGodsMax) {
+            powerOfGodsBarBG.rectTransform.localScale = new Vector3(1.05f, 2.5f, powerOfGodsBarBG.rectTransform.localScale.z);
+            powerOfGodsBarBG.color = new Color(255,255,255, 82.5f + (17.5f * Mathf.Sin(Time.time)));
+        } else if(powerOfGodsActive) {
+            powerOfGodsBarBG.rectTransform.localScale = new Vector3(1.05f, 2.5f, powerOfGodsBarBG.rectTransform.localScale.z);
+            powerOfGodsBarBG.color = new Color(255, 255, 255, 100);
+        } else {
+            powerOfGodsBarBG.rectTransform.localScale = new Vector3(1, 1, powerOfGodsBarBG.rectTransform.localScale.z);
+            powerOfGodsBarBG.color = new Color(255, 255, 255, 65);
+        }
+
+        if (powerOfGodsActive) {
+            if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
+                health = health + healthRegen;
+                secondCount = Time.time;
+            } else if (Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
+                health = Mathf.RoundToInt(healthBar.maxValue);
+                secondCount = Time.time;
+            }
+        }
+
+        if (powerOfGods <= 0) {
+            endGodPower();
         }
 
     }
 
+    public void endGodPower() {
+        powerOfGodsActive = false;
+        GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed / powerOfGodsSpeedBoost;
+        GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed / powerOfGodsSpeedBoost;
+        weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage / powerOfGodsDamageBoost;
+    }
+
+    public void addGodPower(int powerToAdd) {
+        if (powerOfGods + powerToAdd >= powerOfGodsMax) {
+            powerOfGods = powerOfGodsMax;
+        } else {
+            powerOfGods += powerToAdd;
+        }
+    }
+
     public void takeDamage(int damage) {
         health = health - damage;
+        endGodPower();
     }
 
 }

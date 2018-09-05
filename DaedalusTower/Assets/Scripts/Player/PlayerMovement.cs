@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     Rigidbody rb;
 
     public float speed;
-    private float moddableSpeed;
+    public float moddableSpeed;
     //public float backwardMoveSpeed;
     public float sidewaysMoveSpeed;
 
