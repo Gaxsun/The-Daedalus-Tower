@@ -44,7 +44,9 @@ public class TextBoxManager : MonoBehaviour{
     private void Update()
     {
         theText.text = textLines[currentLine];
-
+        if (Input.GetButtonUp("LeftStickClick") && currentLine == 0) {
+            currentLine = 8;
+        }
         if (Input.GetButtonUp("RightStickClick") && currentLine == 0)
         {
             currentLine = 1;

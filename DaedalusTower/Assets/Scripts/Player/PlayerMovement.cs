@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour {
     float dashDirectionX;
     float dashDirectionY;
     public bool dashEnabled = true;
-    public GameObject dashTrail;
     
     private AudioSource jumpSound;
     private AudioClip[] jumpClip;
@@ -80,7 +79,6 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Time.time >= dashCooldown + dashTimeStart) {
             dashEnabled = true;
-            dashTrail.GetComponent<TrailRenderer>().enabled = true;
         }
         
         nextAttackReset();
@@ -99,7 +97,6 @@ public class PlayerMovement : MonoBehaviour {
         if (dashing) {
             Dash();
             dashEnabled = false;
-            dashTrail.GetComponent<TrailRenderer>().enabled = false;
         }
     }
 

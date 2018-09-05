@@ -2,7 +2,7 @@
 	Properties{
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Texture", 2D) = "white" {}
-		_godPowerActive("godBool", Int) = 1
+		_godPowerActive("godBool", Int) = 0
 	}
 
 		SubShader{
@@ -78,19 +78,23 @@
 	struct VSOutput
 	{
 		float4 pos: SV_POSITION;
+		float4 col: COLOR;
+		//float3 worldPos;
 	};
 
 	int _godPowerActive;
+	sampler2D _MainTex;
 
 	// normal mapping vertex shader
 	VSOutput VS_NormalMapping(VSInput a_Input)
 	{
 		VSOutput output;
-
+		float3 worldPos = mul(unity_ObjectToWorld, a_Input.pos);
 		// calculate homogenous position
-
-		float theta = _Time.y * 3;
-
+		float4 color = float4(0.5 + sin(10* worldPos.x) / 2, 1, 1, 1);
+		//float4 color = float4(0.5 + sin(10 * (sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z))), 0.5 + sin(10 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z)), 0.5 + sin(10 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z)), 1);
+		output.col = color;
+		output.col.a = _godPowerActive * (1 + (_godPowerActive * (2 * sin(_Time.y * 10) / 2.2) * 0.5 + sin(30 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z))));
 		output.pos = UnityObjectToClipPos(a_Input.pos);
 
 		return output;
@@ -100,8 +104,8 @@
 	float4 PS_NormalMapping(VSOutput a_Input) : COLOR
 	{
 		// index into textures
-		float4 colour = float4(0, 255, 255, _godPowerActive * sin(_Time.y * 5));
-
+		//float4 colour = a_Input.col * float4(1, 1, 1, _godPowerActive * (2 * sin(_Time.y * 5)/2.2));
+		float4 colour = a_Input.col;
 		// return texture colour modified by diffuse component
 		return colour;
 	}
