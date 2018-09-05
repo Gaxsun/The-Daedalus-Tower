@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void forwardAxisMovement(float direction) {
+        print(moddableSpeed);
         transform.position = transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableSpeed * -direction * Time.deltaTime;
         playerCam.transform.position = playerCam.transform.position + new Vector3(playerCam.transform.forward.x, 0, playerCam.transform.forward.z).normalized * moddableSpeed * -direction * Time.deltaTime;
     }

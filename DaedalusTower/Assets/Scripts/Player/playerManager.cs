@@ -16,8 +16,8 @@ public class playerManager : MonoBehaviour {
     public Canvas bossCanvas;
     public Canvas win;
     public GameObject fill;
-    public int health = 200;
-    public int healthMax = 200;
+    public int health = 100;
+    public int healthMax = 100;
     private float secondCount;
     private float restartCount = 0;
 
@@ -26,9 +26,9 @@ public class playerManager : MonoBehaviour {
     public bool powerOfGodsActive = false;
     public int powerOfGodsMax = 200;
     public int powerOfGods = 0;
-    public float powerOfGodsDecayRate;
-    public float powerOfGodsSpeedBoost;
-    public int powerOfGodsDamageBoost;
+    public float powerOfGodsDecayRate = 1;
+    public float powerOfGodsSpeedBoost = 2;
+    public int powerOfGodsDamageBoost = 3;
     public int healthRegen = 2; // per sec
 
     public List<GameObject> inventory;
@@ -106,10 +106,12 @@ public class playerManager : MonoBehaviour {
     }
 
     public void endGodPower() {
-        powerOfGodsActive = false;
-        GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed / powerOfGodsSpeedBoost;
-        GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed / powerOfGodsSpeedBoost;
-        weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage / powerOfGodsDamageBoost;
+        if (powerOfGodsActive) {
+            powerOfGodsActive = false;
+            GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed / powerOfGodsSpeedBoost;
+            GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed / powerOfGodsSpeedBoost;
+        }
+        //weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage / powerOfGodsDamageBoost;
     }
 
     public void addGodPower(int powerToAdd) {

@@ -7,6 +7,9 @@
 		SubShader{
 			Tags { "RenderType" = "Transparent" "Queue"="Transparent"}
 			LOD 200
+
+		
+
 		Pass{
 		ZWrite On
 		Blend SrcAlpha OneMinusSrcAlpha
@@ -49,6 +52,60 @@
 	}
 		ENDCG
 	}
+		Pass
+	{
+		ZWrite On
+		Blend SrcAlpha OneMinusSrcAlpha
+		CGPROGRAM
+
+#pragma vertex VS_NormalMapping 
+#pragma fragment PS_NormalMapping
+#pragma target 3.0
+
+#include "UnityCG.cginc"
+
+		// vertex shader input that allows position and texture coordinates as well as TBN
+	struct VSInput
+	{
+		float4 pos: POSITION;
+		float4 tang: TANGENT;
+		float3 nor: NORMAL;
+		float2 tex: TEXCOORD0;
+	};
+
+	// vertex shader output structure
+	struct VSOutput
+	{
+		float4 pos: SV_POSITION;
+	};
+
+	// normal mapping vertex shader
+	VSOutput VS_NormalMapping(VSInput a_Input)
+	{
+		VSOutput output;
+
+		// calculate homogenous position
+
+		float theta = _Time.y * 3;
+
+		output.pos = UnityObjectToClipPos(a_Input.pos);
+
+		return output;
+	}
+
+	// normal mapping pixel shader
+	float4 PS_NormalMapping(VSOutput a_Input) : COLOR
+	{
+		// index into textures
+		float4 colour = float4(0, 255, 255, sin(_Time.y * 5));
+
+		// return texture colour modified by diffuse component
+		return colour;
+	}
+
+		ENDCG
+	}
+
 			CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
 		#pragma surface surf Standard alpha //finalcolor:mycolor

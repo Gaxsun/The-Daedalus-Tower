@@ -121,7 +121,7 @@ public class PlayerInput : MonoBehaviour {
                 GetComponent<playerManager>().GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
                 GetComponent<playerManager>().GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
                 GetComponent<playerManager>().powerOfGods -= Mathf.RoundToInt(GetComponent<playerManager>().powerOfGodsDecayRate * Time.time);
-                GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage * GetComponent<playerManager>().powerOfGodsDamageBoost;
+                //GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage * GetComponent<playerManager>().powerOfGodsDamageBoost;
             } else {
                 GetComponent<playerManager>().endGodPower();
             }
