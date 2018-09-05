@@ -237,7 +237,7 @@ public class PlayerInput : MonoBehaviour {
                 //GetComponent<playerManager>().inventoryWindow.enabled = true;
                 controlsEnabled = false;
             } else {
-                
+                GetComponent<playerManager>().introTut.enabled = false;
                 Time.timeScale = 1F;
                 //GetComponent<playerManager>().inventoryWindow.enabled = false;
                 controlsEnabled = true;
