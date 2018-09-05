@@ -348,7 +348,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private bool isGroundPoundAttack() {
-        print(animationCurrentFrame != animationLastFrame);
         if (animationCurrentFrame != animationLastFrame) {
             if (animationLastFrame == "4H") {
                 return true;
