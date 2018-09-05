@@ -108,9 +108,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.90625
+  m_ExitTime: 0.90624994
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -268,8 +268,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0.001239293
-  m_ExitTime: 1
+  m_TransitionOffset: 0.005500053
+  m_ExitTime: 0.99999994
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -453,9 +453,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2551284
-  m_TransitionOffset: 0
-  m_ExitTime: 0.5780819
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0.023918247
+  m_ExitTime: 0.9182531
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -870,7 +870,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 2L 0
-  m_Speed: 1
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101996839906949112}
@@ -896,7 +896,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 3H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101179464860540476}
@@ -922,7 +922,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 6H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101421015574431290}
@@ -949,7 +949,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 1L
-  m_Speed: 0.9
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101532392733571814}
@@ -977,7 +977,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 8H
-  m_Speed: 0.5
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101275628199001162}
@@ -1004,7 +1004,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: run
-  m_Speed: 1
+  m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101359314408812386}
@@ -1019,7 +1019,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 879e172bfc0384840ad30accf5d9e2db, type: 3}
+  m_Motion: {fileID: 7400000, guid: 91b862cd3f2de1c4e85bc3504a8c0535, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1032,7 +1032,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 3L
-  m_Speed: 1
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101131471868636438}
@@ -1059,7 +1059,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: idle
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101025640858146578}
@@ -1074,7 +1074,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cfc0ebbd64c22914398e62cdf911d97f, type: 3}
+  m_Motion: {fileID: 7400000, guid: 395666f8cb52e9c44930e029a5d849cb, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1087,7 +1087,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 6L
-  m_Speed: 1
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101123186461270032}
@@ -1114,7 +1114,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 1H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101466454258942200}
@@ -1129,7 +1129,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0f8dafd986e07c469f239e6a1faf376, type: 3}
+  m_Motion: {fileID: 7400000, guid: a5c67281946256b4b9637b9ddf413465, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1142,7 +1142,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 2H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101020257550238566}
@@ -1169,7 +1169,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 5L
-  m_Speed: 0.8
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101992375667623496}
@@ -1196,7 +1196,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 1L 0
-  m_Speed: 0.9
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101765322191793074}
@@ -1223,7 +1223,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 4H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101866952834967472}
@@ -1250,7 +1250,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 2L
-  m_Speed: 0.7
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101244106599922744}
@@ -1278,7 +1278,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 7H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101498547459046062}
@@ -1304,7 +1304,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 4L
-  m_Speed: 1
+  m_Speed: 5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101392565147934308}
@@ -1330,7 +1330,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 5H
-  m_Speed: 1
+  m_Speed: 7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101997962750896494}
