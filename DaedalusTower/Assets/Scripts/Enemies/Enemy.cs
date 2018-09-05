@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour {
         if (health <= 0) {
             if (this.gameObject.GetComponent<Skeleton>() != null) {
                 GetComponent<Skeleton>().playDeath();
+            } else if (this.gameObject.GetComponent<hellhound>() != null) {
+                //DO ABSOLUTELY NOTHIIIIIIING
             } else {
                 Destroy(this.gameObject);
             }
