@@ -21,6 +21,10 @@ public class playerManager : MonoBehaviour {
     private float secondCount;
     private float restartCount = 0;
 
+    private bool dead = false;
+    public AudioClip[] playerSounds;
+    public AudioSource playerSoundSource; 
+
     public List<GameObject> inventory;
 
 	// Use this for initialization
@@ -39,6 +43,16 @@ public class playerManager : MonoBehaviour {
             death.enabled = true;
             restartCount += Time.deltaTime;
             print(death.enabled);
+
+            if (dead == false)
+            {
+                playerSoundSource.clip = playerSounds[0];
+                playerSoundSource.loop = false;
+                playerSoundSource.Play();
+                dead = true;
+            }
+
+            
         }
 
         if (!bossCanvas.enabled && transform.position.x < -90) {
@@ -70,6 +84,15 @@ public class playerManager : MonoBehaviour {
 
     public void takeDamage(int damage) {
         health = health - damage;
+
+        if (playerSoundSource.isPlaying == false)
+        {
+            Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            playerSoundSource.clip = playerSounds[Mathf.RoundToInt(Random.Range(1, 3))];
+            playerSoundSource.loop = false;
+            playerSoundSource.Play();
+        }
+
     }
 
 }
