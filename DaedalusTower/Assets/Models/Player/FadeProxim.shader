@@ -2,6 +2,7 @@
 	Properties{
 		_Color("Color", Color) = (1,1,1,1)
 		_MainTex("Texture", 2D) = "white" {}
+		_godPowerActive("godBool", Int) = 1
 	}
 
 		SubShader{
@@ -79,6 +80,8 @@
 		float4 pos: SV_POSITION;
 	};
 
+	int _godPowerActive;
+
 	// normal mapping vertex shader
 	VSOutput VS_NormalMapping(VSInput a_Input)
 	{
@@ -97,7 +100,7 @@
 	float4 PS_NormalMapping(VSOutput a_Input) : COLOR
 	{
 		// index into textures
-		float4 colour = float4(0, 255, 255, sin(_Time.y * 5));
+		float4 colour = float4(0, 255, 255, _godPowerActive * sin(_Time.y * 5));
 
 		// return texture colour modified by diffuse component
 		return colour;

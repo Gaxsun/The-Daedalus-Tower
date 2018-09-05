@@ -43,7 +43,7 @@ public class playerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        //GetComponent<Renderer>().material.SetInt("_godPowerActive", 1);
         powerOfTheGods();
 
         healthBar.value = health;
@@ -90,10 +90,11 @@ public class playerManager : MonoBehaviour {
         }
 
         if (powerOfGodsActive) {
-            if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
+            GetComponent<Renderer>().material.SetInt("_godPowerActive", 1);
+            if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1) {
                 health = health + healthRegen;
                 secondCount = Time.time;
-            } else if (Time.time > secondCount + 1 && gameObject.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().bossFight == false) {
+            } else if (Time.time > secondCount + 1) {
                 health = Mathf.RoundToInt(healthBar.maxValue);
                 secondCount = Time.time;
             }
