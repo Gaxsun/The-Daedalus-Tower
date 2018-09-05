@@ -1635,8 +1635,10 @@ MonoBehaviour:
     type: 2}
   postSpawnDelay: 10
   finalStageSpeedBoost: 1.3
-  pulseDelay: 7
+  pulseDelay: 17
   pulsePad: {fileID: 1848373463720846, guid: d008b203775d3f042ba5e7d8ceb83be4, type: 2}
+  bombDelay: 20
+  bombPad: {fileID: 1129915116494612, guid: 8e6f6c6a99f8db44e89b2c1a540fd8ca, type: 2}
   attackSounds:
   - {fileID: 8300000, guid: 08df5a8c31b8379429f6ea8ed00a36fe, type: 3}
   - {fileID: 8300000, guid: 129b3798f84ebde4ba873f207f911379, type: 3}
