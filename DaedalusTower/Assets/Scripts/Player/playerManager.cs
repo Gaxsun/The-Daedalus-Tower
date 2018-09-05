@@ -50,7 +50,7 @@ public class playerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
         powerOfTheGods();
 
         healthBar.value = health;

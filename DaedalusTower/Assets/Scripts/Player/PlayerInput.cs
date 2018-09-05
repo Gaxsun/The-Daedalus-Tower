@@ -10,6 +10,10 @@ public class PlayerInput : MonoBehaviour {
     bool pausePrimed;
     float lockTimer;
 
+    private bool tutorial = true;
+
+   
+
     [Header("LockOn Settings")]
     public float lockDelay;
     bool liveTarget;
@@ -23,6 +27,10 @@ public class PlayerInput : MonoBehaviour {
     public AudioSource inputSoundsSource;
    
     public Color targetActive;
+
+    [Header("UI Objects")]
+    public GameObject textBox;
+
     // Use this for initialization
     void Start () {
         //Lock Cursor
@@ -32,9 +40,13 @@ public class PlayerInput : MonoBehaviour {
         lockTimer = 0;
     }
 	
+
+
 	// Update is called once per frame
 	void Update () {
 
+        GetComponent<playerManager>().can.enabled = controlsEnabled;
+        
         Cursor.lockState = wantedMode;
         Pause();      
 
@@ -237,7 +249,13 @@ public class PlayerInput : MonoBehaviour {
                 //GetComponent<playerManager>().inventoryWindow.enabled = true;
                 controlsEnabled = false;
             } else {
-                GetComponent<playerManager>().introTut.enabled = false;
+                if (tutorial)
+                {
+                    GetComponent<playerManager>().introTut.enabled = false;
+                    textBox.SetActive(true);
+                    tutorial = false;
+                }
+                
                 Time.timeScale = 1F;
                 //GetComponent<playerManager>().inventoryWindow.enabled = false;
                 controlsEnabled = true;
