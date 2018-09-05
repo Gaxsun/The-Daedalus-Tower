@@ -1,0 +1,8 @@
+Click the Right Analogue Stick (R3) to Lock-On to the Enemy.
+Tap the 'X' Button to Perform a Light Attack.
+Light Attacks are Fast, but don't hit Very Hard.
+Tap the 'Y' button to Perform a Heavy Attack.
+Heavy Attack's Hit alot Harder, but are also alot Slower.
+You can perform a Combo by landing consecutive Light/Heavy Attacks.
+The Blue bar is Your Power of the Gods Bar. Once this is full, Press the 'B' button to gain a boost in Health, Speed and Damage.
+You are now ready to take on the tower. May the Gods Be With You, Incursor.

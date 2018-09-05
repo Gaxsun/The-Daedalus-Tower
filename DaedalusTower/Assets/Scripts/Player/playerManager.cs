@@ -15,6 +15,7 @@ public class playerManager : MonoBehaviour {
     public Canvas death;
     public Canvas bossCanvas;
     public Canvas win;
+    public Canvas introTut;
     public GameObject fill;
     public int health = 100;
     public int healthMax = 100;
@@ -49,7 +50,7 @@ public class playerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //GetComponent<Renderer>().material.SetInt("_godPowerActive", 1);
+        
         powerOfTheGods();
 
         healthBar.value = health;
@@ -106,7 +107,13 @@ public class playerManager : MonoBehaviour {
         }
 
         if (powerOfGodsActive) {
-            GetComponent<Renderer>().material.SetInt("_godPowerActive", 1);
+            Component[] materialRenderers;
+            materialRenderers = GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer renderer in materialRenderers)
+            {
+                renderer.material.SetInt("_godPowerActive", 1);
+            }
             if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1) {
                 health = health + healthRegen;
                 secondCount = Time.time;
