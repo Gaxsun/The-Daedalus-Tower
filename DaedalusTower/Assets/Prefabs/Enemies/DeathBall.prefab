@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33854170418827194}
   - component: {fileID: 135965815166086638}
   - component: {fileID: 23191983923763332}
+  - component: {fileID: 114127838908461186}
   m_Layer: 0
   m_Name: DeathBall
   m_TagString: Untagged
@@ -114,6 +115,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129915116494612}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114127838908461186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129915116494612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657f68cdf5a0e444392ce97f2ab2ea5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diameter: 5
+  growthSpeed: 1.5
+  damage: 5
+  timeFromDamToDest: 2
 --- !u!135 &135965815166086638
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -121,7 +137,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129915116494612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -2657,7 +2673,7 @@ ParticleSystem:
       type: 0
       properties: 0
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 1
     light: {fileID: 108200157497509932, guid: 9eac9c0f2325617409d1565f60090d8a, type: 2}
     randomDistribution: 1

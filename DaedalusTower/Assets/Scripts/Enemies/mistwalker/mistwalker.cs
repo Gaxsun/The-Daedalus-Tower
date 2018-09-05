@@ -53,6 +53,9 @@ public class mistwalker : MonoBehaviour {
     public float pulseDelay;
     private float pulseTimeDelay;
     public GameObject pulsePad;
+    public float bombDelay;
+    private float bombTimeDelay;
+    public GameObject bombPad;
 
     public AudioClip[] attackSounds;
     public AudioClip[] deathSounds;
@@ -84,7 +87,7 @@ public class mistwalker : MonoBehaviour {
         stage2 = false;
         stage3 = false;
         fightReset = false;
-
+        bombTimeDelay = Time.time;
     }
 
     // Update is called once per frame
@@ -144,6 +147,11 @@ public class mistwalker : MonoBehaviour {
         if(Time.time > pulseDelay + pulseTimeDelay && stage2) {
             Instantiate(pulsePad, player.transform.position, Quaternion.identity);
             pulseTimeDelay = Time.time;
+        }
+
+        if(Time.time > bombDelay + bombTimeDelay && stage3) {
+            Instantiate(bombPad, new Vector3(transform.position.x, transform.position.y + 11, transform.position.z), Quaternion.identity);
+            bombTimeDelay = Time.time;
         }
     }
 
