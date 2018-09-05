@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	//lmao
 	// Update is called once per frame
@@ -52,6 +52,9 @@ public class Enemy : MonoBehaviour {
 
     public void takeDamage(GameObject source, int damage, float knockback) {
         if (vulnerable) {
+
+            player.GetComponent<playerManager>().addGodPower(3);
+
             if (GetComponent<Skeleton>() != null) {
                 if (GetComponent<Skeleton>().anim.GetInteger("currentAnimationState") == 5) {
                     return;

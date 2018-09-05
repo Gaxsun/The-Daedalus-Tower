@@ -114,12 +114,20 @@ public class playerManager : MonoBehaviour {
             {
                 renderer.material.SetInt("_godPowerActive", 1);
             }
+
             if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1) {
                 health = health + healthRegen;
                 secondCount = Time.time;
             } else if (Time.time > secondCount + 1) {
                 health = Mathf.RoundToInt(healthBar.maxValue);
                 secondCount = Time.time;
+            }
+        } else {
+            Component[] materialRenderers;
+            materialRenderers = GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer renderer in materialRenderers) {
+                renderer.material.SetInt("_godPowerActive", 0);
             }
         }
 

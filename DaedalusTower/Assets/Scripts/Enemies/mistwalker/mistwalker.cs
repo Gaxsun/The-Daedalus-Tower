@@ -177,6 +177,7 @@ public class mistwalker : MonoBehaviour {
 
     public void takeDamage(int damage) {
         if (vulnerable) {
+            player.GetComponent<playerManager>().addGodPower(3);
             if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
                 anim.Play("Take 001 1", 0, 0f);
                 print(!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2"));

@@ -116,7 +116,7 @@ public class PlayerInput : MonoBehaviour {
         GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
 
         //change these to get button down
-        if (Input.GetButtonUp("X")) {
+        if (Input.GetButtonDown("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
 
             int randNum = Mathf.RoundToInt(Random.Range(0, 30));
@@ -138,7 +138,7 @@ public class PlayerInput : MonoBehaviour {
 
         }
 
-        if(Input.GetButtonUp("Y")) {
+        if(Input.GetButtonDown("Y")) {
             GetComponent<Animator>().SetInteger("nextAttack", 2);
 
             //Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
@@ -158,7 +158,7 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().Jump();
         }
 
-        if (Input.GetAxis("B") != 0) {
+        if (Input.GetButtonDown("B")) {
             if (GetComponent<playerManager>().powerOfGods == GetComponent<playerManager>().powerOfGodsMax) {
                 GetComponent<playerManager>().powerOfGodsActive = true;
                 GetComponent<playerManager>().GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
