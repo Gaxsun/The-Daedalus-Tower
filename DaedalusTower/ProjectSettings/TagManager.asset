@@ -15,6 +15,7 @@ TagManager:
   - rightClaw
   - leftClaw
   - Weapon
+  - LeapTarget
   layers:
   - Default
   - TransparentFX
