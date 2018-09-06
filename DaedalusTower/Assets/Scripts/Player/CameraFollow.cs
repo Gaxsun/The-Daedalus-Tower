@@ -165,7 +165,17 @@ public class CameraFollow : MonoBehaviour {
                 lockOn = false;
             } else {
                 cameraTarget = lockTarget.transform.position;
-                cameraTarget.y = 0;
+                if (bossFight) {
+                    cameraTarget.y = bossCamY;
+                    /*
+                    float distancePoint;
+                    distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+                    distancePoint /= cameraDistance;
+                    cameraTarget *= distancePoint;
+                    */
+                } else {
+                    cameraTarget.y = 0;
+                }
                 Vector3 lockRotate = (lockTarget.transform.position - player.transform.position).normalized * -cameraDistance;
                 rotateOffset = new Vector3(lockRotate.x, rotateOffset.y, lockRotate.z);
             }
@@ -178,20 +188,12 @@ public class CameraFollow : MonoBehaviour {
         Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
 
         if (bossFight) {
-            cameraTarget.y = bossCamY;
-            float distancePoint;
-
-            if (ambientSoundSource.clip == ambientSounds[0])
-            {
+            if (ambientSoundSource.clip == ambientSounds[0]) {
                 ambientSoundSource.Stop();
                 ambientSoundSource.clip = ambientSounds[1];
                 ambientSoundSource.loop = true;
                 ambientSoundSource.Play();
             }
-
-            distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
-            distancePoint /= cameraDistance;
-            cameraTarget *= distancePoint;
         }
     }
 }
