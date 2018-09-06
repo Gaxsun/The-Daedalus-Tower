@@ -163,7 +163,8 @@ public class PlayerInput : MonoBehaviour {
                 GetComponent<playerManager>().powerOfGodsActive = true;
                 GetComponent<playerManager>().GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
                 GetComponent<playerManager>().GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed * GetComponent<playerManager>().powerOfGodsSpeedBoost;
-                GetComponent<playerManager>().powerOfGods -= Mathf.RoundToInt(GetComponent<playerManager>().powerOfGodsDecayRate * Time.time);
+                GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage = Mathf.RoundToInt(GetComponent<playerManager>().powerOfGodsDamageBoost * GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage);
+                GetComponent<playerManager>().powerOfGods -= GetComponent<playerManager>().powerOfGodsDecayRate * Time.deltaTime;
                 //GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage * GetComponent<playerManager>().powerOfGodsDamageBoost;
             } else {
                 GetComponent<playerManager>().endGodPower();
@@ -184,7 +185,6 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetAxis("RightStickClick") != 0) {
         
             if (Time.time > (lockTimer + lockDelay)) {
-                print(Time.time);
                 print(lockTimer + lockDelay);
                 lockTimer = Time.time;
                 if (GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
