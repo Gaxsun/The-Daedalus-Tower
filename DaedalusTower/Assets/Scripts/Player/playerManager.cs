@@ -26,7 +26,7 @@ public class playerManager : MonoBehaviour {
     public Image powerOfGodsBarBG;
     public bool powerOfGodsActive = false;
     public int powerOfGodsMax = 200;
-    public int powerOfGods = 0;
+    public float powerOfGods = 0;
     public float powerOfGodsDecayRate = 1;
     public float powerOfGodsSpeedBoost = 2;
     public int powerOfGodsDamageBoost = 3;
@@ -52,6 +52,8 @@ public class playerManager : MonoBehaviour {
 	void Update () {
 
         powerOfTheGods();
+
+        print(powerOfGods);
 
         healthBar.value = health;
         if (health <= 0) {
@@ -115,6 +117,8 @@ public class playerManager : MonoBehaviour {
                 renderer.material.SetInt("_godPowerActive", 1);
             }
 
+            powerOfGods -= powerOfGodsDecayRate * Time.deltaTime;
+
             if (health + healthRegen <= healthBar.maxValue && Time.time > secondCount + 1) {
                 health = health + healthRegen;
                 secondCount = Time.time;
@@ -142,6 +146,7 @@ public class playerManager : MonoBehaviour {
             powerOfGodsActive = false;
             GetComponent<PlayerMovement>().moddableSpeed = GetComponent<PlayerMovement>().moddableSpeed / powerOfGodsSpeedBoost;
             GetComponent<PlayerMovement>().speed = GetComponent<PlayerMovement>().speed / powerOfGodsSpeedBoost;
+            weaponPosition.GetComponentInChildren<Weapon>().baseDamage = Mathf.RoundToInt(weaponPosition.GetComponentInChildren<Weapon>().baseDamage / powerOfGodsDamageBoost);
         }
         //weaponPosition.GetComponentInChildren<Weapon>().baseDamage = GetComponent<Weapon>().baseDamage / powerOfGodsDamageBoost;
     }
@@ -156,7 +161,9 @@ public class playerManager : MonoBehaviour {
 
     public void takeDamage(int damage) {
         health = health - damage;
-        endGodPower();
+        if (powerOfGodsActive) {
+            powerOfGods -= damage;
+        } 
 
         if (playerSoundsSource.isPlaying == false && dead == false)
         {

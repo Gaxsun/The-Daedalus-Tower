@@ -88,7 +88,7 @@ public class Skeleton : MonoBehaviour {
                 }
             }
         } else if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) > minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("walk") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("walk2") && anim.GetInteger("currentAnimationState") != 5) {
-            if (Mathf.RoundToInt(Random.Range(0, 100)) >= 90) {
+            if (Mathf.RoundToInt(Random.Range(0, 100)) >= 98) {
                 if (anim.GetInteger("currentAnimationState") != 5) {
                     anim.SetInteger("currentAnimationState", 4);
                 }

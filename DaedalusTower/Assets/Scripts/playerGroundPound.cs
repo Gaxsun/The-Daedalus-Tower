@@ -20,6 +20,7 @@ public class playerGroundPound : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        print(Time.time >= timerStart + timeFromDamToDest);
         if (Time.time >= timerStart + timeFromDamToDest) {
             Destroy(this.gameObject);
         }
@@ -40,7 +41,7 @@ public class playerGroundPound : MonoBehaviour {
 
     private void OnTriggerStay(Collider other) {
         if (transform.localScale.x >= radius) {
-            timerStart = Time.time;
+            
             if (other.GetComponent<Enemy>() != null) {
                 other.GetComponent<Enemy>().takeDamage(this.gameObject, damage, knockback);
             }

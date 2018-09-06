@@ -53,8 +53,6 @@ public class Enemy : MonoBehaviour {
     public void takeDamage(GameObject source, int damage, float knockback) {
         if (vulnerable) {
 
-            player.GetComponent<playerManager>().addGodPower(3);
-
             if (GetComponent<Skeleton>() != null) {
                 if (GetComponent<Skeleton>().anim.GetInteger("currentAnimationState") == 5) {
                     return;
@@ -72,9 +70,12 @@ public class Enemy : MonoBehaviour {
                 hellhoundSounds.Play();
                 GetComponent<hellhound>().playDamaged();
             }
+            player.GetComponent<playerManager>().addGodPower(20);
             knockbackG = knockback;
             health = health - damage;
-            source.GetComponent<Weapon>().playHitEffects();
+            if (source.GetComponent<Weapon>() != null) {
+                source.GetComponent<Weapon>().playHitEffects();
+            }
             vulnerableCount = Time.time;
         }
 
