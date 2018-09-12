@@ -143,7 +143,12 @@ public class PlayerMovement : MonoBehaviour {
 
         anim.Play("run", 0, 0f);
 
-        forwardAxisMovement(dashDirectionY * dashSpeed);
+        float POTGMod = 1;
+        if (GetComponent<playerManager>().powerOfGodsActive) {
+            POTGMod = GetComponent<playerManager>().powerOfGodsSpeedBoost;
+        }
+
+        forwardAxisMovement((dashDirectionY * dashSpeed)/POTGMod);
         sidewaysAxisMovement(dashDirectionX * dashSpeed);
         playerCam.GetComponent<CameraFollow>().springArm();
     }
