@@ -185,7 +185,6 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetAxis("RightStickClick") != 0) {
         
             if (Time.time > (lockTimer + lockDelay)) {
-                print(lockTimer + lockDelay);
                 lockTimer = Time.time;
                 if (GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
                     GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn = false;
@@ -204,8 +203,10 @@ public class PlayerInput : MonoBehaviour {
 
     private void lockingOn() {
         Debug.DrawRay(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z) * 30, Color.yellow, 1);
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
         if (Physics.BoxCast(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, transform.localScale / 4, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z),
-                                out lockTarget, transform.rotation, 30) && lockTarget.collider.gameObject.tag == "enemy") {
+                                out lockTarget, transform.rotation, 30, layerMask) && lockTarget.collider.gameObject.tag == "enemy") {
             liveTarget = true;
             if (!currentCircle) {
                 targetEnemy = lockTarget.collider.gameObject;

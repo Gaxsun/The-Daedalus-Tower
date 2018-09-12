@@ -52,8 +52,7 @@ public class playerManager : MonoBehaviour {
 	void Update () {
 
         powerOfTheGods();
-
-        print(powerOfGods);
+        
 
         healthBar.value = health;
         if (health <= 0) {

@@ -64,7 +64,11 @@ public class CameraFollow : MonoBehaviour {
         if (currentCamDistance >= cameraDistance) {
             cameraDistanceReset();
         }
+
         transform.position = player.transform.position + springOffset;
+        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
+        Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
+
     }
 
     public void cameraRotate(float rotateValueX) {
@@ -100,13 +104,18 @@ public class CameraFollow : MonoBehaviour {
     }
 
     public void playerCounterRotate() {
-        rotateOffset.x = transform.position.x - player.transform.position.x;
-        rotateOffset.z = transform.position.z - player.transform.position.z;
+        if (lockOn) {
+            targetLock();
+        }else { 
+            rotateOffset.x = transform.position.x - player.transform.position.x;
+            rotateOffset.z = transform.position.z - player.transform.position.z;
         }
+    }
 
     public void springArm() {
         RaycastHit hit;
         Vector2 distancePoint;
+        targetLock();
         distancePoint = new Vector2(rotateOffset.x, rotateOffset.z).normalized * cameraDistance;
 
         Debug.DrawRay(playerLocation, new Vector3(distancePoint.x, initOffset.y - modelYOffset, distancePoint.y), Color.white);
@@ -161,11 +170,21 @@ public class CameraFollow : MonoBehaviour {
 
     private void targetLock() {
         if (lockOn) {
-            if (lockTarget == null) {
+            if (lockTarget == null || lockTarget.GetComponent<Enemy>().health <= 0) {
                 lockOn = false;
             } else {
                 cameraTarget = lockTarget.transform.position;
-                cameraTarget.y = 0;
+                if (bossFight) {
+                    cameraTarget.y = bossCamY;
+                    /*
+                    float distancePoint;
+                    distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+                    distancePoint /= cameraDistance;
+                    cameraTarget *= distancePoint;
+                    */
+                } else {
+                    cameraTarget.y = 0;
+                }
                 Vector3 lockRotate = (lockTarget.transform.position - player.transform.position).normalized * -cameraDistance;
                 rotateOffset = new Vector3(lockRotate.x, rotateOffset.y, lockRotate.z);
             }
@@ -174,24 +193,13 @@ public class CameraFollow : MonoBehaviour {
         cameraTarget = player.transform.position + (springOffset * -(1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI)).normalized * cameraDistance;
         cameraTarget.y = cameraYTarget;
 
-        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
-        Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
-
         if (bossFight) {
-            cameraTarget.y = bossCamY;
-            float distancePoint;
-
-            if (ambientSoundSource.clip == ambientSounds[0])
-            {
+            if (ambientSoundSource.clip == ambientSounds[0]) {
                 ambientSoundSource.Stop();
                 ambientSoundSource.clip = ambientSounds[1];
                 ambientSoundSource.loop = true;
                 ambientSoundSource.Play();
             }
-
-            distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
-            distancePoint /= cameraDistance;
-            cameraTarget *= distancePoint;
         }
     }
 }
