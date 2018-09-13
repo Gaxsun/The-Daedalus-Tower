@@ -170,8 +170,13 @@ public class CameraFollow : MonoBehaviour {
 
     private void targetLock() {
         if (lockOn) {
-            if (lockTarget == null || lockTarget.GetComponent<Enemy>().health <= 0) {
-                lockOn = false;
+            if (lockTarget == null) {
+                if (lockTarget.GetComponent<Enemy>() && lockTarget.GetComponent<Enemy>().health <= 0) {
+                    lockOn = false;
+                }
+                else if(lockTarget.GetComponent<mistwalker>() && (lockTarget.GetComponent<mistwalker>().health <= 0 || lockTarget.transform.localPosition.y >= 50)) {
+                    lockOn = false;
+                }
             } else {
                 cameraTarget = lockTarget.transform.position;
                 if (bossFight) {
