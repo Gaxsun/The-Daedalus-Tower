@@ -1820,6 +1820,7 @@ MonoBehaviour:
   death: {fileID: 0}
   bossCanvas: {fileID: 0}
   win: {fileID: 0}
+  introTut: {fileID: 0}
   fill: {fileID: 0}
   health: 100
   healthMax: 100
@@ -1828,7 +1829,7 @@ MonoBehaviour:
   powerOfGodsActive: 0
   powerOfGodsMax: 200
   powerOfGods: 0
-  powerOfGodsDecayRate: 1
+  powerOfGodsDecayRate: 40
   powerOfGodsSpeedBoost: 2
   powerOfGodsDamageBoost: 3
   healthRegen: 2
@@ -1863,6 +1864,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e77dff7835596fc48bb5d70eca7f26e0, type: 3}
   inputSoundsSource: {fileID: 82682501447704066}
   targetActive: {r: 0, g: 0, b: 0, a: 0}
+  textBox: {fileID: 0}
 --- !u!114 &114689472525398214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1888,7 +1890,6 @@ MonoBehaviour:
   dashTime: 0.1
   dashCooldown: 0.5
   dashEnabled: 1
-  dashTrail: {fileID: 0}
   bangClip:
   - {fileID: 8300000, guid: e77dff7835596fc48bb5d70eca7f26e0, type: 3}
   bangSource: {fileID: 82682501447704066}

@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
                 hellhoundSounds.Play();
                 GetComponent<hellhound>().playDamaged();
             }
-            player.GetComponent<playerManager>().addGodPower(20);
+            player.GetComponent<playerManager>().addGodPower(13);
             knockbackG = knockback;
             health = health - damage;
             if (source.GetComponent<Weapon>() != null) {
