@@ -1,37 +1,17 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: a4cb451025bcf34469c73610a77bb1c1
-timeCreated: 1537367142
-licenseType: Free
-ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName: {}
-=======
-guid: 66552e4a9a3468d41a387d4d8de523c8
-timeCreated: 1537367356
+guid: 1dc7b994ebfeedb4294a4aa0e67c1ab2
+timeCreated: 1537366993
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: HILT__ddd_png
-    2100002: HILT__iron_jpg
-    2100004: HILT__dar_jpg
-    2100006: HILT__lead_jpg
-    2100008: BOTTOM__iron_jpg
-    2100010: BOTTOM__dar_jpg
-    2100012: BOTTOM__leather2_jpg
-    2100014: BOTTOM__lead_jpg
-    2100016: sWORD_TOP__iron_jpg
-    2100018: sWORD_TOP__dar_jpg
-    2100020: sWORD_TOP__dark_jpg
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
-    7400000: Default Take
-    9500000: //RootNode
->>>>>>> 52a999888c9e9158738ee2e00389a45d63c22fa7
+    4300000: Cylinder.003
+    6400000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -64,7 +44,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -81,7 +61,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -106,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
