@@ -169,29 +169,32 @@ public class CameraFollow : MonoBehaviour {
     }
 
     private void targetLock() {
-        if (lockOn) {
+        if (lockOn) {            
             if (lockTarget == null) {
+                lockOn = false;
+            } else {
                 if (lockTarget.GetComponent<Enemy>() && lockTarget.GetComponent<Enemy>().health <= 0) {
                     lockOn = false;
-                }
-                else if(lockTarget.GetComponent<mistwalker>() && (lockTarget.GetComponent<mistwalker>().health <= 0 || lockTarget.transform.localPosition.y >= 50)) {
+                } else if (lockTarget.GetComponent<mistwalker>() && lockTarget.GetComponent<mistwalker>().health <= 0) {
                     lockOn = false;
-                }
-            } else {
-                cameraTarget = lockTarget.transform.position;
-                if (bossFight) {
-                    cameraTarget.y = bossCamY;
-                    /*
-                    float distancePoint;
-                    distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
-                    distancePoint /= cameraDistance;
-                    cameraTarget *= distancePoint;
-                    */
+                } else if (lockTarget.transform.localPosition.y >= 50){
+                    lockOn = false;
                 } else {
-                    cameraTarget.y = 0;
+                    cameraTarget = lockTarget.transform.position;
+                    if (bossFight) {
+                        cameraTarget.y = bossCamY;
+                        /*
+                        float distancePoint;
+                        distancePoint = new Vector2(springOffset.x, springOffset.z).magnitude;
+                        distancePoint /= cameraDistance;
+                        cameraTarget *= distancePoint;
+                        */
+                    } else {
+                        cameraTarget.y = 0;
+                    }
+                    Vector3 lockRotate = (lockTarget.transform.position - player.transform.position).normalized * -cameraDistance;
+                    rotateOffset = new Vector3(lockRotate.x, rotateOffset.y, lockRotate.z);
                 }
-                Vector3 lockRotate = (lockTarget.transform.position - player.transform.position).normalized * -cameraDistance;
-                rotateOffset = new Vector3(lockRotate.x, rotateOffset.y, lockRotate.z);
             }
         }
         cameraYTarget = cameraTarget.y;
