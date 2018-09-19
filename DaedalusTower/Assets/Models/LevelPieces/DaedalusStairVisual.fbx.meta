@@ -1,28 +1,17 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 83a9bf57e957d3d448e5fe832e972543
-timeCreated: 1537367319
-=======
-<<<<<<< HEAD
-guid: 2c1db8b8b63f4ec4fa9598da7d567cc7
-timeCreated: 1537367142
-=======
-guid: 1c756ff6af0f4aa4d84ecde2f11ee92e
-timeCreated: 1537367353
->>>>>>> 52a999888c9e9158738ee2e00389a45d63c22fa7
->>>>>>> 68b3e38549aa1480f24231eaf7a7b4a2e8214843
+guid: 1dc7b994ebfeedb4294a4aa0e67c1ab2
+timeCreated: 1537366993
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: HILT
-    2100002: BOTTOM
-    2100004: sWORD TOP
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
+    4300000: Cylinder.003
+    6400000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -55,7 +44,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -72,7 +61,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

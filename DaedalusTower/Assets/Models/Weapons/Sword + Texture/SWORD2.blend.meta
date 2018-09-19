@@ -1,10 +1,45 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ec69fb2beb073d543800cb6ebe322c2b
 timeCreated: 1537367319
+=======
+<<<<<<< HEAD
+guid: a4cb451025bcf34469c73610a77bb1c1
+timeCreated: 1537367142
+>>>>>>> 68b3e38549aa1480f24231eaf7a7b4a2e8214843
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName: {}
+<<<<<<< HEAD
+=======
+=======
+guid: 66552e4a9a3468d41a387d4d8de523c8
+timeCreated: 1537367356
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2100000: HILT__ddd_png
+    2100002: HILT__iron_jpg
+    2100004: HILT__dar_jpg
+    2100006: HILT__lead_jpg
+    2100008: BOTTOM__iron_jpg
+    2100010: BOTTOM__dar_jpg
+    2100012: BOTTOM__leather2_jpg
+    2100014: BOTTOM__lead_jpg
+    2100016: sWORD_TOP__iron_jpg
+    2100018: sWORD_TOP__dar_jpg
+    2100020: sWORD_TOP__dark_jpg
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
+    7400000: Default Take
+    9500000: //RootNode
+>>>>>>> 52a999888c9e9158738ee2e00389a45d63c22fa7
+>>>>>>> 68b3e38549aa1480f24231eaf7a7b4a2e8214843
   externalObjects: {}
   materials:
     importMaterials: 1
