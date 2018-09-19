@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 23448990320896506}
   - component: {fileID: 114666822628633670}
   m_Layer: 0
-  m_Name: mistwalkerDamagePad 1
+  m_Name: mistwalkerDamagePad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,9 +260,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 10
   growthSpeed: 2
-  damage: 5
+  damage: 20
   timeFromDamToDest: 3
   damageTicked: 0
+  detonated: 0
   puddleBoom: {fileID: 1432575754690796, guid: d919ed2cbe5c2fe40a7922150350b850, type: 2}
 --- !u!136 &136040761767335942
 CapsuleCollider:
@@ -284,10 +285,10 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805413614792836}
   serializedVersion: 5
-  lengthInSec: 6
+  lengthInSec: 2
   simulationSpeed: 0.5
   stopAction: 2
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
