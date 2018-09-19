@@ -41,6 +41,5 @@ public class mistwalkerDamagePad : MonoBehaviour {
             Instantiate(puddleBoom, transform.position, Quaternion.identity);
             damageTicked = true;
         }
-        damageTicked = true;
     }
 }
