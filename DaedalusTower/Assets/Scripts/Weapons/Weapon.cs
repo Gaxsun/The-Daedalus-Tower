@@ -6,9 +6,11 @@ public class Weapon : MonoBehaviour {
 
     public string weaponName;
     public int baseDamage;
+    public int heavyDamage;
     public float speed;
     public float knockback;
     public float knockbackModdable;
+    public float heavyKnockbackMultiplier;
     public bool attackActive = false;
     public bool heavyAttack;
     public GameObject effectObject;
@@ -26,9 +28,6 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
         if (attackActive) {
             if (heavyAttack) {
                 effectObject2.GetComponent<TrailRenderer>().enabled = true;
@@ -45,7 +44,11 @@ public class Weapon : MonoBehaviour {
 
     void OnTriggerStay(Collider other) {
         if (other.tag == "enemy" && attackActive) {
-            other.GetComponent<Enemy>().takeDamage(this.gameObject,baseDamage, knockbackModdable);
+            if (heavyAttack) {
+                other.GetComponent<Enemy>().takeDamage(this.gameObject, heavyDamage, knockbackModdable * heavyKnockbackMultiplier);
+            } else {
+                other.GetComponent<Enemy>().takeDamage(this.gameObject, baseDamage, knockbackModdable);
+            }
 
             if (weaponSoundSource.isPlaying == false)
             {
