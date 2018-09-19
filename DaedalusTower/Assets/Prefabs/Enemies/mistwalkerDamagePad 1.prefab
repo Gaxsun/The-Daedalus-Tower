@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 23448990320896506}
   - component: {fileID: 114666822628633670}
   m_Layer: 0
-  m_Name: mistwalkerDamagePad
+  m_Name: mistwalkerDamagePad 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
