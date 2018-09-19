@@ -9,6 +9,7 @@ public class mistwalkerDamagePad : MonoBehaviour {
     public int damage;
     public float timeFromDamToDest;
     public bool damageTicked = false;
+    public bool detonated = false;
     public GameObject puddleBoom;
     float timerStart;
 
@@ -28,18 +29,24 @@ public class mistwalkerDamagePad : MonoBehaviour {
             transform.localScale += new Vector3(Time.deltaTime * growthSpeed, 0, Time.deltaTime * growthSpeed);
             timerStart = Time.time;
         }
-        if (transform.localScale.x >= radius) {
+        if (transform.localScale.x >= radius && !detonated) {
             Instantiate(puddleBoom, transform.position, Quaternion.identity);
+            detonated = true;
         }
     }
 
     private void OnTriggerStay(Collider other) {
         if (transform.localScale.x >= radius && !damageTicked) {
-            damageTicked = true;
             timerStart = Time.time;
-            other.GetComponent<playerManager>().takeDamage(damage);
-            Instantiate(puddleBoom, transform.position, Quaternion.identity);
-            damageTicked = true;
+            if (other.GetComponent<Weapon>()) {
+                other.GetComponentInParent<playerManager>().takeDamage(damage);
+                damageTicked = true;
+            } else {
+                if (other.GetComponent<playerManager>() != null) {
+                    other.GetComponent<playerManager>().takeDamage(damage);
+                    damageTicked = true;
+                }
+            }
         }
     }
 }
