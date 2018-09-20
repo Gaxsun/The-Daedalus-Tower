@@ -37,8 +37,7 @@ public class TextBoxManager : MonoBehaviour{
         if(endAtLine ==0)
         {
             endAtLine = textLines.Length - 1;
-        }
-
+        }            
     }
 
     private void Update()

@@ -10,6 +10,7 @@ public class playerManager : MonoBehaviour {
     public GameObject currentWeapon;
     public GameObject currentArmor;
     public GameObject weaponPosition;
+    public GameObject respawnCheckerPrefab;
     public Slider healthBar;
     public Canvas can;
     public Canvas death;
@@ -47,11 +48,18 @@ public class playerManager : MonoBehaviour {
         powerOfGodsBar.maxValue = powerOfGodsMax;
         inventoryWindow.enabled = false;
 
+        if (GameObject.FindWithTag("respawnTracker") == null) {
+            Instantiate(respawnCheckerPrefab);
+        }
         dead = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (GameObject.FindWithTag("respawnTracker") != null && GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().hasDiedBefore) {
+            introTut.enabled = false;
+        }
 
         if (introTut.enabled == true)
         {
