@@ -1,22 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: ec69fb2beb073d543800cb6ebe322c2b
-timeCreated: 1537367319
-=======
-<<<<<<< HEAD
-guid: a4cb451025bcf34469c73610a77bb1c1
-timeCreated: 1537367142
->>>>>>> 68b3e38549aa1480f24231eaf7a7b4a2e8214843
-licenseType: Free
-ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName: {}
-<<<<<<< HEAD
-=======
-=======
-guid: 66552e4a9a3468d41a387d4d8de523c8
-timeCreated: 1537367356
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -38,8 +21,6 @@ ModelImporter:
     4300000: Cube
     7400000: Default Take
     9500000: //RootNode
->>>>>>> 52a999888c9e9158738ee2e00389a45d63c22fa7
->>>>>>> 68b3e38549aa1480f24231eaf7a7b4a2e8214843
   externalObjects: {}
   materials:
     importMaterials: 1
