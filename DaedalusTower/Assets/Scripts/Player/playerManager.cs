@@ -32,7 +32,7 @@ public class playerManager : MonoBehaviour {
     public float powerOfGodsSpeedBoost = 2;
     public int powerOfGodsDamageBoost = 3;
     public int healthRegen = 2; // per sec
-    public Canvas inventoryWindow;
+    public Canvas pauseMenu;
 
     public AudioClip[] playerSounds;
     public AudioSource playerSoundsSource;
@@ -46,7 +46,7 @@ public class playerManager : MonoBehaviour {
         Instantiate(currentWeapon, weaponPosition.transform);
         healthBar.maxValue = healthMax;
         powerOfGodsBar.maxValue = powerOfGodsMax;
-        inventoryWindow.enabled = false;
+        pauseMenu.enabled = false;
 
         if (GameObject.FindWithTag("respawnTracker") == null) {
             Instantiate(respawnCheckerPrefab);
@@ -63,7 +63,7 @@ public class playerManager : MonoBehaviour {
 
         if (introTut.enabled == true)
         {
-            inventoryWindow.enabled = false;
+            pauseMenu.enabled = false;
         }
 
         powerOfTheGods();

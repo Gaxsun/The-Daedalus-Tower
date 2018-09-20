@@ -39,6 +39,10 @@ public class PlayerInput : MonoBehaviour {
         wantedMode = CursorLockMode.Locked;
         Cursor.visible = false;
         lockTimer = 0;
+
+        if (GameObject.FindWithTag("respawnTracker") != null && GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().hasDiedBefore) {
+            //introTut.enabled = false;
+        }
     }
 	
 
