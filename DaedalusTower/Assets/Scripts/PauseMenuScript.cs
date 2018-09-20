@@ -6,9 +6,19 @@ using UnityEngine.UI;
 
 public class PauseMenuScript : MonoBehaviour {
 
+    public Button optionSlider;
+    public Button backButton;
+
     public void ReturntoMain ()
     {
         SceneManager.LoadScene("Daedalus Menu");
     }
 
+    public void OpenOptions() {
+        optionSlider.Select();
+    }
+
+    public void OpenControls() {
+        backButton.Select();
+    }
 }

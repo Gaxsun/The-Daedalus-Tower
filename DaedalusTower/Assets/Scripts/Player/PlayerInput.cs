@@ -31,7 +31,7 @@ public class PlayerInput : MonoBehaviour {
 
     [Header("UI Objects")]
     public GameObject textBox;
-
+    public Button pauseAutoSelect;
     // Use this for initialization
     void Start () {
         //Lock Cursor
@@ -248,7 +248,8 @@ public class PlayerInput : MonoBehaviour {
         if (pausePrimed && Input.GetAxisRaw("StartButton") == 0) {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0F;
-                GetComponent<playerManager>().inventoryWindow.enabled = true;
+                GetComponent<playerManager>().pauseMenu.enabled = true;
+                pauseAutoSelect.Select();
                 controlsEnabled = false;
             } else {
                 if (tutorial)
@@ -259,7 +260,7 @@ public class PlayerInput : MonoBehaviour {
                 }
                 
                 Time.timeScale = 1F;
-                GetComponent<playerManager>().inventoryWindow.enabled = false;
+                GetComponent<playerManager>().pauseMenu.enabled = false;
                 controlsEnabled = true;
             }
             pausePrimed = false;
