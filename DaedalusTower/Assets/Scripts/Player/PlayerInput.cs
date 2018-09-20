@@ -13,8 +13,6 @@ public class PlayerInput : MonoBehaviour {
 
     private bool tutorial = true;
 
-   
-
     [Header("LockOn Settings")]
     public float lockDelay;
     bool liveTarget;
@@ -36,6 +34,11 @@ public class PlayerInput : MonoBehaviour {
     void Start () {
         //Lock Cursor
         pausePrimed = true;
+
+        if (GameObject.FindWithTag("respawnTracker") != null && GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().hasDiedBefore) {
+            pausePrimed = false;
+        }
+
         wantedMode = CursorLockMode.Locked;
         Cursor.visible = false;
         lockTimer = 0;

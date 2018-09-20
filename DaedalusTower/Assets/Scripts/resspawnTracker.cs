@@ -5,6 +5,7 @@ using UnityEngine;
 public class resspawnTracker : MonoBehaviour {
 
     public bool hasDiedBefore;
+    public GameObject respawnLocation;
 
 	// Use this for initialization
 	void Start () {
