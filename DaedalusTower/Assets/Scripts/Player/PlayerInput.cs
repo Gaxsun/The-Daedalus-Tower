@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour {
 
@@ -247,7 +248,7 @@ public class PlayerInput : MonoBehaviour {
         if (pausePrimed && Input.GetAxisRaw("StartButton") == 0) {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0F;
-                //GetComponent<playerManager>().inventoryWindow.enabled = true;
+                GetComponent<playerManager>().inventoryWindow.enabled = true;
                 controlsEnabled = false;
             } else {
                 if (tutorial)
@@ -258,7 +259,7 @@ public class PlayerInput : MonoBehaviour {
                 }
                 
                 Time.timeScale = 1F;
-                //GetComponent<playerManager>().inventoryWindow.enabled = false;
+                GetComponent<playerManager>().inventoryWindow.enabled = false;
                 controlsEnabled = true;
             }
             pausePrimed = false;
