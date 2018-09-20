@@ -5368,9 +5368,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: defaultTwoHandedAxe
   baseDamage: 3
+  heavyDamage: 5
   speed: 0
   knockback: 20
   knockbackModdable: 0
+  heavyKnockbackMultiplier: 2
   attackActive: 0
   heavyAttack: 0
   effectObject: {fileID: 1840941148187220}
