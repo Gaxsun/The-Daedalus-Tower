@@ -92,66 +92,74 @@ public class mistwalker : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (health <= 0) {
-            bossCanvas.enabled = false;
-            Destroy(transform.parent.gameObject);
-        }
 
-        bossHealthBar.value = health;
+        if (alive) {
+            print("alive");
+            bossHealthBar.value = health;
 
-        float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
-        transform.GetComponentInParent<NavMeshAgent>().destination = player.transform.position;
+            float playerDistance = Vector2.Distance(new Vector2(player.transform.position.x, player.transform.position.z), new Vector2(transform.position.x, transform.position.z));
+            transform.GetComponentInParent<NavMeshAgent>().destination = player.transform.position;
 
-        if (GetComponentInParent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
-            //anim.Play("Take 001", 0, 0f);
-            anim.SetBool("moving", false);
+            if (GetComponentInParent<NavMeshAgent>().speed == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
+                //anim.Play("Take 001", 0, 0f);
+                anim.SetBool("moving", false);
 
-        }
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
-            transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-        }
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001")) {
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+            }
 
-        if (playerDistance <= minDistance) {
-            GetComponentInParent<NavMeshAgent>().speed = 0;
-            GetComponentInParent<NavMeshAgent>().acceleration = 1000;
-            if (Time.time > attackTimer + attackDelay) {
-                attackPrep = Time.time;
-                attackChargeTime = 2;
+            if (playerDistance <= minDistance) {
+                GetComponentInParent<NavMeshAgent>().speed = 0;
+                GetComponentInParent<NavMeshAgent>().acceleration = 1000;
+                if (Time.time > attackTimer + attackDelay) {
+                    attackPrep = Time.time;
+                    attackChargeTime = 2;
+                    clawsActive = false;
+                    attack();
+                }
+                if (Time.time > attackPrep + attackChargeTime && attacking) {
+                    clawsActive = true;
+                    attackPrep = Mathf.Infinity;
+                    attacking = false;
+                }
+            } else {
+                GetComponentInParent<NavMeshAgent>().speed = normSpeed;
+                GetComponentInParent<NavMeshAgent>().acceleration = normAccel;
+                move();
+            }
+
+
+            if (fogDensity < maxFogDensity) {
+                fogDensity += maxFogDensity * Time.deltaTime * fogGrowthRate / 100;
+            } else if (fogDensity > maxFogDensity) {
+                fogDensity = maxFogDensity;
+            }
+            RenderSettings.fogDensity = fogDensity;
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
                 clawsActive = false;
-                attack();
             }
-            if (Time.time > attackPrep + attackChargeTime && attacking) {
-                clawsActive = true;
-                attackPrep = Mathf.Infinity;
-                attacking = false;
+
+            fightStages();
+
+            if (Time.time > pulseDelay + pulseTimeDelay && stage2) {
+                Instantiate(pulsePad, player.transform.position, Quaternion.identity);
+                pulseTimeDelay = Time.time;
             }
-        } else {
-            GetComponentInParent<NavMeshAgent>().speed = normSpeed;
-            GetComponentInParent<NavMeshAgent>().acceleration = normAccel;
-            move();
-        }
 
+            if (Time.time > bombDelay + bombTimeDelay && stage3) {
+                Instantiate(bombPad, new Vector3(transform.position.x, transform.position.y + 11, transform.position.z), Quaternion.identity);
+                bombTimeDelay = Time.time;
+            }
+        } else{
 
-        if (fogDensity < maxFogDensity) {
-            fogDensity += maxFogDensity * Time.deltaTime * fogGrowthRate / 100;
-        } else if (fogDensity > maxFogDensity) {
-            fogDensity = maxFogDensity;
-        }
-        RenderSettings.fogDensity = fogDensity;
-        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2")) {
-            clawsActive = false;
-        }
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.7f * Time.deltaTime, transform.position.z);
 
-        fightStages();
+            bossCanvas.enabled = false;
 
-        if(Time.time > pulseDelay + pulseTimeDelay && stage2) {
-            Instantiate(pulsePad, player.transform.position, Quaternion.identity);
-            pulseTimeDelay = Time.time;
-        }
-
-        if(Time.time > bombDelay + bombTimeDelay && stage3) {
-            Instantiate(bombPad, new Vector3(transform.position.x, transform.position.y + 11, transform.position.z), Quaternion.identity);
-            bombTimeDelay = Time.time;
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 1")) {
+                anim.Play("Take 001 1", 0, 0f);
+            }   
         }
     }
 
@@ -219,7 +227,7 @@ public class mistwalker : MonoBehaviour {
             fightReset = true;
             attackDelay /= 2;
             anim.speed *= finalStageSpeedBoost;
-            GetComponent<NavMeshAgent>().speed *= finalStageSpeedBoost;
+            GetComponentInParent<NavMeshAgent>().speed *= finalStageSpeedBoost;
         }else if(health < maxHealth * stage2Health && !stage2){
             GetComponent<SpawnTrigger>().bossFight = true;
             stage2Spawner = Instantiate(stage2Spawner, transform.parent.position, Quaternion.identity);
@@ -233,11 +241,8 @@ public class mistwalker : MonoBehaviour {
         }
     
         if(health <= 0 && alive == true){
-            mistwalkerSounds.clip = deathSounds[0];
-            mistwalkerSounds.loop = false;
-            mistwalkerSounds.Play();
-            alive = false;
-
+            print("(.)(.)");
+            death();
         }
 
         if(Time.time > stageReturnDelay + postSpawnDelay && fightReset) {
@@ -250,6 +255,20 @@ public class mistwalker : MonoBehaviour {
         if (fightReset) {
             health += Mathf.RoundToInt((maxHealth/100f) * Time.deltaTime);
         }
+    }
+
+    public void death() {
+
+        GameObject[] deathSparks = GameObject.FindGameObjectsWithTag("mistwalkerDeathSparks");
+        for (int i = 0; i < deathSparks.Length; i++) {
+            deathSparks[i].GetComponent<ParticleSystem>().Play();
+        }
+
+        
+        mistwalkerSounds.clip = deathSounds[0];
+        mistwalkerSounds.loop = true;
+        mistwalkerSounds.Play();
+        alive = false;
     }
 
 }

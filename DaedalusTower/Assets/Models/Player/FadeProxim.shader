@@ -94,7 +94,7 @@
 		float4 color = float4(0.5 + sin(10* worldPos.x) / 2, 1, 1, 1);
 		//float4 color = float4(0.5 + sin(10 * (sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z))), 0.5 + sin(10 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z)), 0.5 + sin(10 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z)), 1);
 		output.col = color;
-		output.col.a = _godPowerActive * (1 + (_godPowerActive * (2 * sin(_Time.y * 10) / 2.2) * 0.5 + sin(30 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z))));
+		output.col.a = _godPowerActive * (1 + (_godPowerActive * (2 * sin(_Time.y * 10) / 2.2) * 0.5 + sin(30 * sqrt(worldPos.x * worldPos.x + worldPos.z * worldPos.z * (_Time.x/5)))));
 		output.pos = UnityObjectToClipPos(a_Input.pos);
 
 		return output;
