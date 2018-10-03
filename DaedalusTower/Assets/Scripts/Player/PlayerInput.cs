@@ -30,6 +30,7 @@ public class PlayerInput : MonoBehaviour {
     [Header("UI Objects")]
     public GameObject textBox;
     public Button pauseAutoSelect;
+
     // Use this for initialization
     void Start () {
         //Lock Cursor
@@ -151,7 +152,6 @@ public class PlayerInput : MonoBehaviour {
 
             //Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
             int randNum = Mathf.RoundToInt(Random.Range(0, 50));
-            print(randNum);
             if (randNum >= 39 && inputSoundsSource.clip != inputSounds[2])
             {
                 inputSoundsSource.Stop();
@@ -190,6 +190,11 @@ public class PlayerInput : MonoBehaviour {
             GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraRotate(Input.GetAxis("RightStickX"));
         }
 
+        if(Input.GetAxis("RightStickY") != 0) {
+            GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraTarget.y += Input.GetAxis("RightStickY");
+            GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().cameraVertTimer = Time.time;
+        }
+
         if (Input.GetAxis("RightStickClick") != 0) {
         
             if (Time.time > (lockTimer + lockDelay)) {
@@ -213,26 +218,29 @@ public class PlayerInput : MonoBehaviour {
         Debug.DrawRay(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z) * 30, Color.yellow, 1);
         int layerMask = 1 << 8;
         layerMask = ~layerMask;
+        bool lockChecker = false;
         if (Physics.BoxCast(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, transform.localScale / 4, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z),
-                                out lockTarget, transform.rotation, 30, layerMask) && lockTarget.collider.gameObject.tag == "enemy") {
+                                out lockTarget, transform.rotation, 30, layerMask) && lockTarget.collider.gameObject.tag == "enemy" && lockTarget.collider.gameObject.GetComponent<Enemy>().health > 0) {
             liveTarget = true;
             if (!currentCircle) {
                 targetEnemy = lockTarget.collider.gameObject;
                 currentCircle = Instantiate(lockCircle, targetEnemy.transform.position, Quaternion.identity);
             }
+            lockChecker = true;
         } else if (Physics.BoxCast(GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation, transform.localScale / 4, new Vector3(GetComponent<PlayerMovement>().playerCam.transform.forward.x, 0, GetComponent<PlayerMovement>().playerCam.transform.forward.z),
-                                    out lockTarget, transform.rotation, 30) && lockTarget.collider.gameObject.tag == "mistwalker") {
+                                    out lockTarget, transform.rotation, 30) && lockTarget.collider.gameObject.tag == "mistwalker" && lockTarget.collider.gameObject.GetComponent<mistwalker>().health > 0) {
             liveTarget = true;
             if (!currentCircle) {
                 targetEnemy = lockTarget.collider.gameObject;
                 currentCircle = Instantiate(lockCircle, new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y+2, targetEnemy.transform.position.z), Quaternion.identity);
             }
+            lockChecker = true;
         } else {
             liveTarget = false;
         }
 
         if (currentCircle) {
-            if(lockTarget.collider.gameObject != targetEnemy && !GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
+            if (lockChecker && lockTarget.collider.gameObject != targetEnemy && !GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().lockOn) {
                 targetEnemy = lockTarget.collider.gameObject;
             }
             currentCircle.transform.position = new Vector3(targetEnemy.transform.position.x, targetEnemy.transform.position.y + 2, targetEnemy.transform.position.z);

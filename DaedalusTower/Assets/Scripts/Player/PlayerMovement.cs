@@ -130,7 +130,6 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public void Dash() {
-
         if (Time.time >= dashTime + dashTimeStart || dashCheck()) {
             dashing = false;
             GetComponent<PlayerInput>().controlsEnabled = true;

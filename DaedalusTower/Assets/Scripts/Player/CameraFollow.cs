@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CameraFollow : MonoBehaviour {
 
@@ -31,8 +32,15 @@ public class CameraFollow : MonoBehaviour {
     public Vector3 playerLocation;
     private float currentCamDistance;
 
-	// Use this for initialization
-	void Start () {
+    public float cameraVertDelay;
+    [HideInInspector]public float cameraVertTimer;
+    public float cameraVertResetTime;
+    
+    [Header("Camera Vertical Min-Max")]
+    public Vector2 cameraTargetMinMax = new Vector2(-1, 2);
+
+    // Use this for initialization
+    void Start () {
         initOffset.z = -cameraDistance;
         transform.position = player.transform.position + initOffset;
         rotateOffset = initOffset;
@@ -41,6 +49,7 @@ public class CameraFollow : MonoBehaviour {
         currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
         cameraTarget = player.transform.position + springOffset * - (1 + 10 * Mathf.Asin(1 - currentCamDistance / cameraDistance) / Mathf.PI);
         cameraTarget.y = cameraYTarget;
+        cameraVertTimer = Time.time;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -66,9 +75,27 @@ public class CameraFollow : MonoBehaviour {
         }
 
         transform.position = player.transform.position + springOffset;
-        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
         Debug.DrawRay(transform.position, new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z) - transform.position, Color.blue);
 
+        if(Time.time > cameraVertTimer + cameraVertDelay) {
+            if (bossFight) {
+                cameraTarget.y = Mathf.Lerp(cameraTarget.y, bossCamY, Time.deltaTime * Mathf.Max(Mathf.Abs(cameraTarget.y), 1) / cameraVertResetTime);
+                if (cameraTarget.y - bossCamY > -0.05f && cameraTarget.y - bossCamY < 0.05f) {
+                    cameraVertTimer = Time.time;
+                }
+            } else {
+                cameraTarget.y = Mathf.Lerp(cameraTarget.y, 0, Time.deltaTime * Mathf.Max(Mathf.Abs(cameraTarget.y), 1) / cameraVertResetTime);
+                if (cameraTarget.y > -0.05f && cameraTarget.y < 0.05f) {
+                    cameraVertTimer = Time.time;
+                }
+            }
+        }
+        if (bossFight) {
+            cameraTarget.y = Mathf.Clamp(cameraTarget.y, cameraTargetMinMax.x, bossCamY + cameraTargetMinMax.y);
+        } else {
+            cameraTarget.y = Mathf.Clamp(cameraTarget.y, cameraTargetMinMax.x, cameraTargetMinMax.y);
+        }
+        transform.LookAt(new Vector3(cameraTarget.x, playerLocation.y + cameraTarget.y, cameraTarget.z));
     }
 
     public void cameraRotate(float rotateValueX) {
@@ -177,11 +204,11 @@ public class CameraFollow : MonoBehaviour {
                     lockOn = false;
                 } else if (lockTarget.GetComponent<mistwalker>() && lockTarget.GetComponent<mistwalker>().health <= 0) {
                     lockOn = false;
-                } else if (lockTarget.transform.localPosition.y >= 50){
+                } else if (lockTarget.GetComponent<mistwalker>() && lockTarget.GetComponentInParent<NavMeshAgent>().baseOffset >= 50){
                     lockOn = false;
                 } else {
                     cameraTarget = lockTarget.transform.position;
-                    if (bossFight) {
+                    if (bossFight && lockOn) {
                         cameraTarget.y = bossCamY;
                         /*
                         float distancePoint;
