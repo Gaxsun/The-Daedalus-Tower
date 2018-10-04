@@ -67,7 +67,6 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         currentCamDistance = Mathf.Sqrt(springOffset.x * springOffset.x + springOffset.z * springOffset.z);
-        targetLock();
         playerLocation = new Vector3(player.transform.position.x, player.transform.position.y + modelYOffset, player.transform.position.z);
         springArm();
         if (currentCamDistance >= cameraDistance) {

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class hellhound : MonoBehaviour {
 
-    private GameObject player;
+    [HideInInspector]public GameObject player;
 
     public Animator anim;
 
@@ -23,7 +23,7 @@ public class hellhound : MonoBehaviour {
 
     public int damage;
     public float attackDelay;
-    private float attackTimer;
+    [HideInInspector]public float attackTimer;
     private int previousAnimationState = 0;
     private bool alive = true;
 
@@ -32,13 +32,13 @@ public class hellhound : MonoBehaviour {
 
     public GameObject hitEffectObject;
     private Vector3 currentCollisionPoint;
-    private bool attackFix = true;
+    [HideInInspector]public bool attackFix = true;
 
     public float stage2Health;
     public float stage3Health;
     private float health;
     private float maxHealth;
-    private bool stage2;
+    [HideInInspector]public bool stage2;
     private bool stage3;
     private float maxSpeed;
 
@@ -75,7 +75,7 @@ public class hellhound : MonoBehaviour {
         if (Vector3.Distance(player.transform.position, transform.position) > minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(3)") && alive) {
             if(Time.time > slerpDelay + slerpTime) {
                 GetComponent<NavMeshAgent>().speed = maxSpeed / 5.0f;
-                slerper = 5.0f;
+                slerper = 1 / Time.deltaTime;
             }else {
                 GetComponent<NavMeshAgent>().speed = maxSpeed;
                 slerper = 0.5f;
@@ -97,9 +97,9 @@ public class hellhound : MonoBehaviour {
                     }
                 }
             }else {
-                transform.LookAt(Vector3.Slerp(transform.forward, player.transform.position - transform.position, 3 * Time.deltaTime) + transform.position);
-                Debug.DrawRay(transform.position, player.transform.position - transform.position);
-                print("Tuuuuuurn");
+                if (stage2) {
+                    transform.LookAt(Vector3.Slerp(transform.forward, player.transform.position - transform.position, 3 * Time.deltaTime) + transform.position);
+                }
             }
         } else if (Vector3.Distance(player.transform.position, transform.position) > minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("Walk")  && !anim.GetCurrentAnimatorStateInfo(0).IsName("Run") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(1)") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(2)") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(3)")) {
             if (alive) {
@@ -189,18 +189,6 @@ public class hellhound : MonoBehaviour {
         attackTimer = Time.time;
     }
 
-    private void OnTriggerStay(Collider other) {
-        if ((anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(1)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(2)") || anim.GetCurrentAnimatorStateInfo(0).IsName("Attack(3)")) && (other.tag == "Player" || (other.tag == "Weapon" && !player.GetComponent<PlayerMovement>().isAttacking()))) {
-            if (attackFix) {
-                player.GetComponent<playerManager>().takeDamage(damage);
-                playHitEffects();
-                attackTimer = Time.time;
-                boxCollider.GetComponent<BoxCollider>().enabled = false;
-                attackFix = false;
-            }
-        }
-    }
-
     public void playDeath() {
         if (anim.GetInteger("currentAnimationState") == 1 || anim.GetInteger("currentAnimationState") == 4) {
             anim.SetInteger("currentAnimationState", 9);
@@ -227,6 +215,7 @@ public class hellhound : MonoBehaviour {
             damage = 3;
         } else if (health < maxHealth * stage2Health && !stage2) {
             stage2 = true;
+            minDistance = 3;
             GetComponent<NavMeshAgent>().speed = maxSpeed * stage2Health;
             GetComponent<NavMeshAgent>().autoBraking = true;
             damage = 7;
