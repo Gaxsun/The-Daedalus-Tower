@@ -4435,7 +4435,7 @@ MonoBehaviour:
   anim: {fileID: 95376548799977990}
   boxCollider: {fileID: 1079247924767132}
   fireEffect: {fileID: 1490552041899404}
-  minDistance: 1
+  minDistance: 1.6
   damage: 3
   attackDelay: 1
   deathTimerStartTime: 0
