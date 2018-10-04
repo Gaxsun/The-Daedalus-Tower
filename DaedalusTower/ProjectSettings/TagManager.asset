@@ -18,6 +18,7 @@ TagManager:
   - LeapTarget
   - respawnTracker
   - mistwalkerDeathSparks
+  - outsideBossRoomRespawn
   layers:
   - Default
   - TransparentFX

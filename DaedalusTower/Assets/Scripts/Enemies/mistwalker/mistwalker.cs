@@ -84,6 +84,8 @@ public class mistwalker : MonoBehaviour {
         bossCanvas.enabled = true;
         attackTimer = 0;
 
+        GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().respawnLocation = GameObject.FindWithTag("outsideBossRoomRespawn").transform.position;
+
         stage2 = false;
         stage3 = false;
         fightReset = false;
@@ -241,7 +243,6 @@ public class mistwalker : MonoBehaviour {
         }
     
         if(health <= 0 && alive == true){
-            print("(.)(.)");
             death();
         }
 

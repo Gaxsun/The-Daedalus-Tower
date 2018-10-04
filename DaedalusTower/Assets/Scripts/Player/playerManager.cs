@@ -50,8 +50,14 @@ public class playerManager : MonoBehaviour {
 
         if (GameObject.FindWithTag("respawnTracker") == null) {
             Instantiate(respawnCheckerPrefab);
+        } else {
+            GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().lvRestarted = true;
         }
         dead = false;
+
+        //if (GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().respawnLocation != new Vector3(0,0.5f,0)) {
+        //    transform.position = GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().respawnLocation;
+        //}
     }
 	
 	// Update is called once per frame
@@ -76,8 +82,8 @@ public class playerManager : MonoBehaviour {
             death.enabled = true;
             restartCount += Time.deltaTime;
             print(death.enabled);
-
-            if(playerSoundsSource.isPlaying == false && dead == false)
+            GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().hasDiedBefore = true;
+            if (playerSoundsSource.isPlaying == false && dead == false)
             {
                 playerSoundsSource.Stop();
                 playerSoundsSource.clip = playerSounds[0];
@@ -85,7 +91,7 @@ public class playerManager : MonoBehaviour {
                 playerSoundsSource.Play();
                 dead = true;
             }
-
+            GetComponent<PlayerInput>().controlsEnabled = false;
         }
 
         if (!bossCanvas.enabled && transform.position.x < -90) {

@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void forwardAxisMovement(float direction) {
         CameraFollow followCam = playerCam.GetComponent<CameraFollow>();
-        print(Vector3.Distance(followCam.playerLocation, followCam.lockTarget.transform.position));
+        //print(Vector3.Distance(followCam.playerLocation, followCam.lockTarget.transform.position));
         if (followCam.lockOn && Vector3.Distance(followCam.playerLocation, followCam.lockTarget.transform.position) < 1.0f && direction > 0.0f) {
             direction = 0;
         }
