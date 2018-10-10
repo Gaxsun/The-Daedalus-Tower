@@ -183,7 +183,9 @@ public class playerManager : MonoBehaviour {
         health = health - damage;
         if (powerOfGodsActive) {
             powerOfGods -= damage;
-        } 
+        }
+
+        GetComponent<PlayerMovement>().playHurt();
 
         if (playerSoundsSource.isPlaying == false && dead == false)
         {

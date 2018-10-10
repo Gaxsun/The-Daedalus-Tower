@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class resspawnTracker : MonoBehaviour {
 
-    public bool hasDiedBefore;
-    public bool lvRestarted;
-    public bool hasReachedBossRoom;
+    public bool hasDiedBefore = false;
+    public bool lvRestarted = false;
+    public bool hasReachedBossRoom = false;
     public Vector3 respawnLocation;
 
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
-        print("noot noot");
     }
 	
 	// Update is called once per frame
 	void Update () {
         DontDestroyOnLoad(this.gameObject);
-        print(hasDiedBefore);
-        if (lvRestarted && hasDiedBefore && respawnLocation != null) {
+        if (lvRestarted && hasDiedBefore && respawnLocation != null && hasReachedBossRoom) {
+            print("(.)(.)");
             GameObject.FindWithTag("Player").transform.position = respawnLocation;
             lvRestarted = false;
         }

@@ -128,6 +128,14 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetButtonDown("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
 
+            if (!GetComponent<PlayerMovement>().isAttacking()) {
+                if (GetComponent<PlayerMovement>().anim.GetBool("running")) {
+                    GetComponent<PlayerMovement>().anim.Play("SlideAttack");
+                } else {
+                    GetComponent<PlayerMovement>().anim.Play("Slash");
+                }
+            }
+
             int randNum = Mathf.RoundToInt(Random.Range(0, 30));
 
             if (randNum >= 20 && inputSoundsSource.isPlaying == false)
@@ -150,7 +158,12 @@ public class PlayerInput : MonoBehaviour {
         if(Input.GetButtonDown("Y")) {
             GetComponent<Animator>().SetInteger("nextAttack", 2);
 
+            if (!GetComponent<PlayerMovement>().isAttacking()) {
+                GetComponent<PlayerMovement>().anim.Play("SpinAttack");
+            }
+
             //Random.InitState(Mathf.RoundToInt(Time.time) * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+
             int randNum = Mathf.RoundToInt(Random.Range(0, 50));
             if (randNum >= 39 && inputSoundsSource.clip != inputSounds[2])
             {
