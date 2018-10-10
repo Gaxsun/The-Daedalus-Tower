@@ -85,6 +85,7 @@ public class mistwalker : MonoBehaviour {
         attackTimer = 0;
 
         GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().respawnLocation = GameObject.FindWithTag("outsideBossRoomRespawn").transform.position;
+        GameObject.FindWithTag("respawnTracker").GetComponent<resspawnTracker>().hasReachedBossRoom = true;
 
         stage2 = false;
         stage3 = false;

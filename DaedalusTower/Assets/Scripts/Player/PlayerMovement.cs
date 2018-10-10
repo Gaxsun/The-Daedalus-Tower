@@ -50,7 +50,10 @@ public class PlayerMovement : MonoBehaviour {
 
     bool dashing = false;
 
+    public float idleChangeDelay = 3;
+    private float idleTimer;
 
+    private bool dontPlayDeathAgain = false;
 
     // Game Time Started
     void Start() {
@@ -63,33 +66,51 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive == false && GetComponent<PlayerInput>().controlsEnabled) {
-            setRotation();
-        } else {
-            faceEnemy();
-        }
-        
-        if (!isAttacking()) {
-            gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
-            moddableSpeed = speed;
-        } else {
-            gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
-            moddableSpeed = speed / 10;
-        }
 
-        if (Time.time >= dashCooldown + dashTimeStart) {
-            dashEnabled = true;
-        }
-        
-        nextAttackReset();
-        RaycastHit hit;
-        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), Vector3.down, out hit, 0.11f))
-        {
-            isAirBorne = false;
-        }
-        else
-        {
-            isAirBorne = true;
+        if (GetComponent<playerManager>().health <= 0) {
+            if (!dontPlayDeathAgain) {
+                Random.InitState(Mathf.RoundToInt(Time.time));
+                int rand = Random.Range(1, 3);
+                if (rand == 1) {
+                    anim.Play("Death");
+                } else {
+                    anim.Play("Death2");
+                }
+                dontPlayDeathAgain = true;
+            }
+        } else {
+            if (gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive == false && GetComponent<PlayerInput>().controlsEnabled) {
+                setRotation();
+            } else {
+                faceEnemy();
+            }
+
+            if (!isAttacking()) {
+                gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
+                moddableSpeed = speed;
+            } else {
+                gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = true;
+                moddableSpeed = speed / 10;
+            }
+
+            if (Time.time >= dashCooldown + dashTimeStart) {
+                dashEnabled = true;
+            }
+
+            nextAttackReset();
+            RaycastHit hit;
+            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z), Vector3.down, out hit, 0.11f)) {
+                isAirBorne = false;
+            } else {
+                isAirBorne = true;
+            }
+
+            if (idleTimer + idleChangeDelay < Time.time) {
+                Random.InitState(Mathf.RoundToInt(Time.time));
+                int rand = Random.Range(1, 3);
+                anim.SetInteger("idleState", rand);
+                idleTimer = Time.time;
+            }
         }
     }
 
@@ -144,7 +165,7 @@ public class PlayerMovement : MonoBehaviour {
         gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
         moddableSpeed = speed;
 
-        anim.Play("run", 0, 0f);
+        anim.Play("Run", 0, 0f);
 
         float POTGMod = 1;
         if (GetComponent<playerManager>().powerOfGodsActive) {
@@ -199,7 +220,17 @@ public class PlayerMovement : MonoBehaviour {
         if (!isAirBorne && Time.time > jumpCoolDown + 1) {
             rb.AddForce(new Vector3(0,jumpForce,0));
             jumpCoolDown = Time.time;
-            
+
+
+            if (!isAttacking()) {
+                if (anim.GetBool("running")) {
+                    anim.Play("Jump");
+                } else {
+                    anim.Play("jumpStationary");
+                }
+            }
+
+
             if (jumpSound.clip != jumpClip[1] || jumpSound.isPlaying == false)
             {
                 jumpSound.Stop();
@@ -209,6 +240,8 @@ public class PlayerMovement : MonoBehaviour {
                 jumpSound.Play();
             }
 
+        } else {
+            anim.SetBool("jumping", false);
         }
     }
 
@@ -237,35 +270,35 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     public bool isAttacking() {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L")) {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1H")) {
-            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
-            return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash2")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Kick")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash1")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;           
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
-            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
-            return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5L")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash2")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3L")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash3")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4H")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SpinAttack")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("7H")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SpinAttack2")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
             return true;
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3H")) {
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash3")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = true;
+            return true;
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SlideAttack")) {
+            GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
             return true;
         } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6L")) {
             GetComponent<playerManager>().weaponPosition.GetComponentInChildren<Weapon>().heavyAttack = false;
@@ -292,50 +325,60 @@ public class PlayerMovement : MonoBehaviour {
 
     void nextAttackReset() {
         
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("run")) {
-            animationCurrentFrame = "run";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle")) {
-            animationCurrentFrame = "idle";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L")) {
-            animationCurrentFrame = "1L";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1H")) {
-            animationCurrentFrame = "1H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L")) {
-            animationCurrentFrame = "2L";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6H")) {
-            animationCurrentFrame = "6H";   
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2H")) {
-            animationCurrentFrame = "2H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5L")) {
-            animationCurrentFrame = "5L";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3L")) {
-            animationCurrentFrame = "3L";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4H")) {
-            animationCurrentFrame = "4H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("7H")) {
-            animationCurrentFrame = "7H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("3H")) {
-            animationCurrentFrame = "3H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("6L")) {
-            animationCurrentFrame = "6L";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("1L 0")) {
-            animationCurrentFrame = "1L 0";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("5H")) {
-            animationCurrentFrame = "5H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("8H")) {
-            animationCurrentFrame = "8H";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("2L 0")) {
-            animationCurrentFrame = "2L 0";
-        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("4L")) {
-            animationCurrentFrame = "4L";
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Run")) {
+            animationCurrentFrame = "Run";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            animationCurrentFrame = "Idle";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle2")) {
+            animationCurrentFrame = "Idle2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle3")) {
+            animationCurrentFrame = "Idle3";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")) {
+            animationCurrentFrame = "Jump";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("JumpStationary")) {
+            animationCurrentFrame = "JumpStationary";   
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt")) {
+            animationCurrentFrame = "Hurt";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt2")) {
+            animationCurrentFrame = "Hurt2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash")) {
+            animationCurrentFrame = "Slash";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash2")) {
+            animationCurrentFrame = "Slash2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Slash3")) {
+            animationCurrentFrame = "Slash3";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SpinAttack")) {
+            animationCurrentFrame = "SpinAttack";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SpinAttack2")) {
+            animationCurrentFrame = "SpinAttack2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash1")) {
+            animationCurrentFrame = "ComboSlash1";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash2")) {
+            animationCurrentFrame = "ComboSlash2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("ComboSlash3")) {
+            animationCurrentFrame = "ComboSlash3";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Kick")) {
+            animationCurrentFrame = "Kick";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death")) {
+            animationCurrentFrame = "Death";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Death2")) {
+            animationCurrentFrame = "Death2";
+        } else if (anim.GetCurrentAnimatorStateInfo(0).IsName("SlideAttack")) {
+            animationCurrentFrame = "SlideAttack";
         } else {
             animationCurrentFrame = "notAttack";
         }
         if (animationLastFrame != animationCurrentFrame) {
             anim.SetInteger("nextAttack", 0);
-            
+
+            if (animationCurrentFrame == "Idle") {
+                anim.SetInteger("idleState", 0);
+                idleTimer = Time.time;
+            }
+
             setRotation();
         }
+
         groundPound();
         animationLastFrame = animationCurrentFrame;
     }
@@ -356,17 +399,23 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool isGroundPoundAttack() {
         if (animationCurrentFrame != animationLastFrame) {
-            if (animationLastFrame == "4H") {
+            if (animationLastFrame == "SpinAttack2") {
                 return true;
-            } else if (animationLastFrame == "4L") {
-                return true;
-            } else if (animationLastFrame == "5H") {
-                return true;
-            } else if (animationLastFrame == "6H") {
-                return true;
-            }
+            } 
         }
         return false;
     }
 
+    public void playHurt() {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") || anim.GetCurrentAnimatorStateInfo(0).IsName("Idle2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Idle3")) {
+
+            Random.InitState(Mathf.RoundToInt(Time.time));
+            int rand = Mathf.RoundToInt(Random.Range(0, 1));
+            if (rand == 0) {
+                anim.Play("Hurt");
+            } else {
+                anim.Play("Hurt2");
+            }            
+        }
+    }
 }
