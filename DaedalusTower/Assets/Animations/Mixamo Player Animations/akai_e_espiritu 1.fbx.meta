@@ -144,7 +144,12 @@ ModelImporter:
     7400000: mixamo.com
     9500000: //RootNode
     13700000: Akai
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Akai_MAT
+    second: {fileID: 2100000, guid: 54c2b62362f1b594fb64b681780f19f5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
