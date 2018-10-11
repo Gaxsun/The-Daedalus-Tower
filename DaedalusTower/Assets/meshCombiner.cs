@@ -31,7 +31,7 @@ public class meshCombiner : MonoBehaviour {
                         CombineInstance com = new CombineInstance();
                         com.mesh = filter.sharedMesh;
                         com.subMeshIndex = i;
-                        com.transform = Matrix4x4.identity;
+                        com.transform = filter.transform.localToWorldMatrix;
                         combiners.Add(com);
                     }
 
@@ -39,16 +39,27 @@ public class meshCombiner : MonoBehaviour {
 
             }
 
-
+            Mesh mesh = new Mesh();
+            mesh.CombineMeshes(combiners.ToArray());
+            submesh.Add(mesh);
+        }
+        List<CombineInstance> combineAll = new List<CombineInstance>();
+        foreach(Mesh mesh in submesh) {
+            CombineInstance com = new CombineInstance();
+            com.mesh = mesh;
+            com.subMeshIndex = 0;
+            com.transform = transform.worldToLocalMatrix;
+            combineAll.Add(com);
         }
 
+        Mesh finalMesh = new Mesh();
+        finalMesh.CombineMeshes(combineAll.ToArray());
+        GetComponent<MeshFilter>().sharedMesh = finalMesh;
+
+        
         for(int i = 0; i < meshFilters.Length; i++) {
-            combine[i].mesh = meshFilters[i].sharedMesh;
-            combine[i].transform = Matrix4x4.identity;
             meshFilters[i].gameObject.SetActive(false);
         }
-        transform.GetComponent<MeshFilter>().mesh = new Mesh();
-        transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
         transform.gameObject.SetActive(true);
     }
 }
