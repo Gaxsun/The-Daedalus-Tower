@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Daedalus Menu.unity
     guid: 0f2fec3e730281e4e8d758f11cab8daf
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/8495d927233a31e4495233e92dbded88
+    guid: 8495d927233a31e4495233e92dbded88
   - enabled: 1
     path: Assets/Daedalus 1.unity
-    guid: 8495d927233a31e4495233e92dbded88
+    guid: 809bbe92a0021474083049c5ac76a91a
