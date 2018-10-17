@@ -78,12 +78,14 @@ public class Skeleton : MonoBehaviour {
 
         if (Vector3.Distance(player.transform.position, transform.position) <= minDistance && anim.GetInteger("currentAnimationState") != 5) {
             GetComponent<NavMeshAgent>().destination = transform.position;
-            if (Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= minDistance && !anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
-                if (anim.GetInteger("currentAnimationState") != 5) {
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2")) {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && anim.GetInteger("currentAnimationState") != 5) {
                     anim.SetInteger("currentAnimationState", 0);
                 }
+                print("DAFUQ");
                 if (Time.time > attackTimer + attackDelay) {
                     boxCollider.GetComponent<BoxCollider>().enabled = true;
+                    print("SLAPPED");
                     attack();
                 }
             }
@@ -98,11 +100,11 @@ public class Skeleton : MonoBehaviour {
                 }
             }  
         }
-
-        if (previousAnimationState == 0) {
-            if ((anim.GetInteger("currentAnimationState") == 3 || anim.GetInteger("currentAnimationState") == 2) && anim.GetInteger("currentAnimationState") != 5) {
-                anim.SetInteger("currentAnimationState",0);
-            }
+        
+        if ((anim.GetInteger("currentAnimationState") == 3 || anim.GetInteger("currentAnimationState") == 2) && anim.GetInteger("currentAnimationState") != 5) {
+            anim.SetInteger("currentAnimationState", 0);
+            print("SLAPABITCH");
+            attackTimer = Time.time;
         }
 
         if (anim.GetInteger("currentAnimationState") != 0 && anim.GetInteger("currentAnimationState") != 1 && anim.GetInteger("currentAnimationState") != 2 && anim.GetInteger("currentAnimationState") != 3 && anim.GetInteger("currentAnimationState") != 4 && anim.GetInteger("currentAnimationState") != 5) {
@@ -111,6 +113,7 @@ public class Skeleton : MonoBehaviour {
         
         if (previousAnimationState != 5 && anim.GetInteger("currentAnimationState") == 5) {
             deathTimerStartTime = Time.time;
+            GetComponent<CapsuleCollider>().enabled = false;
         }
 
         if (Time.time >= deathTimerStartTime + 5 && anim.GetInteger("currentAnimationState") == 5) {
@@ -144,10 +147,13 @@ public class Skeleton : MonoBehaviour {
     void attack() {
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("attack") && !anim.GetCurrentAnimatorStateInfo(0).IsName("attack2") && anim.GetInteger("currentAnimationState") != 5) {
             Random.InitState(Mathf.RoundToInt(Time.time)  * Mathf.RoundToInt(transform.position.x * transform.position.y * transform.position.z));
+            
             if (Mathf.RoundToInt(Random.Range(0,10)) >= 5) {
                 anim.Play("attack", 0);
+                anim.SetInteger("currentAnimationState", 3);
             } else {
                 anim.Play("attack2", 0);
+                anim.SetInteger("currentAnimationState", 2);
             }
 
             int randNum = Mathf.RoundToInt(Random.Range(0, 40));
