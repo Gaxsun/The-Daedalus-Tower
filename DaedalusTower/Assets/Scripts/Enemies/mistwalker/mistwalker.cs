@@ -155,6 +155,8 @@ public class mistwalker : MonoBehaviour {
                 bombTimeDelay = Time.time;
             }
         } else{
+            player.GetComponent<playerManager>().win.enabled = true;
+            player.GetComponent<playerManager>().restartCount += Time.deltaTime;
 
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.7f * Time.deltaTime, transform.position.z);
 

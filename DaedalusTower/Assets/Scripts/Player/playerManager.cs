@@ -21,7 +21,7 @@ public class playerManager : MonoBehaviour {
     public int health = 100;
     public int healthMax = 100;
     private float secondCount;
-    private float restartCount = 0;
+    public float restartCount = 0;
 
     public Slider powerOfGodsBar;
     public Image powerOfGodsBarBG;
@@ -73,12 +73,11 @@ public class playerManager : MonoBehaviour {
         }
 
         powerOfTheGods();
-        
 
         healthBar.value = health;
         if (health <= 0) {
             can.enabled = false;
-            //win.enabled = false;
+            win.enabled = false;
             death.enabled = true;
             restartCount += Time.deltaTime;
             print(death.enabled);
@@ -94,16 +93,14 @@ public class playerManager : MonoBehaviour {
             GetComponent<PlayerInput>().controlsEnabled = false;
         }
 
-        if (!bossCanvas.enabled && transform.position.x < -90) {
-            win.enabled = true;
-            restartCount += Time.deltaTime;
-        }
-
-
         if (death.enabled || win.enabled) {
             if ( restartCount > 5) {
-                Scene loadedLevel = SceneManager.GetActiveScene();
-                SceneManager.LoadScene(loadedLevel.buildIndex);
+                if (win.enabled) {
+                    SceneManager.LoadScene("Daedalus Menu", LoadSceneMode.Single);
+                } else {
+                    Scene loadedLevel = SceneManager.GetActiveScene();
+                    SceneManager.LoadScene(loadedLevel.buildIndex);
+                }
             }            
         }
 
@@ -194,6 +191,10 @@ public class playerManager : MonoBehaviour {
             playerSoundsSource.loop = false;
             playerSoundsSource.Play();
         }
+
+    }
+
+    void loadMenu() {
 
     }
 
