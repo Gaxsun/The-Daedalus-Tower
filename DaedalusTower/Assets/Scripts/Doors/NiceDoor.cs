@@ -6,10 +6,12 @@ public class NiceDoor : MonoBehaviour {
     private bool openSesame;
     private float closedHeight;
 
+    private bool corpsePile;
     public float openHeight;
     public float liftSpeed;
 
     public bool triggered;
+    public GameObject[] preSpawners;
 	// Use this for initialization
 	void Start () {
         openSesame = false;
@@ -19,7 +21,7 @@ public class NiceDoor : MonoBehaviour {
     // Update is called once per frame
     //niceone
     void Update() {
-        if (openSesame && transform.localPosition.y < openHeight) {
+        if (openSesame && transform.localPosition.y < openHeight && corpsePile) {
             transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
             GetComponent<OcclusionPortal>().open = true;
         } else if (openSesame == false && transform.localPosition.y > closedHeight) {
@@ -31,32 +33,35 @@ public class NiceDoor : MonoBehaviour {
         if (GetComponent<SpawnTrigger>()) {
             GetComponent<SpawnTrigger>().triggered = triggered;
         }
+        corpsePile = true;
+        foreach (GameObject spawner in preSpawners) {
+            if (spawner.GetComponent<BasicSpawner>().corpsePile == false) {
+                corpsePile = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag != "Projectile") {
-            openSesame = true;
-            if (other.tag == "Player") {
-                triggered = true;
-            }
+        openSesame = true;
+        if (other.tag == "Player") {
+            triggered = true;
         }
+
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.tag != "Projectile") {
-            openSesame = true;
-            if (other.tag == "Player") {
-                triggered = true;
-            }
+        openSesame = true;
+        if (other.tag == "Player") {
+            triggered = true;
         }
+
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag != "Projectile") {
-            openSesame = false;
-            if (other.tag == "Player") {
-                triggered = false;
-            }
+        openSesame = false;
+        if (other.tag == "Player") {
+            triggered = false;
         }
+
     }
 }

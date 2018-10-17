@@ -82,10 +82,8 @@ public class Skeleton : MonoBehaviour {
                 if (!anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && anim.GetInteger("currentAnimationState") != 5) {
                     anim.SetInteger("currentAnimationState", 0);
                 }
-                print("DAFUQ");
                 if (Time.time > attackTimer + attackDelay) {
                     boxCollider.GetComponent<BoxCollider>().enabled = true;
-                    print("SLAPPED");
                     attack();
                 }
             }
@@ -103,7 +101,6 @@ public class Skeleton : MonoBehaviour {
         
         if ((anim.GetInteger("currentAnimationState") == 3 || anim.GetInteger("currentAnimationState") == 2) && anim.GetInteger("currentAnimationState") != 5) {
             anim.SetInteger("currentAnimationState", 0);
-            print("SLAPABITCH");
             attackTimer = Time.time;
         }
 

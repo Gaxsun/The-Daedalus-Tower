@@ -13,21 +13,25 @@ public class hellhoundBite : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!GetComponentInParent<hellhound>().stage2) {
-            transform.localPosition = new Vector3(startPos.x, startPos.y, startPos.z);
+        if (GetComponentInParent<hellhound>()) {
+            if (!GetComponentInParent<hellhound>().stage2) {
+                transform.localPosition = new Vector3(startPos.x, startPos.y, startPos.z);
+            }
         }
     }
 
     private void OnTriggerStay(Collider other) {
-        anim = GetComponentInParent<hellhound>().anim;
-        print(other.tag + " " + anim.GetCurrentAnimatorStateInfo(0));
-        if (other.tag == "Player") {
-            if (GetComponentInParent<hellhound>().attackFix) {
-                GetComponentInParent<hellhound>().player.GetComponent<playerManager>().takeDamage(GetComponentInParent<hellhound>().damage);
-                GetComponentInParent<hellhound>().playHitEffects();
-                GetComponentInParent<hellhound>().attackTimer = Time.time;
-                GetComponent<BoxCollider>().enabled = false;
-                GetComponentInParent<hellhound>().attackFix = false;
+        if (GetComponentInParent<hellhound>()) {
+            anim = GetComponentInParent<hellhound>().anim;
+            print(other.tag + " " + anim.GetCurrentAnimatorStateInfo(0));
+            if (other.tag == "Player") {
+                if (GetComponentInParent<hellhound>().attackFix) {
+                    GetComponentInParent<hellhound>().player.GetComponent<playerManager>().takeDamage(GetComponentInParent<hellhound>().damage);
+                    GetComponentInParent<hellhound>().playHitEffects();
+                    GetComponentInParent<hellhound>().attackTimer = Time.time;
+                    GetComponent<BoxCollider>().enabled = false;
+                    GetComponentInParent<hellhound>().attackFix = false;
+                }
             }
         }
     }
