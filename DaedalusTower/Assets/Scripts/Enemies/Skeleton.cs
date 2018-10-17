@@ -69,7 +69,7 @@ public class Skeleton : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        stopIfAttacking();
         if (anim.GetInteger("currentAnimationState") != 5) {
             GetComponent<NavMeshAgent>().destination = player.transform.position;
         } else {
@@ -213,4 +213,14 @@ public class Skeleton : MonoBehaviour {
         Instantiate(hitEffectObject, currentCollisionPoint, Quaternion.identity);
         //instantiate spark and flash
     }
+
+    public void stopIfAttacking() {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("attack2") || anim.GetInteger("currentAnimationState") == 5) {
+            GetComponent<NavMeshAgent>().speed = 0;
+            transform.LookAt(player.transform);
+        } else {
+            GetComponent<NavMeshAgent>().speed = 3.5f;
+        }
+    }
+
 }
