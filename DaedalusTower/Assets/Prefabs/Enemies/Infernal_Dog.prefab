@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnerableStateLength: 1
   knockbackTime: 0.5
-  health: 50
+  health: 35
 --- !u!114 &114287662595580368
 MonoBehaviour:
   m_ObjectHideFlags: 1

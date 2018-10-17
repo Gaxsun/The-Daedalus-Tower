@@ -220,10 +220,11 @@ public class Skeleton : MonoBehaviour {
     public void stopIfAttacking() {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack") || anim.GetCurrentAnimatorStateInfo(0).IsName("attack2") || anim.GetInteger("currentAnimationState") == 5) {
             GetComponent<NavMeshAgent>().speed = 0;
-            transform.LookAt(player.transform);
+            if (anim.GetInteger("currentAnimationState") != 5) {
+                transform.LookAt(new Vector3(player.transform.position.x, player.GetComponent<PlayerMovement>().playerCam.GetComponent<CameraFollow>().playerLocation.y , player.transform.position.z));
+            }
         } else {
             GetComponent<NavMeshAgent>().speed = 3.5f;
         }
     }
-
 }
