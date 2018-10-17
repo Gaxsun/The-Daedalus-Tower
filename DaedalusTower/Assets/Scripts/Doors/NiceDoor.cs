@@ -21,10 +21,12 @@ public class NiceDoor : MonoBehaviour {
     void Update() {
         if (openSesame && transform.localPosition.y < openHeight) {
             transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
+            GetComponent<OcclusionPortal>().open = true;
         } else if (openSesame == false && transform.localPosition.y > closedHeight) {
             transform.localPosition -= transform.up * liftSpeed * Time.deltaTime;
         } else if (openSesame == false) {
             transform.localPosition = new Vector3(transform.localPosition.x, closedHeight, transform.localPosition.z);
+            GetComponent<OcclusionPortal>().open = false;
         }
         if (GetComponent<SpawnTrigger>()) {
             GetComponent<SpawnTrigger>().triggered = triggered;
