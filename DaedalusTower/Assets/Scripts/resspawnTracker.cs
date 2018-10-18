@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class resspawnTracker : MonoBehaviour {
@@ -16,11 +17,18 @@ public class resspawnTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        DontDestroyOnLoad(this.gameObject);
-        if (lvRestarted && hasDiedBefore && respawnLocation != null && hasReachedBossRoom) {
-            print("(.)(.)");
-            GameObject.FindWithTag("Player").transform.position = respawnLocation;
-            lvRestarted = false;
+        print(SceneManager.GetActiveScene().name == "Daedalus Menu");
+        if (SceneManager.GetActiveScene().name == "Daedalus Menu") {
+            Destroy(this.gameObject);
         }
+        DontDestroyOnLoad(this.gameObject);
+        if (hasReachedBossRoom) {
+            respawnLocation = GameObject.FindWithTag("outsideBossRoomRespawn").transform.position;
+        }
+        if (lvRestarted && hasDiedBefore && respawnLocation != null && hasReachedBossRoom && respawnLocation != new Vector3(0,0,0)) {
+            GameObject.FindWithTag("Player").transform.position = respawnLocation;
+            
+        }
+        lvRestarted = false;
     }
 }

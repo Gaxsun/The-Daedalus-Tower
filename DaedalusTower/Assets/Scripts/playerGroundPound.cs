@@ -20,7 +20,6 @@ public class playerGroundPound : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        print(Time.time >= timerStart + timeFromDamToDest);
         if (Time.time >= timerStart + timeFromDamToDest) {
             Destroy(this.gameObject);
         }

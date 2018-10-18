@@ -2784,7 +2784,7 @@ MonoBehaviour:
   finalStageSpeedBoost: 1.3
   pulseDelay: 17
   pulsePad: {fileID: 1976547132316026, guid: f9c3ad41ad5aab047bcfb9a79f7a9595, type: 2}
-  bombDelay: 20
+  bombDelay: 25
   bombPad: {fileID: 1129915116494612, guid: 8e6f6c6a99f8db44e89b2c1a540fd8ca, type: 2}
   attackSounds:
   - {fileID: 8300000, guid: 08df5a8c31b8379429f6ea8ed00a36fe, type: 3}
