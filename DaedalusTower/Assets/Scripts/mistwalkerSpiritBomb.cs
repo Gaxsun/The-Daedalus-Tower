@@ -10,9 +10,11 @@ public class mistwalkerSpiritBomb : MonoBehaviour {
     public float timeFromDamToDest;
     float timerStart;
     private Vector3 target;
+    private GameObject boss;
     // Use this for initialization
     void Start() {
         timerStart = Time.time;
+        boss = GameObject.FindGameObjectWithTag("mistwalker");
     }
 
     // Update is called once per frame
@@ -20,10 +22,12 @@ public class mistwalkerSpiritBomb : MonoBehaviour {
         if (transform.localScale.x <= diameter) {
             transform.localScale += new Vector3(Time.deltaTime * growthSpeed, Time.deltaTime * growthSpeed, Time.deltaTime * growthSpeed);
             target = GameObject.FindGameObjectWithTag("Player").transform.position;
-            GameObject boss = GameObject.FindGameObjectWithTag("mistwalker");
-            transform.position = new Vector3(boss.transform.position.x, boss.transform.position.y + 11, boss.transform.position.z);
+            transform.position = boss.transform.localToWorldMatrix * new Vector3(boss.transform.position.x, boss.transform.position.y + 8, boss.transform.position.z);
+            print(boss.transform.position.x + "  " + boss.transform.position.y + "  " + boss.transform.position.z);
+
         }
-        if (transform.localScale.x >= diameter) {
+        if (transform.localScale.x >= diameter && Vector3.Distance(transform.position, target) >= 0.5) {
+            boss.GetComponent<Animator>().SetBool("charging", false);
             transform.LookAt(target);
             transform.position += transform.forward * Time.deltaTime;
         }
@@ -31,6 +35,7 @@ public class mistwalkerSpiritBomb : MonoBehaviour {
             timerStart = Time.time;
         }else {
             if (Time.time >= timerStart + timeFromDamToDest) {
+                boss.GetComponent<Animator>().SetBool("charging", false);
                 Destroy(this.gameObject);
             }
         }
@@ -39,7 +44,9 @@ public class mistwalkerSpiritBomb : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (transform.localScale.x >= diameter) {
             timerStart = Time.time;
-            other.GetComponent<playerManager>().takeDamage(damage);
+            if (other.tag == "Player") {
+                other.GetComponent<playerManager>().takeDamage(damage);
+            }
         }
     }
 }
