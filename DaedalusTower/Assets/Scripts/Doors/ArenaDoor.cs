@@ -25,13 +25,18 @@ public class ArenaDoor : MonoBehaviour {
     // Ben was here, dab
     // Update is called once per frame
     void Update() {
+
         if (openSesame && transform.localPosition.y < openHeight) {
             transform.localPosition += transform.up * liftSpeed * Time.deltaTime;
+
+            GetComponent<OcclusionPortal>().open = true;
         } else if (openSesame == false && transform.localPosition.y > closedHeight) {
             transform.localPosition -= transform.up * liftSpeed * Time.deltaTime;
         } else if (openSesame == false) {
             transform.localPosition = new Vector3(transform.localPosition.x, closedHeight, transform.localPosition.z);
+            GetComponent<OcclusionPortal>().open = false;
         }
+
         if (arenaBegin && arenaEnd == false) {
             openSesame = false;
             bool corpsePile = true;
@@ -54,7 +59,7 @@ public class ArenaDoor : MonoBehaviour {
                 arenaEnd = true;
             }
         }
-        if (arenaEnd && transform.localPosition.y < openHeight) {
+        if (arenaEnd) {
             openSesame = true;
         }
 

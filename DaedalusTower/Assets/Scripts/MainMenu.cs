@@ -14,8 +14,9 @@ public class MainMenu : MonoBehaviour {
     CursorLockMode wantedMode;
 
     public void Awake() {
-    wantedMode = CursorLockMode.Locked;
-     }
+        wantedMode = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     public void Update() {
     Cursor.lockState = wantedMode;

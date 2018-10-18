@@ -42,6 +42,11 @@ public class TextBoxManager : MonoBehaviour{
 
     private void Update()
     {
+
+        if (player.transform.position.x > 30) {
+            currentLine = 8;
+        }
+
         theText.text = textLines[currentLine];
         if (Input.GetButtonUp("LeftStickClick") ) {
             currentLine = 8;
