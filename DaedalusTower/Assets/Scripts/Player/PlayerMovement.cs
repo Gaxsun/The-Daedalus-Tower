@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        print(dashing);
         if (GetComponent<playerManager>().health <= 0) {
             if (!dontPlayDeathAgain) {
                 Random.InitState(Mathf.RoundToInt(Time.time));
@@ -165,8 +165,6 @@ public class PlayerMovement : MonoBehaviour {
         gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
         moddableSpeed = speed;
 
-        anim.Play("Run", 0, 0f);
-
         float POTGMod = 1;
         if (GetComponent<playerManager>().powerOfGodsActive) {
             POTGMod = GetComponent<playerManager>().powerOfGodsSpeedBoost;
@@ -188,7 +186,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void DashStart() {
         if (!dashCheck()) {
-
+            anim.Play("Dash");
+            print(anim.GetCurrentAnimatorStateInfo(0).IsName("Dash"));
             dashDirectionX = Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)));
 
             dashDirectionY = Mathf.Sin(Mathf.Acos(Input.GetAxis("LeftStickX") / (Mathf.Sqrt(Mathf.Pow(Input.GetAxis("LeftStickX"), 2) + Mathf.Pow(Input.GetAxis("LeftStickY"), 2)))));
@@ -209,7 +208,7 @@ public class PlayerMovement : MonoBehaviour {
 
             dashing = true;
             GetComponent<PlayerInput>().controlsEnabled = false;
-            anim.Play("run", 0, 0f);
+
             gameObject.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<Weapon>().attackActive = false;
             dashTimeStart = Time.time;
         }
