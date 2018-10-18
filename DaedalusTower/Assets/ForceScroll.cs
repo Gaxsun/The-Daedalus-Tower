@@ -12,6 +12,8 @@ public class ForceScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Scrollbar>().Select();
+        if (GetComponentInParent<Canvas>().enabled) {
+            GetComponent<Scrollbar>().Select();
+        }
 	}
 }

@@ -53,7 +53,7 @@ public class PlayerInput : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+        
         GetComponent<playerManager>().can.enabled = controlsEnabled;
         
         Cursor.lockState = wantedMode;
@@ -124,7 +124,6 @@ public class PlayerInput : MonoBehaviour {
         GetComponent<PlayerMovement>().forwardAxisMovement(Input.GetAxis("LeftStickY"));
         GetComponent<PlayerMovement>().sidewaysAxisMovement(Input.GetAxis("LeftStickX"));
 
-        //change these to get button down
         if (Input.GetButtonDown("X")) {
             GetComponent<Animator>().SetInteger("nextAttack", 1);
 
@@ -277,8 +276,8 @@ public class PlayerInput : MonoBehaviour {
             if (Time.timeScale == 1) {
                 Time.timeScale = 0F;
                 GetComponent<playerManager>().pauseMenu.enabled = true;
-                pauseAutoSelect.Select();
                 controlsEnabled = false;
+                pauseAutoSelect.Select();
             } else {
                 if (tutorial)
                 {
