@@ -23,7 +23,6 @@ public class hellhoundBite : MonoBehaviour {
     private void OnTriggerStay(Collider other) {
         if (GetComponentInParent<hellhound>()) {
             anim = GetComponentInParent<hellhound>().anim;
-            print(other.tag + " " + anim.GetCurrentAnimatorStateInfo(0));
             if (other.tag == "Player") {
                 if (GetComponentInParent<hellhound>().attackFix) {
                     GetComponentInParent<hellhound>().player.GetComponent<playerManager>().takeDamage(GetComponentInParent<hellhound>().damage);

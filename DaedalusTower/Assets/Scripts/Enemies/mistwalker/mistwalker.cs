@@ -63,6 +63,8 @@ public class mistwalker : MonoBehaviour {
     public AudioClip[] spawnSounds;
     public AudioSource mistwalkerSounds;
 
+    private float checkerTime;
+
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -91,6 +93,7 @@ public class mistwalker : MonoBehaviour {
         stage3 = false;
         fightReset = false;
         bombTimeDelay = Time.time;
+        checkerTime = Time.time;
     }
 
     // Update is called once per frame
@@ -115,7 +118,7 @@ public class mistwalker : MonoBehaviour {
             if (playerDistance <= minDistance) {
                 GetComponentInParent<NavMeshAgent>().speed = 0;
                 GetComponentInParent<NavMeshAgent>().acceleration = 1000;
-                if (Time.time > attackTimer + attackDelay) {
+                if (Time.time > attackTimer + attackDelay && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallPrep") && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallFlair") && !anim.GetCurrentAnimatorStateInfo(0).IsName("BothHandLower")) {
                     attackPrep = Time.time;
                     attackChargeTime = 2;
                     clawsActive = false;
@@ -145,15 +148,23 @@ public class mistwalker : MonoBehaviour {
 
             fightStages();
 
-            if (Time.time > pulseDelay + pulseTimeDelay && stage2) {
+            if (Time.time > pulseDelay + pulseTimeDelay && stage2 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallPrep") && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallFlair")) {
+                anim.SetBool("pound", true);
                 Instantiate(pulsePad, player.transform.position, Quaternion.identity);
                 pulseTimeDelay = Time.time;
+            }else {
+                anim.SetBool("pound", false);
             }
-
-            if (Time.time > bombDelay + bombTimeDelay && stage3) {
-                Instantiate(bombPad, new Vector3(transform.position.x, transform.position.y + 11, transform.position.z), Quaternion.identity);
+            if (Time.time > bombDelay + bombTimeDelay && stage3 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Take 001 2") && !anim.GetCurrentAnimatorStateInfo(0).IsName("BothHandLower") && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallPrep") && !anim.GetCurrentAnimatorStateInfo(0).IsName("DeathBallFlair")) {
+                anim.SetBool("charging", true);
+                Instantiate(bombPad, new Vector3(transform.position.x, transform.position.y + 20, transform.position.z), Quaternion.identity);
+                checkerTime = bombDelay + bombTimeDelay;
+                bombTimeDelay = Time.time;
+            } else if(Time.time > checkerTime + 3 && stage3) {
+                anim.SetBool("chargin", false);
                 bombTimeDelay = Time.time;
             }
+            //print(transform.position.x + "  " + transform.position.y + "  " + transform.position.z);
         } else{
             player.GetComponent<playerManager>().win.enabled = true;
             player.GetComponent<playerManager>().restartCount += Time.deltaTime;
