@@ -22,13 +22,13 @@ public class BasicSpawner : MonoBehaviour {
     void Update() {
         if (spawn && spawnTrigger.GetComponent<SpawnTrigger>().triggered) {
             for (int i = 0; i < enemies.Length; i++) {
-                fighters[i] = Instantiate(enemies[i], transform.position, Quaternion.identity);
+                fighters[i] = Instantiate(enemies[i], transform.position, transform.rotation);
             }
             spawn = false;
         }
         corpsePile = true;
         foreach (GameObject enemy in fighters) {
-            if (enemy != null) {
+            if (enemy != null && enemy.GetComponent<Enemy>().health > 0) {
                 corpsePile = false;
             }
         }

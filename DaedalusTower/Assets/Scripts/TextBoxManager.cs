@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TextBoxManager : MonoBehaviour{
 
     public GameObject textBox;
-
+    public GameObject trainingDummy;
     public Text theText;
 
     public TextAsset textFile;
@@ -48,9 +48,11 @@ public class TextBoxManager : MonoBehaviour{
         }
 
         theText.text = textLines[currentLine];
+        /*
         if (Input.GetButtonUp("LeftStickClick") ) {
             currentLine = 8;
         }
+        */
         if (Input.GetButtonUp("RightStickClick") && currentLine == 0)
         {
             currentLine = 1;
@@ -85,6 +87,8 @@ public class TextBoxManager : MonoBehaviour{
             if (Time.time > secondCount + freezeDelay)
             {
                 currentLine = 6;
+                player.gameObject.GetComponent<playerManager>().health /= 10;
+                player.gameObject.GetComponent<playerManager>().powerOfGods = player.gameObject.GetComponent<playerManager>().powerOfGodsMax;
             }
         }
         else if (Input.GetButtonUp("B") && currentLine == 6)
@@ -98,6 +102,7 @@ public class TextBoxManager : MonoBehaviour{
 
         if (currentLine > endAtLine)
         {
+            trainingDummy.GetComponent<Enemy>().health = 0;
             textBox.SetActive(false);
         }
     }

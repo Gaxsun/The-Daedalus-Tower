@@ -19,13 +19,19 @@ public class SpawnTrigger : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && !GetComponent<ArenaDoor>()) {
+            triggered = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (triggered == false && other.tag == "Player" && !GetComponent<ArenaDoor>()) {
             triggered = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && !GetComponent<ArenaDoor>()) {
             triggered = false;
         }
     }
