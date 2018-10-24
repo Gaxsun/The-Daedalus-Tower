@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour {
     public Button playButton;
     public Slider optionSlider;
     public Button backButton;
+    public Button backButton2;
     public bool continueButton = false;
     public Button advanceButton;
 
@@ -91,6 +92,11 @@ public class MainMenu : MonoBehaviour {
     public void OpenControls()
     {
         backButton.Select();
+    }
+
+    public void OpenCredits()
+    {
+        backButton2.Select();
     }
 
     public void OpenLoading()
