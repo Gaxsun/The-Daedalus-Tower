@@ -17,5 +17,8 @@ public class TutDummy : MonoBehaviour {
         if (GetComponent<Enemy>().health <= 0) {
             Destroy(gameObject);
         }
+        if (GameObject.FindGameObjectWithTag("respawnTracker").GetComponent<resspawnTracker>().hasDiedBefore) {
+            GetComponent<Enemy>().health = 0;
+        }
     }
 }
